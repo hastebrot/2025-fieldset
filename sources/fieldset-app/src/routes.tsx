@@ -6,11 +6,12 @@ import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
+import { SysViewport } from "./components/system/sysViewport";
 
 export const IndexScreen = () => {
   return (
     <SysTheme variant="dark">
-      <div className="min-h-dvh">
+      <SysViewport className="min-h-dvh" overflowX overflowY>
         <div className="p-[16px] flex items-center gap-2">
           <span>Home</span>
           <SysIcon name="plus" variant="outlined" width={18} />
@@ -82,7 +83,7 @@ export const IndexScreen = () => {
             <SysRadio value="3" label="Radio" isDisabled />
           </SysRadioGroup>
         </div>
-      </div>
+      </SysViewport>
     </SysTheme>
   );
 };
