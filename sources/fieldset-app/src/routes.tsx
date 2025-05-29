@@ -1,24 +1,25 @@
 import { type RouteObject } from "react-router";
 import { SysButton } from "./components/system/sysButton";
 import { SysIcon } from "./components/system/sysIcon";
+import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysTheme } from "./components/system/sysTheme";
 
 export const IndexScreen = () => {
   return (
     <SysTheme value={{ variant: "dark" }}>
       <div className="min-h-dvh">
-        <div className="p-[16px] flex items-center gap-1.5">
+        <div className="p-[16px] flex items-center gap-2">
           <span>Home</span>
           <SysIcon name="plus" variant="outlined" width={18} />
         </div>
-        <div className="p-[16px] flex items-center gap-1.5">
+        <div className="p-[16px] flex items-center gap-2">
           <SysButton variant="filled">Button</SysButton>
           <SysButton variant="outlined">Button</SysButton>
           <SysButton variant="ghost">Button</SysButton>
           <SysButton variant="danger">Button</SysButton>
           <SysButton isDisabled>Button</SysButton>
         </div>
-        <div className="p-[16px] flex items-center gap-1.5">
+        <div className="p-[16px] flex items-center gap-2">
           <SysButton size="large" variant="filled">
             Button
           </SysButton>
@@ -34,6 +35,20 @@ export const IndexScreen = () => {
           <SysButton size="large" isDisabled>
             Button
           </SysButton>
+        </div>
+        <div className="p-[16px] flex flex-col gap-2">
+          <SysInlineTip label="Tip" variant="info">
+            Medusa UI is a package of React components to be used in Medusa Admin customizations.
+          </SysInlineTip>
+          <SysInlineTip label="Error" variant="error">
+            An error occurred. Please try again.
+          </SysInlineTip>
+          <SysInlineTip label="Warning" variant="warning">
+            This action cannot be undone.
+          </SysInlineTip>
+          <SysInlineTip label="Success" variant="success">
+            Product created successfully!
+          </SysInlineTip>
         </div>
       </div>
     </SysTheme>
