@@ -19,5 +19,6 @@
   },
   "editor.quickSuggestions": {
     "strings": "on"
-  }
+  },
+  "tailwindCSS.classFunctions": ["clsx", "cva", "classNames", "classVariants"]
 }
