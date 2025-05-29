@@ -1,5 +1,6 @@
 import { type RouteObject } from "react-router";
 import { SysButton } from "./components/system/sysButton";
+import { SysCheckbox } from "./components/system/sysCheckboxField";
 import { SysIcon } from "./components/system/sysIcon";
 import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysTextInput } from "./components/system/sysTextField";
@@ -22,19 +23,19 @@ export const IndexScreen = () => {
             <SysButton isDisabled>Button</SysButton>
           </div>
           <div className="flex items-center gap-2">
-            <SysButton size="large" variant="filled">
+            <SysButton size="small" variant="filled">
               Button
             </SysButton>
-            <SysButton size="large" variant="outlined">
+            <SysButton size="small" variant="outlined">
               Button
             </SysButton>
-            <SysButton size="large" variant="ghost">
+            <SysButton size="small" variant="ghost">
               Button
             </SysButton>
-            <SysButton size="large" variant="danger">
+            <SysButton size="small" variant="danger">
               Button
             </SysButton>
-            <SysButton size="large" isDisabled>
+            <SysButton size="small" isDisabled>
               Button
             </SysButton>
           </div>
@@ -57,6 +58,22 @@ export const IndexScreen = () => {
           <SysTextInput placeholder="Sales Channel Name" />
           <SysTextInput placeholder="Sales Channel Name" isDisabled />
           <SysTextInput placeholder="Sales Channel Name" isInvalid />
+        </div>
+        <div className="p-[16px] flex flex-col gap-2">
+          <SysCheckbox label="Billing address same as shipping address" />
+          <SysCheckbox label="Billing address same as shipping address" isDisabled />
+          <SysCheckbox label="Billing address same as shipping address" defaultSelected />
+          <SysCheckbox
+            label="Billing address same as shipping address"
+            defaultSelected
+            isDisabled
+          />
+          <SysCheckbox label="Billing address same as shipping address" isIndeterminate />
+          <SysCheckbox
+            label="Billing address same as shipping address"
+            isIndeterminate
+            isDisabled
+          />
         </div>
       </div>
     </SysTheme>

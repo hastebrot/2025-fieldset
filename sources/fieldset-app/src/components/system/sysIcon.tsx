@@ -13,6 +13,7 @@ export type SysIconProps = {
 };
 
 export const SysIcon = (props: SysIconProps) => {
+  // https://tabler.io/icons
   const href =
     props.variant === "filled"
       ? `${tablerSpriteFilled}#tabler-filled-${props.name}`
