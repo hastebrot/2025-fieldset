@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "name": "2025-fieldset-app",
+  "framework": "vite",
+  "outputDirectory": "dist",
+  "installCommand": "bun install",
+  "buildCommand": "bun run build"
+}
