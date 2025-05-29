@@ -3,6 +3,7 @@ import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox } from "./components/system/sysCheckboxField";
 import { SysIcon } from "./components/system/sysIcon";
 import { SysInlineTip } from "./components/system/sysInlineTip";
+import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
 
@@ -60,20 +61,19 @@ export const IndexScreen = () => {
           <SysTextInput placeholder="Sales Channel Name" isInvalid />
         </div>
         <div className="p-[16px] flex flex-col gap-2">
-          <SysCheckbox label="Billing address same as shipping address" />
-          <SysCheckbox label="Billing address same as shipping address" isDisabled />
-          <SysCheckbox label="Billing address same as shipping address" defaultSelected />
-          <SysCheckbox
-            label="Billing address same as shipping address"
-            defaultSelected
-            isDisabled
-          />
-          <SysCheckbox label="Billing address same as shipping address" isIndeterminate />
-          <SysCheckbox
-            label="Billing address same as shipping address"
-            isIndeterminate
-            isDisabled
-          />
+          <SysCheckbox label="Check" />
+          <SysCheckbox label="Check" defaultSelected />
+          <SysCheckbox label="Check" isIndeterminate />
+          <SysCheckbox label="Check" isDisabled />
+          <SysCheckbox label="Check" isDisabled defaultSelected />
+          <SysCheckbox label="Check" isDisabled isIndeterminate />
+        </div>
+        <div className="p-[16px] flex flex-col gap-2">
+          <SysRadioGroup defaultValue="1">
+            <SysRadio value="1" label="Radio" />
+            <SysRadio value="2" label="Radio" />
+            <SysRadio value="3" label="Radio" isDisabled />
+          </SysRadioGroup>
         </div>
       </div>
     </SysTheme>
