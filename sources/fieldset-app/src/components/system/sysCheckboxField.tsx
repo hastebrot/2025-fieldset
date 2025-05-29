@@ -1,11 +1,34 @@
 import { useId } from "@react-aria/utils";
-import { Checkbox } from "react-aria-components";
+import { Checkbox, CheckboxGroup } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { SysIcon } from "./sysIcon";
 import { SysLabel } from "./sysLabel";
 
 // https://docs.medusajs.com/ui/components/checkbox
 // https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/checkbox/checkbox.tsx
+// https://react-spectrum.adobe.com/react-aria/Checkbox.html
+
+export type SysCheckboxGroupProps = {
+  label: string;
+  children?: React.ReactNode;
+  defaultValue?: string[];
+  value?: string[];
+  onChange?: (value: string[]) => void;
+};
+
+export const SysCheckboxGroup = (props: SysCheckboxGroupProps) => {
+  return (
+    <CheckboxGroup
+      className="grid gap-2"
+      defaultValue={props.defaultValue}
+      value={props.value}
+      onChange={props.onChange}
+      aria-label={props.label}
+    >
+      {props.children}
+    </CheckboxGroup>
+  );
+};
 
 export type SysCheckboxProps = {
   value?: string;

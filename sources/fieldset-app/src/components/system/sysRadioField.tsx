@@ -4,6 +4,7 @@ import { classNames } from "../../helpers/clsx";
 import { SysLabel } from "./sysLabel";
 
 export type SysRadioGroupProps = {
+  label: string;
   children?: React.ReactNode;
   defaultValue?: string;
   value?: string;
@@ -17,6 +18,7 @@ export const SysRadioGroup = (props: SysRadioGroupProps) => {
       defaultValue={props.defaultValue}
       value={props.value}
       onChange={props.onChange}
+      aria-label={props.label}
     >
       {props.children}
     </RadioGroup>
@@ -45,7 +47,7 @@ export const SysRadio = (props: SysRadioProps) => {
         {(renderProps) => (
           <div
             className={classNames(
-              "h-[14px] w-[14px] rounded-full flex items-center justify-center",
+              "h-[15px] w-[15px] rounded-full flex items-center justify-center",
               "text-(--fg-on-inverted) bg-(--bg-base) shadow-(--borders-base)",
               "group-data-[disabled]:cursor-not-allowed group-data-[disabled]:opacity-50",
               "group-data-[focus-visible]:!shadow-(--borders-interactive-with-focus)",

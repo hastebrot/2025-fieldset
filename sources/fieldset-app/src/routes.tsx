@@ -1,6 +1,6 @@
 import { type RouteObject } from "react-router";
 import { SysButton } from "./components/system/sysButton";
-import { SysCheckbox } from "./components/system/sysCheckboxField";
+import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
 import { SysIcon } from "./components/system/sysIcon";
 import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
@@ -69,7 +69,14 @@ export const IndexScreen = () => {
           <SysCheckbox label="Check" isDisabled isIndeterminate />
         </div>
         <div className="p-[16px] flex flex-col gap-2">
-          <SysRadioGroup defaultValue="1">
+          <SysCheckboxGroup label="Check group" defaultValue={["1"]}>
+            <SysCheckbox value="1" label="Check" />
+            <SysCheckbox value="2" label="Check" />
+            <SysCheckbox value="3" label="Check" isDisabled />
+          </SysCheckboxGroup>
+        </div>
+        <div className="p-[16px] flex flex-col gap-2">
+          <SysRadioGroup label="Radio group" defaultValue="1">
             <SysRadio value="1" label="Radio" />
             <SysRadio value="2" label="Radio" />
             <SysRadio value="3" label="Radio" isDisabled />
