@@ -1,0 +1,33 @@
+name: fieldset-workflow
+
+on:
+  workflow_dispatch:
+    # manual trigger.
+
+  push:
+    branches:
+      # trigger on push to main branch.
+      - main
+
+  pull_request:
+    branches:
+      # trigger on pull requests to main branch.
+      - main
+
+jobs:
+  fieldset-job:
+    name: fieldset-job
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./sources/fieldset-app/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: FORCE_COLOR=1 bun run build
+      - run: FORCE_COLOR=1 bun run test
+      - run: FORCE_COLOR=1 bun run fmt
+      - run: FORCE_COLOR=1 bun run loc
