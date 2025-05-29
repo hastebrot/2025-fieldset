@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "oven.bun-vscode",
+    "tamasfe.even-better-toml",
+    "pomdtr.excalidraw-editor"
+  ]
+}
