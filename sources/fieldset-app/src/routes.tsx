@@ -2,39 +2,42 @@ import { type RouteObject } from "react-router";
 import { SysButton } from "./components/system/sysButton";
 import { SysIcon } from "./components/system/sysIcon";
 import { SysInlineTip } from "./components/system/sysInlineTip";
+import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
 
 export const IndexScreen = () => {
   return (
-    <SysTheme value={{ variant: "dark" }}>
+    <SysTheme variant="dark">
       <div className="min-h-dvh">
         <div className="p-[16px] flex items-center gap-2">
           <span>Home</span>
           <SysIcon name="plus" variant="outlined" width={18} />
         </div>
-        <div className="p-[16px] flex items-center gap-2">
-          <SysButton variant="filled">Button</SysButton>
-          <SysButton variant="outlined">Button</SysButton>
-          <SysButton variant="ghost">Button</SysButton>
-          <SysButton variant="danger">Button</SysButton>
-          <SysButton isDisabled>Button</SysButton>
-        </div>
-        <div className="p-[16px] flex items-center gap-2">
-          <SysButton size="large" variant="filled">
-            Button
-          </SysButton>
-          <SysButton size="large" variant="outlined">
-            Button
-          </SysButton>
-          <SysButton size="large" variant="ghost">
-            Button
-          </SysButton>
-          <SysButton size="large" variant="danger">
-            Button
-          </SysButton>
-          <SysButton size="large" isDisabled>
-            Button
-          </SysButton>
+        <div className="p-[16px] flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <SysButton variant="filled">Button</SysButton>
+            <SysButton variant="outlined">Button</SysButton>
+            <SysButton variant="ghost">Button</SysButton>
+            <SysButton variant="danger">Button</SysButton>
+            <SysButton isDisabled>Button</SysButton>
+          </div>
+          <div className="flex items-center gap-2">
+            <SysButton size="large" variant="filled">
+              Button
+            </SysButton>
+            <SysButton size="large" variant="outlined">
+              Button
+            </SysButton>
+            <SysButton size="large" variant="ghost">
+              Button
+            </SysButton>
+            <SysButton size="large" variant="danger">
+              Button
+            </SysButton>
+            <SysButton size="large" isDisabled>
+              Button
+            </SysButton>
+          </div>
         </div>
         <div className="p-[16px] flex flex-col gap-2">
           <SysInlineTip label="Tip" variant="info">
@@ -49,6 +52,11 @@ export const IndexScreen = () => {
           <SysInlineTip label="Success" variant="success">
             Product created successfully!
           </SysInlineTip>
+        </div>
+        <div className="p-[16px] flex flex-col gap-2">
+          <SysTextInput placeholder="Sales Channel Name" />
+          <SysTextInput placeholder="Sales Channel Name" isDisabled />
+          <SysTextInput placeholder="Sales Channel Name" isInvalid />
         </div>
       </div>
     </SysTheme>

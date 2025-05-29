@@ -5,7 +5,7 @@ import { typography } from "./sysTokens";
 export type SysButtonProps = {
   children?: React.ReactNode;
   variant?: "filled" | "outlined" | "ghost" | "danger";
-  size?: "small" | "medium" | "large" | "xlarge";
+  size?: "base" | "small" | "large" | "xlarge";
   isDisabled?: boolean;
 };
 
@@ -45,16 +45,16 @@ export const SysButton = (props: SysButtonProps) => {
         ],
         [
           props.size === undefined && "gap-x-1.5 px-3 py-1.5",
+          props.size === "base" && "gap-x-1.5 px-3 py-1.5",
           props.size === "small" && "gap-x-1.5 px-2 py-1",
-          props.size === "medium" && "gap-x-1.5 px-3 py-1.5",
           props.size === "large" && "gap-x-1.5 px-4 py-2.5",
           props.size === "xlarge" && "gap-x-1.5 px-5 py-3.5",
         ],
       )}
       style={{
         ...(props.size === undefined && typography[".txt-compact-small-plus"]),
+        ...(props.size === "base" && typography[".txt-compact-small-plus"]),
         ...(props.size === "small" && typography[".txt-compact-small-plus"]),
-        ...(props.size === "medium" && typography[".txt-compact-small-plus"]),
         ...(props.size === "large" && typography[".txt-compact-medium-plus"]),
         ...(props.size === "xlarge" && typography[".txt-compact-large-plus"]),
       }}
