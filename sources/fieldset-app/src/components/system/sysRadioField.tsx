@@ -1,24 +1,19 @@
 import { useId } from "@react-aria/utils";
-import { Checkbox, CheckboxGroup } from "react-aria-components";
+import { Radio, RadioGroup } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
-import { SysIcon } from "./sysIcon";
 import { SysLabel } from "./sysLabel";
 
-// https://docs.medusajs.com/ui/components/checkbox
-// https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/checkbox/checkbox.tsx
-// https://react-spectrum.adobe.com/react-aria/Checkbox.html
-
-export type SysCheckboxGroupProps = {
+export type SysRadioGroupProps = {
   label: string;
   children?: React.ReactNode;
-  defaultValue?: string[];
-  value?: string[];
-  onChange?: (value: string[]) => void;
+  defaultValue?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 };
 
-export const SysCheckboxGroup = (props: SysCheckboxGroupProps) => {
+export const SysRadioGroup = (props: SysRadioGroupProps) => {
   return (
-    <CheckboxGroup
+    <RadioGroup
       className="grid gap-2"
       defaultValue={props.defaultValue}
       value={props.value}
@@ -26,41 +21,33 @@ export const SysCheckboxGroup = (props: SysCheckboxGroupProps) => {
       aria-label={props.label}
     >
       {props.children}
-    </CheckboxGroup>
+    </RadioGroup>
   );
 };
 
-export type SysCheckboxProps = {
-  value?: string;
+export type SysRadioProps = {
+  value: string;
   label?: string;
   labelSlot?: React.ReactNode;
-  defaultSelected?: boolean;
-  isSelected?: boolean;
-  onChange?: (isSelected: boolean) => void;
   isDisabled?: boolean;
-  isIndeterminate?: boolean;
 };
 
-export const SysCheckbox = (props: SysCheckboxProps) => {
+export const SysRadio = (props: SysRadioProps) => {
   const id = useId();
   const labelId = useId();
 
   return (
     <div className="flex items-center gap-3">
-      <Checkbox
+      <Radio
         id={id}
         value={props.value}
-        defaultSelected={props.defaultSelected}
-        isSelected={props.isSelected}
-        onChange={props.onChange}
         isDisabled={props.isDisabled}
-        isIndeterminate={props.isIndeterminate}
         className="group inline-flex h-5 w-5 items-center justify-center outline-none"
       >
         {(renderProps) => (
           <div
             className={classNames(
-              "h-[15px] w-[15px] rounded-[3px]",
+              "h-[15px] w-[15px] rounded-full flex items-center justify-center",
               "text-(--fg-on-inverted) bg-(--bg-base) shadow-(--borders-base)",
               "group-data-[disabled]:cursor-not-allowed group-data-[disabled]:opacity-50",
               "group-data-[focus-visible]:!shadow-(--borders-interactive-with-focus)",
@@ -69,15 +56,17 @@ export const SysCheckbox = (props: SysCheckboxProps) => {
               "group-data-[indeterminate]:bg-(--bg-interactive) group-data-[indeterminate]:shadow-(--borders-interactive-with-shadow)",
             )}
           >
-            {!renderProps.isIndeterminate && renderProps.isSelected && (
-              <SysIcon name="check" variant="outlined" width={15} strokeWidth={2} />
-            )}
-            {renderProps.isIndeterminate && (
-              <SysIcon name="minus" variant="outlined" width={15} strokeWidth={2} />
+            {renderProps.isSelected && (
+              <div
+                className={classNames(
+                  "w-1.5 h-1.5 rounded-full flex items-center justify-center",
+                  "bg-(--bg-base) shadow-(--details-contrast-on-bg-interactive)",
+                )}
+              ></div>
             )}
           </div>
         )}
-      </Checkbox>
+      </Radio>
       {(props.labelSlot ?? props.label) && (
         <label id={labelId} htmlFor={id}>
           {props.labelSlot ?? <SysLabel>{props.label}</SysLabel>}

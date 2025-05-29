@@ -27,7 +27,12 @@ export const SysTheme = (props: SysThemeProps) => {
   return (
     <SysThemeContext value={value}>
       <div
-        className={classNames(props.className, "bg-(--bg-base) text-(--fg-base)")}
+        data-theme={value.variant}
+        className={classNames(
+          props.className,
+          "bg-(--bg-base) text-(--fg-base) border-(--border-base)",
+          "[scrollbar-color:var(--border-base)_var(--bg-base)]",
+        )}
         style={{
           ...typography[".txt-medium"],
           ...(value.variant === "dark" && colors.dark),
