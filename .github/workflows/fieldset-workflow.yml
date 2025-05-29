@@ -1,4 +1,4 @@
-name: fieldset-workflow
+name: Fieldset Workflow
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ on:
 
 jobs:
   fieldset-job:
-    name: fieldset-job
+    name: Fieldset Job
     runs-on: ubuntu-latest
     defaults:
       run:
