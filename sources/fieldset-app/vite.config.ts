@@ -35,6 +35,15 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
+        assetFileNames(chunkInfo) {
+          if (chunkInfo.names[0] === "tabler-sprite-filled.svg") {
+            return `assets/tabler-sprite-filled-[hash][extname]`;
+          }
+          if (chunkInfo.names[0] === "tabler-sprite-nostroke.svg") {
+            return `assets/tabler-sprite-outlined-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
         advancedChunks: {
           groups: [
             { name: "react-router", test: "react-router" },
