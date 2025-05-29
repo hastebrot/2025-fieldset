@@ -18,7 +18,7 @@ export const SysIcon = (props: SysIconProps) => {
       ? `${tablerSpriteFilled}#tabler-filled-${props.name}`
       : props.variant === "outlined"
         ? `${tablerSpriteOutlined}#tabler-${props.name}`
-        : throwError("invalid variant");
+        : throwError(`invalid variant: "${props.variant}"`);
   const width = props.width ?? 24;
   const height = props.height ?? width;
   const webfontStrokes = { 200: 1, 300: 1.5, 400: 2 };
