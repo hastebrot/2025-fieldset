@@ -1,5 +1,19 @@
 # 2025 fieldset
 
+### Usage
+
+This project requires [Git](https://git-scm.com/) and [Bun](https://bun.sh/) to be installed.
+
+- `$ git clone https://github.com/hastebrot/2025-fieldset`
+- `$ cd 2025-fieldset/sources/fieldset-app/`
+- `$ bun install`
+- `$ bun run dev --port 1234`
+- `$ bun run test --watch`
+- `$ bun run fmt --write`
+- `$ bun run bench --watch .bench`
+
+### References
+
 link collection for my software architecture study.
 
 - payload, content management system and framework

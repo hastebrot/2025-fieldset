@@ -1,0 +1,41 @@
+{
+  "name": "fieldset-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun x --bun vite dev",
+    "dev:debug": "bun run dev --debug load,hmr --clearScreen=false",
+    "build": "bun x --bun vite build",
+    "test": "bun test",
+    "bench": "SKIP_BENCH=false bun test",
+    "fmt": "bun x --bun prettier --check --end-of-line=auto . !package.json",
+    "loc": "bun x --bun cloc --vcs=git --hide-rate"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "^5.2.5",
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/bun": "^1.2.15",
+    "@types/node": "^22.15.24",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react-swc": "^3.10.0",
+    "class-variance-authority": "^0.7.1",
+    "cloc": "^2.4.0-cloc",
+    "clsx": "^2.1.1",
+    "globals": "^16.2.0",
+    "prettier": "^3.5.3",
+    "react-aria-components": "^1.9.0",
+    "react-error-boundary": "^6.0.0",
+    "react-router": "^7.6.1",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3",
+    "vite": "npm:rolldown-vite@latest",
+    "vitest": "^3.1.4",
+    "zod": "^3.25.36"
+  }
+}
