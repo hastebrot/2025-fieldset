@@ -14,11 +14,15 @@ export type SysThemeProps = {
   children?: React.ReactNode;
   className?: string;
   value?: SysThemeValue;
+  variant?: SysThemeValue["variant"];
 };
 
 export const SysTheme = (props: SysThemeProps) => {
   const valueOfContext = useSysTheme();
-  const value = props.value ?? valueOfContext;
+  const value = {
+    ...(props.value ?? valueOfContext),
+    ...(props.variant && { variant: props.variant }),
+  };
 
   return (
     <SysThemeContext value={value}>
