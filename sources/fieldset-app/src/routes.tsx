@@ -4,6 +4,7 @@ import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxFi
 import { SysIcon } from "./components/system/sysIcon";
 import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
+import { SysText } from "./components/system/sysText";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
 import { SysViewport } from "./components/system/sysViewport";
@@ -13,8 +14,14 @@ export const IndexScreen = () => {
     <SysTheme variant="dark">
       <SysViewport className="min-h-dvh" overflowX overflowY>
         <div className="p-[16px] flex items-center gap-2">
-          <span>Home</span>
+          <SysText>Text</SysText>
+          <SysText size="small">Text</SysText>
+          <SysText family="mono">Text</SysText>
+          <SysText family="mono" size="small">
+            Text
+          </SysText>
           <SysIcon name="plus" variant="outlined" width={18} />
+          <SysIcon name="minus" variant="outlined" width={18} />
         </div>
         <div className="p-[16px] flex flex-col gap-2">
           <div className="flex items-center gap-2">
