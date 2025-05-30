@@ -34,7 +34,9 @@ export const SysMenuTrigger = (props: SysMenuTriggerProps) => {
 
 export type SysMenuPopoverProps = {
   children?: React.ReactNode;
+  defaultOpen?: boolean;
   isOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
   isNonModal?: boolean;
   shouldCloseOnBlur?: boolean;
 };
@@ -56,7 +58,13 @@ export const SysMenuPopover = (props: SysMenuPopoverProps) => {
   });
 
   return (
-    <Popover offset={9} isNonModal={props.isNonModal} isOpen={props.isOpen}>
+    <Popover
+      offset={9}
+      defaultOpen={props.defaultOpen}
+      isOpen={props.isOpen}
+      onOpenChange={props.onOpenChange}
+      isNonModal={props.isNonModal}
+    >
       <div {...focusWithinProps}>{props.children}</div>
     </Popover>
   );

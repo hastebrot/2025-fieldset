@@ -135,12 +135,18 @@ export const IndexScreen = () => {
                 <SysCheckbox value="2" label="Check" />
                 <SysCheckbox value="3" label="Check" isDisabled />
               </SysCheckboxGroup>
+              <SysCheckboxGroup label="Check group" defaultValue={["1"]}>
+                <SysCheckbox value="1" label="Check" isDisabled />
+              </SysCheckboxGroup>
             </div>
             <div className="flex flex-col gap-2">
               <SysRadioGroup label="Radio group" defaultValue="1">
                 <SysRadio value="1" label="Radio" />
                 <SysRadio value="2" label="Radio" />
                 <SysRadio value="3" label="Radio" isDisabled />
+              </SysRadioGroup>
+              <SysRadioGroup label="Radio group" defaultValue="1">
+                <SysRadio value="1" label="Radio" isDisabled />
               </SysRadioGroup>
             </div>
           </div>
