@@ -103,7 +103,7 @@ const Post = {
       async readPosts(db: Kysely<Post>, params: ReadPostsParams) {
         const r = await db
           .selectFrom("post")
-          .orderBy("id", "desc")
+          .orderBy("id", "asc")
           .select(["id", "title", "body"])
           .$call((it) => (params.limit !== undefined ? it.limit(params.limit) : it))
           .execute();
@@ -289,6 +289,7 @@ suite("schema", () => {
         title: { type: "string" },
         body: { type: "string" },
       },
+      required: ["title", "body"],
     });
     {
       cleanup();
