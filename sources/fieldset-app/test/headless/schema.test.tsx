@@ -4,17 +4,16 @@ import { Kysely } from "kysely";
 import { action, observable } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import { expect, describe as suite, test } from "vitest";
+import { beforeEach, expect, describe as suite, test } from "vitest";
 import { z } from "zod/v4";
 import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
 import { registerGlobals } from "../registerGlobals";
 import { registerMatchers } from "../registerMatchers";
 
 export const setupDatabase = async <T extends any = any>() => {
-  const { db } = createDatabaseWithSqlocal<T>({
+  return createDatabaseWithSqlocal<T>({
     databasePath: process.env.NODE_ENV === "test" ? ":memory:" : ":localStorage:",
   });
-  return db;
 };
 
 type inferSchema<T extends { [key: string]: z.ZodTypeAny }> = {
@@ -115,20 +114,16 @@ const Post = {
     };
   },
 
-  get screen() {
+  get admin() {
     type Post = inferSchema<typeof Post.schema>;
-    type PostListTableProps = { limit: number };
-    type PostFormProps = { postId: Post["post"]["id"] };
+    type PostListTableProps = { posts: Post["post"][] };
+    type PostFormProps = { post: Post["post"] };
     return {
       PostListTable: (props: PostListTableProps) => {
         const [posts, setPosts] = useState<Post["post"][]>([]);
         useEffect(() => {
-          async function process() {
-            const r = await Post.client.readPosts(db, { limit: props.limit });
-            setPosts(r.posts);
-          }
-          process();
-        }, [props.limit]);
+          setPosts(props.posts);
+        }, [props.posts]);
         return (
           <table>
             <thead>
@@ -160,14 +155,8 @@ const Post = {
           }),
         );
         useEffect(() => {
-          async function process() {
-            if (props.postId) {
-              const r = await Post.client.readPost(db, { postId: props.postId });
-              form.setPost(r.post);
-            }
-          }
-          process();
-        }, [props.postId]);
+          form.setPost(props.post);
+        }, [props.post]);
         return (
           <form role="form">
             <input
@@ -189,8 +178,8 @@ const Post = {
   },
 };
 
-const db = await setupDatabase<inferSchema<typeof Post.schema>>();
-
+const { db, deleteDatabaseFile } = await setupDatabase<inferSchema<typeof Post.schema>>();
+beforeEach(deleteDatabaseFile);
 registerGlobals();
 registerMatchers();
 
@@ -237,7 +226,8 @@ suite("schema", () => {
     });
     {
       cleanup();
-      const screen = render(<Post.screen.PostForm postId={1} />);
+      const post = await Post.client.readPost(db, { postId: 1 });
+      const screen = render(<Post.admin.PostForm post={post.post} />);
       const postForm = screen.getByRole("form");
       await waitFor(() => postForm);
       const postTitle = screen.getByRole("textbox", { name: "post[title]" });
@@ -256,7 +246,8 @@ suite("schema", () => {
     }
     {
       cleanup();
-      const screen = render(<Post.screen.PostListTable limit={2} />);
+      const posts = await Post.client.readPosts(db, { limit: 2 });
+      const screen = render(<Post.admin.PostListTable posts={posts.posts} />);
       const postTable = screen.getByRole("table");
       await waitFor(() => postTable);
       expect(screen.getByRole("columnheader", { name: "id" })).toBeInTheDocument();
