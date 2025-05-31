@@ -103,6 +103,7 @@ const Post = {
       async readPosts(db: Kysely<Post>, params: ReadPostsParams) {
         const r = await db
           .selectFrom("post")
+          .orderBy("id", "desc")
           .select(["id", "title", "body"])
           .$call((it) => (params.limit !== undefined ? it.limit(params.limit) : it))
           .execute();
@@ -212,7 +213,7 @@ export const autoCreateTable = <T extends any = any>(name: string, schema: z.Zod
   };
   for (const key in jsonSchema.properties) {
     const value = jsonSchema.properties[key] as z.core.JSONSchema.Schema & SchemaMeta;
-    const type = value.type ?? throwError(`type not found: "${key}"`);
+    const type = value.type ?? throwError(`type property not found: "${key}"`);
     const dataType = sqlTypes[type] ?? throwError(`type mapping not found: "${type}"`);
     const primaryKey = value.migration?.primaryKey === true;
     const autoIncrement = value.migration?.autoIncrement === true;
