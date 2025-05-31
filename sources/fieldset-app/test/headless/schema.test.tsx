@@ -1,14 +1,17 @@
 import { cleanup, render, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { Kysely } from "kysely";
+import { ColumnDataType, Compilable, Kysely } from "kysely";
 import { action, observable } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { beforeEach, expect, describe as suite, test } from "vitest";
 import { z } from "zod/v4";
+import { throwError } from "../../src/helpers/error";
 import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
 import { registerGlobals } from "../registerGlobals";
 import { registerMatchers } from "../registerMatchers";
+
+export const debugSql = <T extends Compilable>(it: T): T => (console.debug(it.compile().sql), it);
 
 export const setupDatabase = async <T extends any = any>() => {
   return createDatabaseWithSqlocal<T>({
@@ -32,18 +35,33 @@ type inferSchema<T extends { [key: string]: z.ZodTypeAny }> = {
 //   };
 // };
 
+type SchemaMeta = {
+  migration?: {
+    primaryKey?: boolean;
+    autoIncrement?: boolean;
+  };
+};
+
+const schema = <T extends z.ZodType>(schema: T, meta?: SchemaMeta) => {
+  return meta !== undefined ? schema.meta(meta) : schema;
+};
+
 const Post = {
   schema: {
     post: z
       .strictObject({
-        id: z.number().optional().meta({
-          primaryKey: true,
-          autoIncrement: true,
+        id: schema(z.number().optional(), {
+          migration: {
+            primaryKey: true,
+            autoIncrement: true,
+          },
         }),
         title: z.string(),
         body: z.string(),
       })
-      .meta({ title: "post" }),
+      .meta({
+        title: "post",
+      }),
   },
 
   get jsonSchema() {
@@ -55,10 +73,10 @@ const Post = {
   get faker() {
     return {
       post() {
-        return {
+        return Post.schema.post.parse({
           title: "title",
           body: "body",
-        };
+        });
       },
     };
   },
@@ -178,12 +196,71 @@ const Post = {
   },
 };
 
+const autoCreateTable = <T extends any = any>(name: string, schema: z.ZodObject) => {
+  type SqlTypes = {
+    [key: string]: ColumnDataType;
+  };
+  const sqlTypes: SqlTypes = {
+    string: "text",
+    number: "integer",
+    boolean: "boolean",
+  };
+  type TableModel = {
+    name: string;
+    columns: {
+      [key: string]: {
+        columnName: string;
+        dataType: ColumnDataType;
+        primaryKey?: boolean;
+        autoIncrement?: boolean;
+        notNull?: boolean;
+      };
+    };
+  };
+  const jsonSchema = z.toJSONSchema(schema) as z.core.JSONSchema.ObjectSchema;
+  const tableModel: TableModel = {
+    name,
+    columns: {},
+  };
+  for (const key in jsonSchema.properties) {
+    const value = jsonSchema.properties[key] as z.core.JSONSchema.Schema & SchemaMeta;
+    const type = value.type ?? throwError(`type not found: "${key}"`);
+    const dataType = sqlTypes[type] ?? throwError(`type mapping not found: "${type}"`);
+    const primaryKey = value.migration?.primaryKey === true;
+    const autoIncrement = value.migration?.autoIncrement === true;
+    const notNull = jsonSchema.required?.includes(key);
+    tableModel.columns[key] = { columnName: key, dataType };
+    primaryKey && (tableModel.columns[key].primaryKey = primaryKey);
+    autoIncrement && (tableModel.columns[key].autoIncrement = autoIncrement);
+    notNull && (tableModel.columns[key].notNull = notNull);
+  }
+  return (db: Kysely<T>) => {
+    let q = db.schema.createTable(tableModel.name);
+    for (const column of Object.values(tableModel.columns)) {
+      q = q.addColumn(column.columnName, column.dataType, (qc) => {
+        qc = column.primaryKey ? qc.primaryKey() : qc;
+        qc = column.autoIncrement ? qc.autoIncrement() : qc;
+        qc = column.notNull ? qc.notNull() : qc;
+        return qc;
+      });
+    }
+    return q;
+  };
+};
+
 const { db, deleteDatabaseFile } = await setupDatabase<inferSchema<typeof Post.schema>>();
 beforeEach(deleteDatabaseFile);
 registerGlobals();
 registerMatchers();
 
 suite("schema", () => {
+  test("auto create table", async () => {
+    const createTable = autoCreateTable("post", Post.schema.post);
+    expect(createTable(db).compile().sql).toBe(
+      `create table "post" ("id" integer primary key autoincrement, "title" text not null, "body" text not null)`,
+    );
+  });
+
   test("post schema", async () => {
     await Post.migration.createPosts(db);
     await Post.client.writePost(db, {
