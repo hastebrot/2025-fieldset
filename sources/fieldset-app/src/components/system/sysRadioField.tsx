@@ -47,7 +47,7 @@ export const SysRadio = (props: SysRadioProps) => {
         {(renderProps) => (
           <div
             className={classNames(
-              "h-[15px] w-[15px] rounded-full flex items-center justify-center",
+              "h-[14px] w-[14px] rounded-full flex items-center justify-center",
               "text-(--fg-on-inverted) bg-(--bg-base) shadow-(--borders-base)",
               "group-data-[disabled]:cursor-not-allowed group-data-[disabled]:opacity-50",
               "group-data-[focus-visible]:!shadow-(--borders-interactive-with-focus)",
