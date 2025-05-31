@@ -11,29 +11,9 @@ import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
 import { registerGlobals } from "../registerGlobals";
 import { registerMatchers } from "../registerMatchers";
 
-export const debugSql = <T extends Compilable>(it: T): T => (console.debug(it.compile().sql), it);
-
-export const setupDatabase = async <T extends any = any>() => {
-  return createDatabaseWithSqlocal<T>({
-    databasePath: process.env.NODE_ENV === "test" ? ":memory:" : ":localStorage:",
-  });
-};
-
 type inferSchema<T extends { [key: string]: z.ZodTypeAny }> = {
   [key in keyof T]: z.infer<T[key]>;
 };
-
-// type PostSchema = { [key in keyof typeof Post.schema]: z.infer<(typeof Post.schema)[key]> };
-// type Post = PostSchema["post"];
-
-// const schema = <Name extends string, Shape extends z.core.$ZodShape>(
-//   name: Name,
-//   schema: () => z.ZodObject<Shape, z.core.$strict>,
-// ) => {
-//   return { [name]: schema() } as {
-//     [key in Name]: z.ZodObject<Shape, z.core.$strict>;
-//   };
-// };
 
 type SchemaMeta = {
   migration?: {
@@ -196,7 +176,15 @@ const Post = {
   },
 };
 
-const autoCreateTable = <T extends any = any>(name: string, schema: z.ZodObject) => {
+export const debugSql = <T extends Compilable>(it: T): T => (console.debug(it.compile().sql), it);
+
+export const setupDatabase = async <T extends any = any>() => {
+  return createDatabaseWithSqlocal<T>({
+    databasePath: process.env.NODE_ENV === "test" ? ":memory:" : ":localStorage:",
+  });
+};
+
+export const autoCreateTable = <T extends any = any>(name: string, schema: z.ZodObject) => {
   type SqlTypes = {
     [key: string]: ColumnDataType;
   };
