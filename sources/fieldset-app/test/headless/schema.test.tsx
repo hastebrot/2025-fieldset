@@ -1,4 +1,4 @@
-import { cleanup, queryHelpers, render, waitFor } from "@testing-library/react";
+import { cleanup, render, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { Kysely } from "kysely";
 import { action, observable } from "mobx";
@@ -128,17 +128,17 @@ const Post = {
           <table>
             <thead>
               <tr>
-                <th>id</th>
-                <th>title</th>
-                <th>body</th>
+                <th aria-label="post[id]">id</th>
+                <th aria-label="post[title]">title</th>
+                <th aria-label="post[body]">body</th>
               </tr>
             </thead>
             <tbody>
-              {posts.map((post) => (
+              {posts.map((post, index) => (
                 <tr key={post.id}>
-                  <td aria-label="post[id]">{post.id}</td>
-                  <td aria-label="post[title]">{post.title}</td>
-                  <td aria-label="post[body]">{post.body}</td>
+                  <td aria-label={`post[${index}][id]`}>{post.id}</td>
+                  <td aria-label={`post[${index}][title]`}>{post.title}</td>
+                  <td aria-label={`post[${index}][body]`}>{post.body}</td>
                 </tr>
               ))}
             </tbody>
@@ -250,20 +250,16 @@ suite("schema", () => {
       const screen = render(<Post.admin.PostListTable posts={posts.posts} />);
       const postTable = screen.getByRole("table");
       await waitFor(() => postTable);
-      expect(screen.getByRole("columnheader", { name: "id" })).toBeInTheDocument();
-      expect(screen.getByRole("columnheader", { name: "title" })).toBeInTheDocument();
-      expect(screen.getByRole("columnheader", { name: "body" })).toBeInTheDocument();
-      const postTableRows = screen.getAllByRole("row");
-      expect(postTableRows).toHaveLength(3);
-      expect(
-        queryHelpers.queryByAttribute("aria-label", postTableRows[1], "post[id]"),
-      ).toHaveTextContent("1");
-      expect(
-        queryHelpers.queryByAttribute("aria-label", postTableRows[1], "post[title]"),
-      ).toHaveTextContent("title");
-      expect(
-        queryHelpers.queryByAttribute("aria-label", postTableRows[1], "post[body]"),
-      ).toHaveTextContent("body");
+      expect(screen.getAllByRole("row")).toHaveLength(3);
+      expect(screen.getByRole("columnheader", { name: "post[id]" })).toHaveTextContent("id");
+      expect(screen.getByRole("columnheader", { name: "post[title]" })).toHaveTextContent("title");
+      expect(screen.getByRole("columnheader", { name: "post[body]" })).toHaveTextContent("body");
+      expect(screen.getByRole("cell", { name: "post[0][id]" })).toHaveTextContent("1");
+      expect(screen.getByRole("cell", { name: "post[0][title]" })).toHaveTextContent("title");
+      expect(screen.getByRole("cell", { name: "post[0][body]" })).toHaveTextContent("body");
+      expect(screen.getByRole("cell", { name: "post[1][id]" })).toHaveTextContent("2");
+      expect(screen.getByRole("cell", { name: "post[1][title]" })).toHaveTextContent("title");
+      expect(screen.getByRole("cell", { name: "post[1][body]" })).toHaveTextContent("body");
     }
   });
 });
