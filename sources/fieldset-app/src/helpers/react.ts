@@ -1,5 +1,21 @@
 import { useEffect, useState } from "react";
 
+export const useDocumentTitle = (documentTitle: string) => {
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const domainName = toDomainName(document.location.hostname);
+    const title = domainName.length > 0 ? `${documentTitle} (${domainName})` : documentTitle;
+    if (document.title !== title) {
+      document.title = title;
+    }
+  }, []);
+};
+
+const toDomainName = (hostname: string): string => {
+  return hostname.split(".").slice(-2).join(".");
+};
+
 export type PrefersColorScheme = "dark" | "light" | "no-preference";
 
 // from: https://github.com/rfoel/use-prefers-color-scheme/blob/v1.1.3/src/index.ts

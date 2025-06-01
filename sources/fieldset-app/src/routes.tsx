@@ -17,7 +17,7 @@ import { SysText } from "./components/system/sysText";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
 import { SysViewport } from "./components/system/sysViewport";
-import { usePrefersColorScheme } from "./helpers/react";
+import { useDocumentTitle, usePrefersColorScheme } from "./helpers/react";
 
 export const routes: RouteObject[] = [
   // wrap.
@@ -25,6 +25,7 @@ export const routes: RouteObject[] = [
 ];
 
 export const IndexScreen = () => {
+  useDocumentTitle("fieldset-app");
   const prefersColorScheme = usePrefersColorScheme();
   const [colorScheme, setColorScheme] = useState<"dark" | "light">(
     prefersColorScheme === "light" ? "light" : "dark",
