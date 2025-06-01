@@ -17,6 +17,7 @@ import { SysText } from "./components/system/sysText";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
 import { SysViewport } from "./components/system/sysViewport";
+import { usePrefersColorScheme } from "./helpers/react";
 
 export const routes: RouteObject[] = [
   // wrap.
@@ -24,19 +25,22 @@ export const routes: RouteObject[] = [
 ];
 
 export const IndexScreen = () => {
-  const [themeVariant, setThemeVariant] = useState<"dark" | "light">("dark");
-  const onThemeButtonPress = () => {
-    setThemeVariant(themeVariant === "dark" ? "light" : "dark");
+  const prefersColorScheme = usePrefersColorScheme();
+  const [colorScheme, setColorScheme] = useState<"dark" | "light">(
+    prefersColorScheme === "light" ? "light" : "dark",
+  );
+  const onColorSchemeButtonPress = () => {
+    setColorScheme(colorScheme === "dark" ? "light" : "dark");
   };
 
   return (
-    <SysTheme variant={themeVariant}>
+    <SysTheme variant={colorScheme}>
       <SysViewport className="min-h-dvh" overflowX overflowY>
         <div>
           <div className="p-[16px] flex gap-2">
-            <SysIconButton variant="outlined" onPress={onThemeButtonPress}>
+            <SysIconButton variant="outlined" onPress={onColorSchemeButtonPress}>
               <SysIcon
-                name={themeVariant === "dark" ? "moon" : "sun"}
+                name={colorScheme === "dark" ? "moon" : "sun"}
                 variant="outlined"
                 width={18}
                 strokeWidth={2}
@@ -122,6 +126,10 @@ export const IndexScreen = () => {
               </SysMenuPopover>
             </SysMenuTrigger>
           </div>
+          <div className="p-[16px] flex gap-2">
+            <SysButton variant="filled">Edit Variant</SysButton>
+            <SysButton variant="filled">Edit Variant</SysButton>
+          </div>
           <div className="p-[16px] flex items-center gap-2">
             <div className="flex items-baseline gap-2">
               <SysText>Text</SysText>
@@ -141,6 +149,9 @@ export const IndexScreen = () => {
               <SysButton variant="ghost">Button</SysButton>
               <SysButton variant="danger">Button</SysButton>
               <SysButton isDisabled>Button</SysButton>
+              <SysButton isDisabled variant="ghost">
+                Button
+              </SysButton>
               <SysIconButton variant="outlined">
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
@@ -148,6 +159,9 @@ export const IndexScreen = () => {
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
               <SysIconButton variant="outlined" isDisabled>
+                <SysIcon name="plus" variant="outlined" width={18} />
+              </SysIconButton>
+              <SysIconButton variant="ghost" isDisabled>
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
             </div>
@@ -167,6 +181,9 @@ export const IndexScreen = () => {
               <SysButton size="small" isDisabled>
                 Button
               </SysButton>
+              <SysButton size="small" variant="ghost" isDisabled>
+                Button
+              </SysButton>
               <SysIconButton size="small" variant="outlined">
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
@@ -174,6 +191,9 @@ export const IndexScreen = () => {
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
               <SysIconButton size="small" variant="outlined" isDisabled>
+                <SysIcon name="plus" variant="outlined" width={18} />
+              </SysIconButton>
+              <SysIconButton size="small" variant="ghost" isDisabled>
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
             </div>
