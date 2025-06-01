@@ -7,6 +7,7 @@ export type SysButtonProps = {
   variant?: "filled" | "outlined" | "ghost" | "danger";
   size?: "base" | "small" | "large" | "xlarge";
   isDisabled?: boolean;
+  onPress?: () => void;
 };
 
 export const SysButton = (props: SysButtonProps) => {
@@ -59,6 +60,7 @@ export const SysButton = (props: SysButtonProps) => {
         ...(props.size === "xlarge" && typography[".txt-compact-large-plus"]),
       }}
       isDisabled={props.isDisabled}
+      onPress={props.onPress}
     >
       {props.children}
     </Button>

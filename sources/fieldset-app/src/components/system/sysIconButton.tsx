@@ -6,6 +6,7 @@ export type SysIconButtonProps = {
   variant?: "outlined" | "ghost";
   size?: "base" | "xsmall" | "small" | "large" | "xlarge";
   isDisabled?: boolean;
+  onPress?: () => void;
 };
 
 export const SysIconButton = (props: SysIconButtonProps) => {
@@ -40,6 +41,7 @@ export const SysIconButton = (props: SysIconButtonProps) => {
         ],
       )}
       isDisabled={props.isDisabled}
+      onPress={props.onPress}
     >
       {props.children}
     </Button>

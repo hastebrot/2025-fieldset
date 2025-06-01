@@ -21,7 +21,7 @@ export const SysTheme = (props: SysThemeProps) => {
   const valueOfContext = useSysTheme();
   const value = {
     ...(props.value ?? valueOfContext),
-    ...(props.variant && { variant: props.variant }),
+    ...(props.variant !== undefined && { variant: props.variant }),
   };
 
   return (

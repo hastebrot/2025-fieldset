@@ -1,6 +1,14 @@
+import { useState } from "react";
 import { type RouteObject } from "react-router";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
+import {
+  SysMenu,
+  SysMenuItem,
+  SysMenuPopover,
+  SysMenuSeparator,
+  SysMenuTrigger,
+} from "./components/system/sysDropdownMenu";
 import { SysIcon } from "./components/system/sysIcon";
 import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
@@ -10,11 +18,46 @@ import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
 import { SysViewport } from "./components/system/sysViewport";
 
+export const routes: RouteObject[] = [
+  // wrap.
+  { path: "/", Component: () => <IndexScreen /> },
+];
+
 export const IndexScreen = () => {
+  const [themeVariant, setThemeVariant] = useState<"dark" | "light">("dark");
+  const onThemeButtonPress = () => {
+    setThemeVariant(themeVariant === "dark" ? "light" : "dark");
+  };
+
   return (
-    <SysTheme variant="dark">
+    <SysTheme variant={themeVariant}>
       <SysViewport className="min-h-dvh" overflowX overflowY>
         <div>
+          <div className="p-[16px] flex gap-2">
+            <SysIconButton variant="outlined" onPress={onThemeButtonPress}>
+              <SysIcon
+                name={themeVariant === "dark" ? "moon" : "sun"}
+                variant="outlined"
+                width={18}
+                strokeWidth={2}
+              />
+            </SysIconButton>
+            <SysMenuTrigger>
+              <SysIconButton variant="outlined">
+                <SysIcon name="dots" variant="outlined" width={18} strokeWidth={2} />
+              </SysIconButton>
+              <SysMenuPopover isNonModal shouldCloseOnBlur>
+                <SysMenu selectionMode="single" defaultSelectedKeys={["1"]}>
+                  <SysMenuItem name="1">No Sorting</SysMenuItem>
+                  <SysMenuSeparator />
+                  <SysMenuItem name="2">Alphabetical</SysMenuItem>
+                  <SysMenuItem name="3">Reverse Alphabetical</SysMenuItem>
+                  <SysMenuItem name="4">Created At - Ascending</SysMenuItem>
+                  <SysMenuItem name="5">Created At - Descending</SysMenuItem>
+                </SysMenu>
+              </SysMenuPopover>
+            </SysMenuTrigger>
+          </div>
           <div className="p-[16px] flex items-center gap-2">
             <div className="flex items-baseline gap-2">
               <SysText>Text</SysText>
@@ -109,12 +152,18 @@ export const IndexScreen = () => {
                 <SysCheckbox value="2" label="Check" />
                 <SysCheckbox value="3" label="Check" isDisabled />
               </SysCheckboxGroup>
+              <SysCheckboxGroup label="Check group" defaultValue={["1"]}>
+                <SysCheckbox value="1" label="Check" isDisabled />
+              </SysCheckboxGroup>
             </div>
             <div className="flex flex-col gap-2">
               <SysRadioGroup label="Radio group" defaultValue="1">
                 <SysRadio value="1" label="Radio" />
                 <SysRadio value="2" label="Radio" />
                 <SysRadio value="3" label="Radio" isDisabled />
+              </SysRadioGroup>
+              <SysRadioGroup label="Radio group" defaultValue="1">
+                <SysRadio value="1" label="Radio" isDisabled />
               </SysRadioGroup>
             </div>
           </div>
@@ -123,8 +172,3 @@ export const IndexScreen = () => {
     </SysTheme>
   );
 };
-
-export const routes: RouteObject[] = [
-  // wrap.
-  { path: "/", element: <IndexScreen /> },
-];
