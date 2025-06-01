@@ -1,6 +1,5 @@
 ## feat: Components system.
 
-```md
 | original estimate | estimate | actual effort | remaining effort |
 | --- | --- | --- | --- |
 | 4h | - | - | - |
@@ -24,4 +23,3 @@
 **artifacts:**
 
 **worklog:**
-```
