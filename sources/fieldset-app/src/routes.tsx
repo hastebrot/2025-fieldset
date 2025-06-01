@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { type RouteObject } from "react-router";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
@@ -9,6 +9,12 @@ import {
   SysMenuSeparator,
   SysMenuTrigger,
 } from "./components/system/sysDropdownMenu";
+import {
+  SysFocusModal,
+  SysFocusModalBody,
+  SysFocusModalHeader,
+  SysFocusModalTrigger,
+} from "./components/system/sysFocusModal";
 import { SysIcon } from "./components/system/sysIcon";
 import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
@@ -128,7 +134,19 @@ export const IndexScreen = () => {
             </SysMenuTrigger>
           </div>
           <div className="p-[16px] flex gap-2">
-            <SysButton variant="filled">Edit Variant</SysButton>
+            <SysFocusModalTrigger>
+              <SysButton variant="filled">Edit Variant</SysButton>
+              <SysFocusModal>
+                {(renderProps) => (
+                  <Fragment>
+                    <SysFocusModalHeader onCloseButtonPress={renderProps.close}>
+                      <SysButton variant="filled">Save</SysButton>
+                    </SysFocusModalHeader>
+                    <SysFocusModalBody></SysFocusModalBody>
+                  </Fragment>
+                )}
+              </SysFocusModal>
+            </SysFocusModalTrigger>
             <SysButton variant="filled">Edit Variant</SysButton>
           </div>
           <div className="p-[16px] flex items-center gap-2">
