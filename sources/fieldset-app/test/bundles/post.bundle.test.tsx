@@ -259,7 +259,7 @@ suite("post bundle", () => {
     );
   });
 
-  test("post schema", async () => {
+  test("post schema, migration, client, admin", async () => {
     await Post.migration.createPosts(db);
     await Post.client.writePost(db, {
       post: Post.schema.post.parse(Post.faker.post()),
