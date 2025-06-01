@@ -47,13 +47,77 @@ export const IndexScreen = () => {
                 <SysIcon name="dots" variant="outlined" width={18} strokeWidth={2} />
               </SysIconButton>
               <SysMenuPopover isNonModal shouldCloseOnBlur>
+                <SysMenu selectionMode="none">
+                  <SysMenuItem
+                    beforeSlot={
+                      <SysIcon name="edit" variant="outlined" width={15} strokeWidth={2.5} />
+                    }
+                  >
+                    Edit
+                  </SysMenuItem>
+                  <SysMenuItem
+                    beforeSlot={
+                      <SysIcon name="plus" variant="outlined" width={15} strokeWidth={2.5} />
+                    }
+                  >
+                    Add
+                  </SysMenuItem>
+                  <SysMenuSeparator />
+                  <SysMenuItem
+                    beforeSlot={
+                      <SysIcon name="trash" variant="outlined" width={15} strokeWidth={2.5} />
+                    }
+                  >
+                    Delete
+                  </SysMenuItem>
+                </SysMenu>
+              </SysMenuPopover>
+            </SysMenuTrigger>
+            <SysMenuTrigger>
+              <SysIconButton variant="outlined">
+                <SysIcon name="dots" variant="outlined" width={18} strokeWidth={2} />
+              </SysIconButton>
+              <SysMenuPopover isNonModal shouldCloseOnBlur>
                 <SysMenu selectionMode="single" defaultSelectedKeys={["1"]}>
                   <SysMenuItem name="1">No Sorting</SysMenuItem>
                   <SysMenuSeparator />
-                  <SysMenuItem name="2">Alphabetical</SysMenuItem>
-                  <SysMenuItem name="3">Reverse Alphabetical</SysMenuItem>
-                  <SysMenuItem name="4">Created At - Ascending</SysMenuItem>
-                  <SysMenuItem name="5">Created At - Descending</SysMenuItem>
+                  <SysMenuItem
+                    name="2"
+                    afterSlot={<span className="ml-[16px] tracking-widest">A-Z</span>}
+                  >
+                    Alphabetical
+                  </SysMenuItem>
+                  <SysMenuItem
+                    name="3"
+                    afterSlot={<span className="ml-[16px] tracking-widest">Z-A</span>}
+                  >
+                    Reverse Alphabetical
+                  </SysMenuItem>
+                  <SysMenuItem
+                    name="4"
+                    afterSlot={<span className="ml-[16px] tracking-widest">1-30</span>}
+                  >
+                    Created At - Ascending
+                  </SysMenuItem>
+                  <SysMenuItem
+                    name="5"
+                    afterSlot={<span className="ml-[16px] tracking-widest">30-1</span>}
+                  >
+                    Created At - Descending
+                  </SysMenuItem>
+                </SysMenu>
+              </SysMenuPopover>
+            </SysMenuTrigger>
+            <SysMenuTrigger>
+              <SysIconButton variant="outlined">
+                <SysIcon name="dots" variant="outlined" width={18} strokeWidth={2} />
+              </SysIconButton>
+              <SysMenuPopover isNonModal shouldCloseOnBlur>
+                <SysMenu selectionMode="multiple" defaultSelectedKeys={["1", "2"]}>
+                  <SysMenuItem name="1">Blinky</SysMenuItem>
+                  <SysMenuItem name="2">Pinky</SysMenuItem>
+                  <SysMenuItem name="3">Inky</SysMenuItem>
+                  <SysMenuItem name="4">Clyde</SysMenuItem>
                 </SysMenu>
               </SysMenuPopover>
             </SysMenuTrigger>

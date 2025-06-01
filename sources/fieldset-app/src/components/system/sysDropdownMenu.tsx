@@ -169,9 +169,13 @@ export const SysMenuItem = ({ ...props }: SysMenuItemProps) => {
               )}
             </span>
           )}
-          {props.beforeSlot}
+          {props.beforeSlot && (
+            <span className="flex items-center text-(--fg-subtle)">{props.beforeSlot}</span>
+          )}
           {props.children}
-          {props.afterSlot}
+          {props.afterSlot && (
+            <span className="ml-auto flex items-center text-(--fg-subtle)">{props.afterSlot}</span>
+          )}
         </Fragment>
       )}
     </MenuItem>
