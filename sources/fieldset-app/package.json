@@ -18,11 +18,15 @@
   },
   "devDependencies": {
     "@fontsource/inter": "^5.2.5",
-    "@fontsource/roboto-mono": "^5.2.5",
+    "@fontsource/roboto-mono": "^5.2.6",
     "@tabler/icons-sprite": "^3.33.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@tailwindcss/vite": "^4.1.8",
+    "happy-dom": "^17.5.6",
     "@types/bun": "^1.2.15",
-    "@types/node": "^22.15.24",
+    "@types/node": "^22.15.29",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react-swc": "^3.10.0",
@@ -30,14 +34,19 @@
     "cloc": "^2.4.0-cloc",
     "clsx": "^2.1.1",
     "globals": "^16.2.0",
+    "kysely": "^0.28.2",
+    "kysely-plugin-serialize": "^0.8.2",
+    "mobx": "^6.13.7",
+    "mobx-react-lite": "^4.1.0",
     "prettier": "^3.5.3",
     "react-aria-components": "^1.9.0",
     "react-error-boundary": "^6.0.0",
     "react-router": "^7.6.1",
+    "sqlocal": "^0.14.1",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3",
     "vite": "npm:rolldown-vite@latest",
     "vitest": "^3.1.4",
-    "zod": "^3.25.36"
+    "zod": "^3.25.46"
   }
 }
