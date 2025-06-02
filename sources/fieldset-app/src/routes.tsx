@@ -288,7 +288,7 @@ export const IndexScreen = () => {
                   Payment
                 </SysProgressTabsItem>
               </SysProgressTabsList>
-              <div className="mt-2">
+              <div className="mt-2 px-4">
                 <SysProgressTabsPanel value="general">
                   <SysText size="small">General content.</SysText>
                 </SysProgressTabsPanel>
