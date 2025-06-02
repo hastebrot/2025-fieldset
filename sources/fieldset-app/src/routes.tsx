@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { type RouteObject } from "react-router";
+import { SysBadge } from "./components/system/sysBadge";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
 import {
@@ -245,14 +246,6 @@ export const IndexScreen = () => {
               </SysIconButton>
             </div>
           </div>
-          <div className="p-[16px] flex gap-2">
-            <SysStatusBadge color="gray">Status</SysStatusBadge>
-            <SysStatusBadge color="red">Status</SysStatusBadge>
-            <SysStatusBadge color="orange">Status</SysStatusBadge>
-            <SysStatusBadge color="green">Status</SysStatusBadge>
-            <SysStatusBadge color="blue">Status</SysStatusBadge>
-            <SysStatusBadge color="purple">Status</SysStatusBadge>
-          </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysInlineTip label="Tip" variant="info">
               Medusa UI is a package of React components to be used in Medusa Admin customizations.
@@ -266,6 +259,44 @@ export const IndexScreen = () => {
             <SysInlineTip label="Success" variant="success">
               Product created successfully!
             </SysInlineTip>
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <SysStatusBadge color="gray">Status</SysStatusBadge>
+              <SysStatusBadge color="red">Status</SysStatusBadge>
+              <SysStatusBadge color="orange">Status</SysStatusBadge>
+              <SysStatusBadge color="green">Status</SysStatusBadge>
+              <SysStatusBadge color="blue">Status</SysStatusBadge>
+              <SysStatusBadge color="purple">Status</SysStatusBadge>
+            </div>
+            <div className="flex items-center gap-2">
+              <SysBadge color="gray">Badge</SysBadge>
+              <SysBadge color="red">Badge</SysBadge>
+              <SysBadge color="orange">Badge</SysBadge>
+              <SysBadge color="green">Badge</SysBadge>
+              <SysBadge color="blue">Badge</SysBadge>
+              <SysBadge color="purple">Badge</SysBadge>
+            </div>
+            <div className="flex items-center gap-2">
+              <SysBadge size="small" color="gray">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="red">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="orange">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="green">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="blue">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="purple">
+                Badge
+              </SysBadge>
+            </div>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysTextInput placeholder="Sales Channel Name" />
