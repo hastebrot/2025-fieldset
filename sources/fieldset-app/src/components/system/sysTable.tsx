@@ -1,5 +1,8 @@
+import { useState } from "react";
+import { Button } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { SysButton } from "./sysButton";
+import { SysIcon } from "./sysIcon";
 import { typography } from "./sysTokens";
 
 export type SysTableProps = {
@@ -95,6 +98,49 @@ export const SysTableCell = (props: SysTableCellProps) => {
     >
       {props.children}
     </td>
+  );
+};
+
+export type SysTableSortingProps = {
+  children?: React.ReactNode;
+};
+
+export const SysTableSorting = (props: SysTableSortingProps) => {
+  const [orderBy, setOrderBy] = useState<"none" | "asc" | "desc">("none");
+  const onButtonPress = () => {
+    setOrderBy(orderBy === "none" ? "asc" : orderBy === "asc" ? "desc" : "none");
+  };
+
+  return (
+    <Button className="group flex items-center gap-2 w-fit cursor-pointer" onPress={onButtonPress}>
+      <span>{props.children}</span>
+      <div className="flex items-center">
+        {orderBy === "none" && (
+          <SysIcon
+            className="opacity-0 group-hover:opacity-100"
+            name="caret-up-down"
+            variant="filled"
+            width={15}
+          />
+        )}
+        {orderBy === "asc" && (
+          <SysIcon
+            className="opacity-100 group-hover:opacity-100"
+            name="caret-up"
+            variant="filled"
+            width={15}
+          />
+        )}
+        {orderBy === "desc" && (
+          <SysIcon
+            className="opacity-100 group-hover:opacity-100"
+            name="caret-down"
+            variant="filled"
+            width={15}
+          />
+        )}
+      </div>
+    </Button>
   );
 };
 

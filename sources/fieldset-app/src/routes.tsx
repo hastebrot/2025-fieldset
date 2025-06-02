@@ -37,6 +37,7 @@ import {
   SysTableHeaderCell,
   SysTablePager,
   SysTableRow,
+  SysTableSorting,
 } from "./components/system/sysTable";
 import { SysText } from "./components/system/sysText";
 import { SysTextInput } from "./components/system/sysTextField";
@@ -125,13 +126,13 @@ export const IndexScreen = () => {
                   </SysMenuItem>
                   <SysMenuItem
                     name="4"
-                    afterSlot={<span className="ml-[16px] tracking-widest">1-30</span>}
+                    afterSlot={<span className="ml-[16px] tracking-widest">1-9</span>}
                   >
                     Created At - Ascending
                   </SysMenuItem>
                   <SysMenuItem
                     name="5"
-                    afterSlot={<span className="ml-[16px] tracking-widest">30-1</span>}
+                    afterSlot={<span className="ml-[16px] tracking-widest">9-1</span>}
                   >
                     Created At - Descending
                   </SysMenuItem>
@@ -261,9 +262,15 @@ export const IndexScreen = () => {
               <SysTableHead>
                 <SysTableRow>
                   <SysTableHeaderCell></SysTableHeaderCell>
-                  <SysTableHeaderCell>Customer</SysTableHeaderCell>
-                  <SysTableHeaderCell>Article</SysTableHeaderCell>
-                  <SysTableHeaderCell>Variant</SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <SysTableSorting>Customer</SysTableSorting>
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <SysTableSorting>Article</SysTableSorting>
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <SysTableSorting>Variant</SysTableSorting>
+                  </SysTableHeaderCell>
                   <SysTableHeaderCell>
                     <div className="text-right">Price</div>
                   </SysTableHeaderCell>
