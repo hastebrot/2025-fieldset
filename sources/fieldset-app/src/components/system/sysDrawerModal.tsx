@@ -40,9 +40,9 @@ export type SysDrawerModalProps = {
 
 export const SysDrawerModal = (props: SysDrawerModalProps) => {
   return (
-    <ModalOverlay>
-      <SysTheme className="bg-transparent">
-        <Modal className="bg-(--bg-overlay) fixed inset-0 z-100" isDismissable>
+    <ModalOverlay isDismissable>
+      <SysTheme className="bg-(--bg-overlay) fixed inset-0 z-100">
+        <Modal>
           <Dialog
             className={classNames(
               "bg-(--bg-base) shadow-(--elevation-modal) fixed inset-y-2 right-2 w-[calc(100%-16px)] max-w-[560px]",

@@ -40,9 +40,9 @@ export type SysFocusModalProps = {
 
 export const SysFocusModal = (props: SysFocusModalProps) => {
   return (
-    <ModalOverlay>
-      <SysTheme className="bg-transparent">
-        <Modal className="bg-(--bg-overlay) fixed inset-0 z-100" isDismissable>
+    <ModalOverlay isDismissable>
+      <SysTheme className="bg-(--bg-overlay) fixed inset-0 z-100">
+        <Modal>
           <Dialog
             className={classNames(
               "bg-(--bg-base) shadow-(--elevation-modal) fixed inset-2",
