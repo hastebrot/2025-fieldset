@@ -27,6 +27,10 @@ const meta = <T extends z.ZodType>(schema: T, meta?: SchemaMeta) => {
   return meta !== undefined ? schema.meta(meta) : schema;
 };
 
+const toJsonSchema = <T extends z.ZodType>(schema: T) => {
+  return z.toJSONSchema(schema) as z.core.JSONSchema.ObjectSchema;
+};
+
 const Post = {
   schema: {
     post: z
@@ -47,7 +51,7 @@ const Post = {
 
   get jsonSchema() {
     return {
-      post: z.toJSONSchema(Post.schema.post) as z.core.JSONSchema.ObjectSchema,
+      post: toJsonSchema(Post.schema.post),
     };
   },
 
@@ -229,8 +233,10 @@ export const autoCreateTable = <T extends any = any>(name: string, schema: z.Zod
     }
     return tableModel;
   }
-  const jsonSchema = z.toJSONSchema(schema) as z.core.JSONSchema.ObjectSchema;
-  jsonSchema.title = name;
+  const jsonSchema = {
+    ...toJsonSchema(schema),
+    title: name,
+  };
   const tableModel = toTableModel(jsonSchema);
   return (db: Kysely<T>) => {
     let q = db.schema.createTable(tableModel.name);

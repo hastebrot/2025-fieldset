@@ -1,5 +1,7 @@
 import { Fragment, useState } from "react";
 import { type RouteObject } from "react-router";
+import { SysAlert } from "./components/system/sysAlert";
+import { SysBadge } from "./components/system/sysBadge";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
 import {
@@ -26,6 +28,17 @@ import { SysIcon } from "./components/system/sysIcon";
 import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
+import { SysStatusBadge } from "./components/system/sysStatusBadge";
+import {
+  SysTable,
+  SysTableBody,
+  SysTableCell,
+  SysTableHead,
+  SysTableHeaderCell,
+  SysTablePager,
+  SysTableRow,
+  SysTableSorting,
+} from "./components/system/sysTable";
 import { SysText } from "./components/system/sysText";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
@@ -113,13 +126,13 @@ export const IndexScreen = () => {
                   </SysMenuItem>
                   <SysMenuItem
                     name="4"
-                    afterSlot={<span className="ml-[16px] tracking-widest">1-30</span>}
+                    afterSlot={<span className="ml-[16px] tracking-widest">1-9</span>}
                   >
                     Created At - Ascending
                   </SysMenuItem>
                   <SysMenuItem
                     name="5"
-                    afterSlot={<span className="ml-[16px] tracking-widest">30-1</span>}
+                    afterSlot={<span className="ml-[16px] tracking-widest">9-1</span>}
                   >
                     Created At - Descending
                   </SysMenuItem>
@@ -245,6 +258,75 @@ export const IndexScreen = () => {
             </div>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
+            <SysTable>
+              <SysTableHead>
+                <SysTableRow>
+                  <SysTableHeaderCell>
+                    <SysCheckbox />
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <SysTableSorting defaultOrderBy="asc">Customer</SysTableSorting>
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <SysTableSorting>Article</SysTableSorting>
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <SysTableSorting>Variant</SysTableSorting>
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <div className="text-right">Price</div>
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell></SysTableHeaderCell>
+                </SysTableRow>
+              </SysTableHead>
+              <SysTableBody>
+                <SysTableRow>
+                  <SysTableCell>
+                    <SysCheckbox />
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Elvis Jones</span>
+                  </SysTableCell>
+                  <SysTableCell>Shirt</SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Black, XL</span>
+                  </SysTableCell>
+                  <SysTableCell>
+                    <div className="text-right tabular-nums tracking-tight">10.00</div>
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="text-(--fg-muted)">USD</span>
+                  </SysTableCell>
+                </SysTableRow>
+                <SysTableRow>
+                  <SysTableCell>
+                    <SysCheckbox />
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Sarah Garcia</span>
+                  </SysTableCell>
+                  <SysTableCell>Pants</SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Light gray, M</span>
+                  </SysTableCell>
+                  <SysTableCell>
+                    <div className="text-right tabular-nums tracking-tight">20.00</div>
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="text-(--fg-muted)">EUR</span>
+                  </SysTableCell>
+                </SysTableRow>
+              </SysTableBody>
+            </SysTable>
+            <SysTablePager
+              itemCount={3}
+              itemCountPerPage={2}
+              pageIndex={0}
+              pageCount={2}
+              isPreviousPageDisabled
+            />
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
             <SysInlineTip label="Tip" variant="info">
               Medusa UI is a package of React components to be used in Medusa Admin customizations.
             </SysInlineTip>
@@ -257,6 +339,72 @@ export const IndexScreen = () => {
             <SysInlineTip label="Success" variant="success">
               Product created successfully!
             </SysInlineTip>
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <SysAlert variant="info">You are viewing Medusa docs.</SysAlert>
+              <SysAlert variant="error">An error occured while updating data.</SysAlert>
+              <SysAlert variant="warning">Be careful!</SysAlert>
+              <SysAlert variant="success">Data updated successfully!</SysAlert>
+            </div>
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <SysStatusBadge color="gray">Status</SysStatusBadge>
+              <SysStatusBadge color="red">Status</SysStatusBadge>
+              <SysStatusBadge color="orange">Status</SysStatusBadge>
+              <SysStatusBadge color="green">Status</SysStatusBadge>
+              <SysStatusBadge color="blue">Status</SysStatusBadge>
+              <SysStatusBadge color="purple">Status</SysStatusBadge>
+            </div>
+            <div className="flex items-center gap-2">
+              <SysBadge color="gray">Badge</SysBadge>
+              <SysBadge color="red">Badge</SysBadge>
+              <SysBadge color="orange">Badge</SysBadge>
+              <SysBadge color="green">Badge</SysBadge>
+              <SysBadge color="blue">Badge</SysBadge>
+              <SysBadge color="purple">Badge</SysBadge>
+            </div>
+            <div className="flex items-center gap-2">
+              <SysBadge size="small" color="gray">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="red">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="orange">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="green">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="blue">
+                Badge
+              </SysBadge>
+              <SysBadge size="small" color="purple">
+                Badge
+              </SysBadge>
+            </div>
+            <div className="flex items-center gap-2">
+              <SysBadge size="xsmall" color="gray">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="red">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="orange">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="green">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="blue">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="purple">
+                Badge
+              </SysBadge>
+            </div>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysTextInput placeholder="Sales Channel Name" />
