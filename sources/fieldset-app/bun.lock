@@ -9,7 +9,7 @@
       },
       "devDependencies": {
         "@fontsource/inter": "^5.2.5",
-        "@fontsource/roboto-mono": "^5.2.5",
+        "@fontsource/roboto-mono": "^5.2.6",
         "@tabler/icons-sprite": "^3.33.0",
         "@tailwindcss/vite": "^4.1.8",
         "@testing-library/jest-dom": "^6.6.3",
@@ -38,7 +38,7 @@
         "typescript": "^5.8.3",
         "vite": "npm:rolldown-vite@latest",
         "vitest": "^3.1.4",
-        "zod": "^3.25.42",
+        "zod": "^3.25.46",
       },
     },
   },

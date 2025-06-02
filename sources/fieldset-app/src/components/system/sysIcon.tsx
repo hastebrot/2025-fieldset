@@ -20,8 +20,8 @@ export const SysIcon = (props: SysIconProps) => {
       : props.variant === "outlined"
         ? `${tablerSpriteOutlined}#tabler-${props.name}`
         : throwError(`invalid variant: "${props.variant}"`);
-  const width = props.width ?? 24;
-  const height = props.height ?? width;
+  const width = props.width ?? props.height ?? 24;
+  const height = props.height ?? props.width ?? 24;
   const webfontStrokes = { 200: 1, 300: 1.5, 400: 2 };
   const strokeWidth = props.strokeWidth ?? webfontStrokes[300];
 
