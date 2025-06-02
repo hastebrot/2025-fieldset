@@ -1,4 +1,5 @@
 import { classNames } from "../../helpers/clsx";
+import { SysButton } from "./sysButton";
 import { typography } from "./sysTokens";
 
 export type SysTableProps = {
@@ -94,5 +95,53 @@ export const SysTableCell = (props: SysTableCellProps) => {
     >
       {props.children}
     </td>
+  );
+};
+
+export type SysTablePagerProps = {
+  itemCount: number;
+  itemCountPerPage: number;
+  pageIndex: number;
+  pageCount: number;
+  isPreviousPageDisabled?: boolean;
+  isNextPageDisabled?: boolean;
+};
+
+export const SysTablePager = (props: SysTablePagerProps) => {
+  const startIndex = props.pageIndex * props.itemCountPerPage;
+  const endIndex = Math.min((props.pageIndex + 1) * props.itemCountPerPage, props.itemCount) - 1;
+
+  return (
+    <div
+      className={classNames("text-(--fg-subtle) px-3 py-4")}
+      style={{
+        ...typography[".txt-compact-small-plus"],
+      }}
+    >
+      <div className="flex items-center justify-between gap-x-2">
+        <p className="px-3 py-[5px]">
+          <span>{props.itemCount === 0 ? 0 : startIndex + 1}</span>
+          <span> &ndash; </span>
+          <span>{props.itemCount === 0 ? 0 : endIndex + 1}</span>
+          {" of "}
+          <span>{props.itemCount}</span>
+          {" results"}
+        </p>
+        <div className="inline-flex items-center gap-x-2">
+          <p className="px-3 py-[5px]">
+            <span>{props.pageIndex + 1}</span>
+            {" of "}
+            <span>{props.pageCount}</span>
+            {" pages"}
+          </p>
+          <SysButton variant="ghost" isDisabled={props.isPreviousPageDisabled}>
+            Prev
+          </SysButton>
+          <SysButton variant="ghost" isDisabled={props.isNextPageDisabled}>
+            Next
+          </SysButton>
+        </div>
+      </div>
+    </div>
   );
 };

@@ -35,6 +35,7 @@ import {
   SysTableCell,
   SysTableHead,
   SysTableHeaderCell,
+  SysTablePager,
   SysTableRow,
 } from "./components/system/sysTable";
 import { SysText } from "./components/system/sysText";
@@ -262,6 +263,7 @@ export const IndexScreen = () => {
                   <SysTableHeaderCell></SysTableHeaderCell>
                   <SysTableHeaderCell>Customer</SysTableHeaderCell>
                   <SysTableHeaderCell>Article</SysTableHeaderCell>
+                  <SysTableHeaderCell>Variant</SysTableHeaderCell>
                   <SysTableHeaderCell>
                     <div className="text-right">Price</div>
                   </SysTableHeaderCell>
@@ -276,6 +278,9 @@ export const IndexScreen = () => {
                   </SysTableCell>
                   <SysTableCell>Shirt</SysTableCell>
                   <SysTableCell>
+                    <span className="whitespace-nowrap">Black, M</span>
+                  </SysTableCell>
+                  <SysTableCell>
                     <div className="text-right tabular-nums tracking-tight">10.00</div>
                   </SysTableCell>
                   <SysTableCell>
@@ -289,6 +294,9 @@ export const IndexScreen = () => {
                   </SysTableCell>
                   <SysTableCell>Pants</SysTableCell>
                   <SysTableCell>
+                    <span className="whitespace-nowrap">Light gray, XL</span>
+                  </SysTableCell>
+                  <SysTableCell>
                     <div className="text-right tabular-nums tracking-tight">20.00</div>
                   </SysTableCell>
                   <SysTableCell>
@@ -297,6 +305,13 @@ export const IndexScreen = () => {
                 </SysTableRow>
               </SysTableBody>
             </SysTable>
+            <SysTablePager
+              itemCount={4}
+              itemCountPerPage={2}
+              pageIndex={0}
+              pageCount={2}
+              isPreviousPageDisabled
+            />
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysInlineTip label="Tip" variant="info">
