@@ -103,10 +103,11 @@ export const SysTableCell = (props: SysTableCellProps) => {
 
 export type SysTableSortingProps = {
   children?: React.ReactNode;
+  defaultOrderBy?: "none" | "asc" | "desc";
 };
 
 export const SysTableSorting = (props: SysTableSortingProps) => {
-  const [orderBy, setOrderBy] = useState<"none" | "asc" | "desc">("none");
+  const [orderBy, setOrderBy] = useState<"none" | "asc" | "desc">(props.defaultOrderBy ?? "none");
   const onButtonPress = () => {
     setOrderBy(orderBy === "none" ? "asc" : orderBy === "asc" ? "desc" : "none");
   };

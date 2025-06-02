@@ -261,9 +261,11 @@ export const IndexScreen = () => {
             <SysTable>
               <SysTableHead>
                 <SysTableRow>
-                  <SysTableHeaderCell></SysTableHeaderCell>
                   <SysTableHeaderCell>
-                    <SysTableSorting>Customer</SysTableSorting>
+                    <SysCheckbox />
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <SysTableSorting defaultOrderBy="asc">Customer</SysTableSorting>
                   </SysTableHeaderCell>
                   <SysTableHeaderCell>
                     <SysTableSorting>Article</SysTableSorting>
@@ -279,13 +281,15 @@ export const IndexScreen = () => {
               </SysTableHead>
               <SysTableBody>
                 <SysTableRow>
-                  <SysTableCell></SysTableCell>
                   <SysTableCell>
-                    <span className="whitespace-nowrap">Sarah Garcia</span>
+                    <SysCheckbox />
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Elvis Jones</span>
                   </SysTableCell>
                   <SysTableCell>Shirt</SysTableCell>
                   <SysTableCell>
-                    <span className="whitespace-nowrap">Black, M</span>
+                    <span className="whitespace-nowrap">Black, XL</span>
                   </SysTableCell>
                   <SysTableCell>
                     <div className="text-right tabular-nums tracking-tight">10.00</div>
@@ -295,13 +299,15 @@ export const IndexScreen = () => {
                   </SysTableCell>
                 </SysTableRow>
                 <SysTableRow>
-                  <SysTableCell></SysTableCell>
                   <SysTableCell>
-                    <span className="whitespace-nowrap">Elvis Jones</span>
+                    <SysCheckbox />
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Sarah Garcia</span>
                   </SysTableCell>
                   <SysTableCell>Pants</SysTableCell>
                   <SysTableCell>
-                    <span className="whitespace-nowrap">Light gray, XL</span>
+                    <span className="whitespace-nowrap">Light gray, M</span>
                   </SysTableCell>
                   <SysTableCell>
                     <div className="text-right tabular-nums tracking-tight">20.00</div>
