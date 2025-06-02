@@ -29,7 +29,7 @@ export const SysIconButton = (props: SysIconButtonProps) => {
           "hover:bg-(--button-transparent-hover)",
           "active:bg-(--button-transparent-pressed)",
           "focus-visible:shadow-(--buttons-neutral-focus) focus-visible:bg-(--bg-base)",
-          "data-[disabled]:!bg-(--bg-disabled) data-[disabled]:!shadow-none",
+          "data-[disabled]:!bg-transparent data-[disabled]:!shadow-none",
         ],
         [
           props.size === undefined && "h-8 w-8 p-1.5",

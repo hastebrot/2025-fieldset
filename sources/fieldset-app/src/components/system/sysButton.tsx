@@ -36,7 +36,7 @@ export const SysButton = (props: SysButtonProps) => {
           "hover:bg-(--button-transparent-hover)",
           "active:bg-(--button-transparent-pressed)",
           "focus-visible:shadow-(--buttons-neutral-focus) focus-visible:bg-(--bg-base)",
-          "data-[disabled]:!bg-(--bg-disabled) data-[disabled]:!shadow-none",
+          "data-[disabled]:!bg-transparent data-[disabled]:!shadow-none",
         ],
         props.variant === "danger" && [
           "shadow-(--buttons-danger) text-(--fg-on-color) bg-(--button-danger)",
