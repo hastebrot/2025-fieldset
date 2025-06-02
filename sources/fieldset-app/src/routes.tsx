@@ -326,7 +326,7 @@ export const IndexScreen = () => {
               isPreviousPageDisabled
             />
           </div>
-          <div className="p-[16px] flex flex-col gap-2">
+          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
             <SysInlineTip label="Tip" variant="info">
               Medusa UI is a package of React components to be used in Medusa Admin customizations.
             </SysInlineTip>
@@ -406,10 +406,17 @@ export const IndexScreen = () => {
               </SysBadge>
             </div>
           </div>
-          <div className="p-[16px] flex flex-col gap-2">
-            <SysTextInput placeholder="Sales Channel Name" />
-            <SysTextInput placeholder="Sales Channel Name" isDisabled />
-            <SysTextInput placeholder="Sales Channel Name" isInvalid />
+          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
+            <div className="flex flex-col gap-2">
+              <SysTextInput placeholder="Sales Channel Name" />
+              <SysTextInput placeholder="Sales Channel Name" isDisabled />
+              <SysTextInput placeholder="Sales Channel Name" isInvalid />
+            </div>
+            <div className="flex flex-col gap-2">
+              <SysTextInput type="password" defaultValue="supersecret" />
+              <SysTextInput type="password" defaultValue="supersecret" isDisabled />
+              <SysTextInput type="password" defaultValue="supersecret" isInvalid />
+            </div>
           </div>
           <div className="p-[16px] grid auto-cols-fr grid-flow-col">
             <div className="flex flex-col gap-2">

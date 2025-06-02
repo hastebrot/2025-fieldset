@@ -7,6 +7,7 @@ export type SysTextInputProps = {
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
+  type?: "text" | "password";
   size?: "base" | "small";
   isDisabled?: boolean;
   isInvalid?: boolean;
@@ -38,7 +39,7 @@ export const SysTextInput = (props: SysTextInputProps) => {
           ...(props.size === "base" && typography[".txt-compact-small"]),
           ...(props.size === "small" && typography[".txt-compact-small"]),
         }}
-        type="text"
+        type={props.type ?? "text"}
         placeholder={props.placeholder}
         defaultValue={props.defaultValue}
         value={props.value}
