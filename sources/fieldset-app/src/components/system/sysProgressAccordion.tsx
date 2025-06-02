@@ -46,9 +46,9 @@ export const SysProgressAccordionItem = (props: SysProgressAccordionItemProps) =
       isDisabled={props.isDisabled}
     >
       {(renderProps) => (
-        <ProgressAccordionItemContext value={{ isExpanded: renderProps.isExpanded }}>
+        <DisclosureRenderContext value={{ isExpanded: renderProps.isExpanded }}>
           {props.children}
-        </ProgressAccordionItemContext>
+        </DisclosureRenderContext>
       )}
     </Disclosure>
   );
@@ -60,7 +60,7 @@ export type SysProgressAccordionHeaderProps = {
 };
 
 export const SysProgressAccordionHeader = (props: SysProgressAccordionHeaderProps) => {
-  const itemState = useContext(ProgressAccordionItemContext);
+  const disclosureRender = useContext(DisclosureRenderContext);
 
   return (
     <Header
@@ -77,7 +77,7 @@ export const SysProgressAccordionHeader = (props: SysProgressAccordionHeaderProp
           className={classNames(
             "flex items-center justify-center h-12 w-8",
             "text-(--fg-muted)",
-            itemState.isExpanded && "!text-(--fg-interactive)",
+            disclosureRender.isExpanded && "!text-(--fg-interactive)",
           )}
         >
           {props.status === "not-started" && (
@@ -99,7 +99,7 @@ export const SysProgressAccordionHeader = (props: SysProgressAccordionHeaderProp
             variant="outlined"
             width={15}
             strokeWidth={2.5}
-            className={classNames(itemState.isExpanded && "rotate-45")}
+            className={classNames(disclosureRender.isExpanded && "rotate-45")}
           />
         </SysIconButton>
       </div>
@@ -119,4 +119,4 @@ export const SysProgressAccordionPanel = (props: SysProgressAccordionPanelProps)
   );
 };
 
-const ProgressAccordionItemContext = createContext<{ isExpanded?: boolean }>({});
+const DisclosureRenderContext = createContext<{ isExpanded?: boolean }>({});
