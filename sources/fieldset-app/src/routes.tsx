@@ -5,6 +5,12 @@ import { SysBadge } from "./components/system/sysBadge";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
 import {
+  SysCommandBar,
+  SysCommandBarButton,
+  SysCommandBarSeparator,
+  SysCommandBarText,
+} from "./components/system/sysCommandBar";
+import {
   SysDrawerModal,
   SysDrawerModalBody,
   SysDrawerModalFooter,
@@ -27,6 +33,12 @@ import {
 import { SysIcon } from "./components/system/sysIcon";
 import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
+import {
+  SysProgressTabs,
+  SysProgressTabsItem,
+  SysProgressTabsList,
+  SysProgressTabsPanel,
+} from "./components/system/sysProgressTabs";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
 import { SysStatusBadge } from "./components/system/sysStatusBadge";
 import {
@@ -258,6 +270,32 @@ export const IndexScreen = () => {
             </div>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
+            <SysProgressTabs defaultValue="general">
+              <SysProgressTabsList>
+                <SysProgressTabsItem value="general" status="not-started">
+                  General
+                </SysProgressTabsItem>
+                <SysProgressTabsItem value="shipping" status="in-progress">
+                  Shipping
+                </SysProgressTabsItem>
+                <SysProgressTabsItem value="payment" status="completed">
+                  Payment
+                </SysProgressTabsItem>
+              </SysProgressTabsList>
+              <div className="mt-2">
+                <SysProgressTabsPanel value="general">
+                  <SysText size="small">General content.</SysText>
+                </SysProgressTabsPanel>
+                <SysProgressTabsPanel value="shipping">
+                  <SysText size="small">Shipping content.</SysText>
+                </SysProgressTabsPanel>
+                <SysProgressTabsPanel value="payment">
+                  <SysText size="small">Payment content.</SysText>
+                </SysProgressTabsPanel>
+              </div>
+            </SysProgressTabs>
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
             <SysTable>
               <SysTableHead>
                 <SysTableRow>
@@ -326,7 +364,16 @@ export const IndexScreen = () => {
               isPreviousPageDisabled
             />
           </div>
-          <div className="p-[16px] flex flex-col gap-2">
+          <div className="p-[16px] inline-flex flex-col gap-2">
+            <SysCommandBar>
+              <SysCommandBarText>2 selected</SysCommandBarText>
+              <SysCommandBarSeparator />
+              <SysCommandBarButton keyboard="d">Delete</SysCommandBarButton>
+              <SysCommandBarSeparator />
+              <SysCommandBarButton keyboard="e">Edit</SysCommandBarButton>
+            </SysCommandBar>
+          </div>
+          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
             <SysInlineTip label="Tip" variant="info">
               Medusa UI is a package of React components to be used in Medusa Admin customizations.
             </SysInlineTip>
@@ -406,10 +453,17 @@ export const IndexScreen = () => {
               </SysBadge>
             </div>
           </div>
-          <div className="p-[16px] flex flex-col gap-2">
-            <SysTextInput placeholder="Sales Channel Name" />
-            <SysTextInput placeholder="Sales Channel Name" isDisabled />
-            <SysTextInput placeholder="Sales Channel Name" isInvalid />
+          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
+            <div className="flex flex-col gap-2">
+              <SysTextInput placeholder="Sales Channel Name" />
+              <SysTextInput placeholder="Sales Channel Name" isDisabled />
+              <SysTextInput placeholder="Sales Channel Name" isInvalid />
+            </div>
+            <div className="flex flex-col gap-2">
+              <SysTextInput type="password" defaultValue="supersecret" />
+              <SysTextInput type="password" defaultValue="supersecret" isDisabled />
+              <SysTextInput type="password" defaultValue="supersecret" isInvalid />
+            </div>
           </div>
           <div className="p-[16px] grid auto-cols-fr grid-flow-col">
             <div className="flex flex-col gap-2">
