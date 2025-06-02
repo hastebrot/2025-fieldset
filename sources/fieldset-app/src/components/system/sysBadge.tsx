@@ -4,7 +4,7 @@ import { typography } from "./sysTokens";
 export type SysBadgeProps = {
   children: React.ReactNode;
   color?: "gray" | "red" | "orange" | "green" | "blue" | "purple";
-  size?: "base" | "small";
+  size?: "base" | "xsmall" | "small";
   rounded?: "base" | "full";
 };
 
@@ -37,6 +37,7 @@ export const SysBadge = (props: SysBadgeProps) => {
         [
           props.size === undefined && "py-[5px] h-8 px-2.5",
           props.size === "base" && "py-[5px] h-8 px-2.5",
+          props.size === "xsmall" && "py-[1px] h-6 px-1.5",
           props.size === "small" && "py-[3px] h-7 px-2",
         ],
         [
@@ -48,6 +49,7 @@ export const SysBadge = (props: SysBadgeProps) => {
       style={{
         ...(props.size === undefined && typography[".txt-compact-small-plus"]),
         ...(props.size === "base" && typography[".txt-compact-small-plus"]),
+        ...(props.size === "xsmall" && typography[".txt-compact-xsmall-plus"]),
         ...(props.size === "small" && typography[".txt-compact-xsmall-plus"]),
       }}
     >

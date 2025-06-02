@@ -306,7 +306,7 @@ export const IndexScreen = () => {
               </SysTableBody>
             </SysTable>
             <SysTablePager
-              itemCount={4}
+              itemCount={3}
               itemCountPerPage={2}
               pageIndex={0}
               pageCount={2}
@@ -369,6 +369,26 @@ export const IndexScreen = () => {
                 Badge
               </SysBadge>
               <SysBadge size="small" color="purple">
+                Badge
+              </SysBadge>
+            </div>
+            <div className="flex items-center gap-2">
+              <SysBadge size="xsmall" color="gray">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="red">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="orange">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="green">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="blue">
+                Badge
+              </SysBadge>
+              <SysBadge size="xsmall" color="purple">
                 Badge
               </SysBadge>
             </div>
