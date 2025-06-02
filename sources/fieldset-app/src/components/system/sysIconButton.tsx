@@ -7,11 +7,13 @@ export type SysIconButtonProps = {
   size?: "base" | "xsmall" | "small" | "large" | "xlarge";
   isDisabled?: boolean;
   onPress?: () => void;
+  slot?: string;
 };
 
 export const SysIconButton = (props: SysIconButtonProps) => {
   return (
     <Button
+      slot={props.slot}
       className={classNames(
         "relative inline-flex items-center justify-center",
         "overflow-hidden rounded-md outline-none",

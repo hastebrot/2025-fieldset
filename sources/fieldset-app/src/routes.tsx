@@ -34,6 +34,12 @@ import { SysIcon } from "./components/system/sysIcon";
 import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
 import {
+  SysProgressAccordion,
+  SysProgressAccordionHeader,
+  SysProgressAccordionItem,
+  SysProgressAccordionPanel,
+} from "./components/system/sysProgressAccordion";
+import {
   SysProgressTabs,
   SysProgressTabsItem,
   SysProgressTabsList,
@@ -272,17 +278,17 @@ export const IndexScreen = () => {
           <div className="p-[16px] flex flex-col gap-2">
             <SysProgressTabs defaultValue="general">
               <SysProgressTabsList>
-                <SysProgressTabsItem value="general" status="not-started">
+                <SysProgressTabsItem value="general" status="completed">
                   General
                 </SysProgressTabsItem>
                 <SysProgressTabsItem value="shipping" status="in-progress">
                   Shipping
                 </SysProgressTabsItem>
-                <SysProgressTabsItem value="payment" status="completed">
+                <SysProgressTabsItem value="payment" status="not-started">
                   Payment
                 </SysProgressTabsItem>
               </SysProgressTabsList>
-              <div className="mt-2">
+              <div className="mt-2 px-4">
                 <SysProgressTabsPanel value="general">
                   <SysText size="small">General content.</SysText>
                 </SysProgressTabsPanel>
@@ -294,6 +300,30 @@ export const IndexScreen = () => {
                 </SysProgressTabsPanel>
               </div>
             </SysProgressTabs>
+            <SysProgressAccordion defaultValue={["general"]}>
+              <SysProgressAccordionItem value="general">
+                <SysProgressAccordionHeader status="completed">General</SysProgressAccordionHeader>
+                <SysProgressAccordionPanel>
+                  <SysText size="small">General content.</SysText>
+                </SysProgressAccordionPanel>
+              </SysProgressAccordionItem>
+              <SysProgressAccordionItem value="shipping">
+                <SysProgressAccordionHeader status="in-progress">
+                  Shipping
+                </SysProgressAccordionHeader>
+                <SysProgressAccordionPanel>
+                  <SysText size="small">Shipping content.</SysText>
+                </SysProgressAccordionPanel>
+              </SysProgressAccordionItem>
+              <SysProgressAccordionItem value="payment">
+                <SysProgressAccordionHeader status="not-started">
+                  Payment
+                </SysProgressAccordionHeader>
+                <SysProgressAccordionPanel>
+                  <SysText size="small">Payment content.</SysText>
+                </SysProgressAccordionPanel>
+              </SysProgressAccordionItem>
+            </SysProgressAccordion>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysTable>
