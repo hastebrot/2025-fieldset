@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { type RouteObject } from "react-router";
+import { SysAlert } from "./components/system/sysAlert";
 import { SysBadge } from "./components/system/sysBadge";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
@@ -259,6 +260,14 @@ export const IndexScreen = () => {
             <SysInlineTip label="Success" variant="success">
               Product created successfully!
             </SysInlineTip>
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <SysAlert variant="info">You are viewing Medusa docs.</SysAlert>
+              <SysAlert variant="error">An error occured while updating data.</SysAlert>
+              <SysAlert variant="warning">Be careful!</SysAlert>
+              <SysAlert variant="success">Data updated successfully!</SysAlert>
+            </div>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <div className="flex items-center gap-2">
