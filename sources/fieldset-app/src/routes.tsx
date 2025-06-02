@@ -29,6 +29,14 @@ import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
 import { SysStatusBadge } from "./components/system/sysStatusBadge";
+import {
+  SysTable,
+  SysTableBody,
+  SysTableCell,
+  SysTableHead,
+  SysTableHeaderCell,
+  SysTableRow,
+} from "./components/system/sysTable";
 import { SysText } from "./components/system/sysText";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
@@ -246,6 +254,49 @@ export const IndexScreen = () => {
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
             </div>
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
+            <SysTable>
+              <SysTableHead>
+                <SysTableRow>
+                  <SysTableHeaderCell></SysTableHeaderCell>
+                  <SysTableHeaderCell>Customer</SysTableHeaderCell>
+                  <SysTableHeaderCell>Article</SysTableHeaderCell>
+                  <SysTableHeaderCell>
+                    <div className="text-right">Price</div>
+                  </SysTableHeaderCell>
+                  <SysTableHeaderCell></SysTableHeaderCell>
+                </SysTableRow>
+              </SysTableHead>
+              <SysTableBody>
+                <SysTableRow>
+                  <SysTableCell></SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Sarah Garcia</span>
+                  </SysTableCell>
+                  <SysTableCell>Shirt</SysTableCell>
+                  <SysTableCell>
+                    <div className="text-right tabular-nums tracking-tight">10.00</div>
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="text-(--fg-muted)">USD</span>
+                  </SysTableCell>
+                </SysTableRow>
+                <SysTableRow>
+                  <SysTableCell></SysTableCell>
+                  <SysTableCell>
+                    <span className="whitespace-nowrap">Elvis Jones</span>
+                  </SysTableCell>
+                  <SysTableCell>Pants</SysTableCell>
+                  <SysTableCell>
+                    <div className="text-right tabular-nums tracking-tight">20.00</div>
+                  </SysTableCell>
+                  <SysTableCell>
+                    <span className="text-(--fg-muted)">EUR</span>
+                  </SysTableCell>
+                </SysTableRow>
+              </SysTableBody>
+            </SysTable>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysInlineTip label="Tip" variant="info">
