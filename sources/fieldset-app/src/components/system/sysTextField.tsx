@@ -33,6 +33,7 @@ export const SysTextInput = (props: SysTextInputProps) => {
           [props.size === undefined && "h-8 px-2 py-1.5"],
           [props.size === "base" && "h-8 px-2 py-1.5"],
           [props.size === "small" && "h-y px-2 py-1"],
+          props.type === "password" && "!font-[Inter,_sans-serif]",
         )}
         style={{
           ...(props.size === undefined && typography[".txt-compact-small"]),
