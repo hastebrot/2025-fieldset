@@ -26,6 +26,7 @@ import { SysIcon } from "./components/system/sysIcon";
 import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
+import { SysStatusBadge } from "./components/system/sysStatusBadge";
 import { SysText } from "./components/system/sysText";
 import { SysTextInput } from "./components/system/sysTextField";
 import { SysTheme } from "./components/system/sysTheme";
@@ -243,6 +244,14 @@ export const IndexScreen = () => {
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
             </div>
+          </div>
+          <div className="p-[16px] flex gap-2">
+            <SysStatusBadge color="gray">Status</SysStatusBadge>
+            <SysStatusBadge color="red">Status</SysStatusBadge>
+            <SysStatusBadge color="orange">Status</SysStatusBadge>
+            <SysStatusBadge color="green">Status</SysStatusBadge>
+            <SysStatusBadge color="blue">Status</SysStatusBadge>
+            <SysStatusBadge color="purple">Status</SysStatusBadge>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysInlineTip label="Tip" variant="info">
