@@ -5,6 +5,12 @@ import { SysBadge } from "./components/system/sysBadge";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
 import {
+  SysCommandBar,
+  SysCommandBarButton,
+  SysCommandBarSeparator,
+  SysCommandBarText,
+} from "./components/system/sysCommandBar";
+import {
   SysDrawerModal,
   SysDrawerModalBody,
   SysDrawerModalFooter,
@@ -325,6 +331,15 @@ export const IndexScreen = () => {
               pageCount={2}
               isPreviousPageDisabled
             />
+          </div>
+          <div className="p-[16px] inline-flex flex-col gap-2">
+            <SysCommandBar>
+              <SysCommandBarText>2 selected</SysCommandBarText>
+              <SysCommandBarSeparator />
+              <SysCommandBarButton keyboard="d">Delete</SysCommandBarButton>
+              <SysCommandBarSeparator />
+              <SysCommandBarButton keyboard="e">Edit</SysCommandBarButton>
+            </SysCommandBar>
           </div>
           <div className="p-[16px] grid grid-cols-2 items-start gap-2">
             <SysInlineTip label="Tip" variant="info">
