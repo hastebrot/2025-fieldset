@@ -8,8 +8,8 @@ import {
 import { classNames } from "../../helpers/clsx";
 import { SysIcon } from "./sysIcon";
 import { SysIconButton } from "./sysIconButton";
+import { SysKeyboard } from "./sysKeyboard";
 import { SysTheme } from "./sysTheme";
-import { typography } from "./sysTokens";
 
 // https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/drawer/drawer.tsx
 // https://docs.medusajs.com/ui/components/drawer
@@ -81,7 +81,7 @@ export const SysDrawerModalHeader = (props: SysDrawerModalHeaderProps) => {
     >
       <div className="flex flex-col gap-y-1">{props.children}</div>
       <div className="flex items-center gap-x-2">
-        <Kbd>esc</Kbd>
+        <SysKeyboard>esc</SysKeyboard>
         <SysIconButton size="small" variant="ghost" onPress={props.onCloseButtonPress}>
           <SysIcon name="x" variant="outlined" width={15} strokeWidth={2} />
         </SysIconButton>
@@ -106,18 +106,3 @@ export const SysDrawerModalFooter = (props: SysDrawerModalFooterProps) => {
     </div>
   );
 };
-
-const Kbd = (props: { children: React.ReactNode }) => (
-  <div
-    className={classNames(
-      "bg-(--tag-neutral-bg) text-(--tag-neutral-text) border-(--tag-neutral-border)",
-      "inline-flex h-5 w-fit min-w-[20px] items-center justify-between",
-      "rounded-md border px-1",
-    )}
-    style={{
-      ...typography[".txt-compact-xsmall-plus"],
-    }}
-  >
-    {props.children}
-  </div>
-);
