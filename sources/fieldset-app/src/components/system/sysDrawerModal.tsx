@@ -11,18 +11,18 @@ import { SysIconButton } from "./sysIconButton";
 import { SysTheme } from "./sysTheme";
 import { typography } from "./sysTokens";
 
-// https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/focus-modal/focus-modal.tsx
-// https://docs.medusajs.com/ui/components/focus-modal
+// https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/drawer/drawer.tsx
+// https://docs.medusajs.com/ui/components/drawer
 // https://react-spectrum.adobe.com/react-aria/Modal.html
 
-export type SysFocusModalTriggerProps = {
+export type SysDrawerModalTriggerProps = {
   children?: React.ReactNode;
   defaultOpen?: boolean;
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
 };
 
-export const SysFocusModalTrigger = (props: SysFocusModalTriggerProps) => {
+export const SysDrawerModalTrigger = (props: SysDrawerModalTriggerProps) => {
   return (
     <DialogTrigger
       defaultOpen={props.defaultOpen}
@@ -34,18 +34,18 @@ export const SysFocusModalTrigger = (props: SysFocusModalTriggerProps) => {
   );
 };
 
-export type SysFocusModalProps = {
+export type SysDrawerModalProps = {
   children?: React.ReactNode | ((opts: DialogRenderProps) => React.ReactNode);
 };
 
-export const SysFocusModal = (props: SysFocusModalProps) => {
+export const SysDrawerModal = (props: SysDrawerModalProps) => {
   return (
     <ModalOverlay>
       <SysTheme className="bg-transparent">
         <Modal className="bg-(--bg-overlay) fixed inset-0 z-100" isDismissable>
           <Dialog
             className={classNames(
-              "bg-(--bg-base) shadow-(--elevation-modal) fixed inset-2",
+              "bg-(--bg-base) shadow-(--elevation-modal) fixed inset-y-2 right-2 w-[calc(100%-16px)] max-w-[560px]",
               "flex flex-col overflow-hidden rounded-lg border outline-none",
             )}
           >
@@ -57,21 +57,21 @@ export const SysFocusModal = (props: SysFocusModalProps) => {
   );
 };
 
-export type SysFocusModalBodyProps = {
+export type SysDrawerModalBodyProps = {
   className?: string;
   children?: React.ReactNode;
 };
 
-export const SysFocusModalBody = (props: SysFocusModalBodyProps) => {
+export const SysDrawerModalBody = (props: SysDrawerModalBodyProps) => {
   return <div className={classNames("flex-1", props.className)}>{props.children}</div>;
 };
 
-export type SysFocusModalHeaderProps = {
+export type SysDrawerModalHeaderProps = {
   children?: React.ReactNode;
   onCloseButtonPress?: () => void;
 };
 
-export const SysFocusModalHeader = (props: SysFocusModalHeaderProps) => {
+export const SysDrawerModalHeader = (props: SysDrawerModalHeaderProps) => {
   return (
     <div
       className={classNames(
@@ -79,22 +79,22 @@ export const SysFocusModalHeader = (props: SysFocusModalHeaderProps) => {
         "flex items-center justify-between ",
       )}
     >
+      <div className="flex flex-col gap-y-1">{props.children}</div>
       <div className="flex items-center gap-x-2">
+        <Kbd>esc</Kbd>
         <SysIconButton size="small" variant="ghost" onPress={props.onCloseButtonPress}>
           <SysIcon name="x" variant="outlined" width={15} strokeWidth={2} />
         </SysIconButton>
-        <Kbd>esc</Kbd>
       </div>
-      {props.children}
     </div>
   );
 };
 
-export type SysFocusModalFooterProps = {
+export type SysDrawerModalFooterProps = {
   children?: React.ReactNode;
 };
 
-export const SysFocusModalFooter = (props: SysFocusModalFooterProps) => {
+export const SysDrawerModalFooter = (props: SysDrawerModalFooterProps) => {
   return (
     <div
       className={classNames(

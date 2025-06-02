@@ -3,6 +3,13 @@ import { type RouteObject } from "react-router";
 import { SysButton } from "./components/system/sysButton";
 import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
 import {
+  SysDrawerModal,
+  SysDrawerModalBody,
+  SysDrawerModalFooter,
+  SysDrawerModalHeader,
+  SysDrawerModalTrigger,
+} from "./components/system/sysDrawerModal";
+import {
   SysMenu,
   SysMenuItem,
   SysMenuPopover,
@@ -142,12 +149,32 @@ export const IndexScreen = () => {
                     <SysFocusModalHeader onCloseButtonPress={renderProps.close}>
                       <SysButton variant="filled">Save</SysButton>
                     </SysFocusModalHeader>
-                    <SysFocusModalBody></SysFocusModalBody>
+                    <SysFocusModalBody className="p-4">
+                      <SysText>This is where you edit the variant's details.</SysText>
+                    </SysFocusModalBody>
                   </Fragment>
                 )}
               </SysFocusModal>
             </SysFocusModalTrigger>
-            <SysButton variant="filled">Edit Variant</SysButton>
+            <SysDrawerModalTrigger>
+              <SysButton variant="filled">Edit Variant</SysButton>
+              <SysDrawerModal>
+                {(renderProps) => (
+                  <Fragment>
+                    <SysDrawerModalHeader onCloseButtonPress={renderProps.close}>
+                      <SysText>Edit Variant</SysText>
+                    </SysDrawerModalHeader>
+                    <SysDrawerModalBody className="p-4">
+                      <SysText>This is where you edit the variant's details.</SysText>
+                    </SysDrawerModalBody>
+                    <SysDrawerModalFooter>
+                      <SysButton variant="outlined">Cancel</SysButton>
+                      <SysButton variant="filled">Save</SysButton>
+                    </SysDrawerModalFooter>
+                  </Fragment>
+                )}
+              </SysDrawerModal>
+            </SysDrawerModalTrigger>
           </div>
           <div className="p-[16px] flex items-center gap-2">
             <div className="flex items-baseline gap-2">
