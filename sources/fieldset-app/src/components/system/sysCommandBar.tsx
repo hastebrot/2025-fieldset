@@ -13,16 +13,19 @@ export type SysCommandBarProps = {
 export const SysCommandBar = (props: SysCommandBarProps) => {
   return (
     <div
-      className={classNames(
-        "relative flex items-center px-1",
-        "bg-(--contrast-bg-base) overflow-hidden rounded-full",
-        [
-          "after:absolute after:inset-0 after:rounded-full",
-          "after:shadow-(--elevation-flyout) after:pointer-events-none",
-        ],
-      )}
+      className={classNames("relative", [
+        "after:absolute after:inset-0 after:rounded-full",
+        "after:shadow-(--elevation-flyout) after:pointer-events-none",
+      ])}
     >
-      {props.children}
+      <div
+        className={classNames(
+          "flex items-center px-1 rounded-full",
+          "bg-(--contrast-bg-base) overflow-hidden",
+        )}
+      >
+        {props.children}
+      </div>
     </div>
   );
 };

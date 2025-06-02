@@ -48,6 +48,7 @@ export const SysCheckbox = (props: SysCheckboxProps) => {
   return (
     <div className="flex items-center gap-3">
       <Checkbox
+        className="group inline-flex h-5 w-5 items-center justify-center outline-none"
         id={id}
         value={props.value}
         defaultSelected={props.defaultSelected}
@@ -55,7 +56,6 @@ export const SysCheckbox = (props: SysCheckboxProps) => {
         onChange={props.onChange}
         isDisabled={props.isDisabled}
         isIndeterminate={props.isIndeterminate}
-        className="group inline-flex h-5 w-5 items-center justify-center outline-none"
       >
         {(renderProps) => (
           <div
@@ -70,10 +70,10 @@ export const SysCheckbox = (props: SysCheckboxProps) => {
             )}
           >
             {!renderProps.isIndeterminate && renderProps.isSelected && (
-              <SysIcon name="check" variant="outlined" width={15} strokeWidth={2} />
+              <SysIcon name="check" variant="outlined" width={15} strokeWidth={2.5} />
             )}
             {renderProps.isIndeterminate && (
-              <SysIcon name="minus" variant="outlined" width={15} strokeWidth={2} />
+              <SysIcon name="minus" variant="outlined" width={15} strokeWidth={2.5} />
             )}
           </div>
         )}

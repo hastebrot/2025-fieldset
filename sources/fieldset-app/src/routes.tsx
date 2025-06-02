@@ -33,6 +33,12 @@ import {
 import { SysIcon } from "./components/system/sysIcon";
 import { SysIconButton } from "./components/system/sysIconButton";
 import { SysInlineTip } from "./components/system/sysInlineTip";
+import {
+  SysProgressTabs,
+  SysProgressTabsItem,
+  SysProgressTabsList,
+  SysProgressTabsPanel,
+} from "./components/system/sysProgressTabs";
 import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
 import { SysStatusBadge } from "./components/system/sysStatusBadge";
 import {
@@ -262,6 +268,32 @@ export const IndexScreen = () => {
                 <SysIcon name="plus" variant="outlined" width={18} />
               </SysIconButton>
             </div>
+          </div>
+          <div className="p-[16px] flex flex-col gap-2">
+            <SysProgressTabs defaultValue="general">
+              <SysProgressTabsList>
+                <SysProgressTabsItem value="general" status="not-started">
+                  General
+                </SysProgressTabsItem>
+                <SysProgressTabsItem value="shipping" status="in-progress">
+                  Shipping
+                </SysProgressTabsItem>
+                <SysProgressTabsItem value="payment" status="completed">
+                  Payment
+                </SysProgressTabsItem>
+              </SysProgressTabsList>
+              <div className="mt-2">
+                <SysProgressTabsPanel value="general">
+                  <SysText size="small">General content.</SysText>
+                </SysProgressTabsPanel>
+                <SysProgressTabsPanel value="shipping">
+                  <SysText size="small">Shipping content.</SysText>
+                </SysProgressTabsPanel>
+                <SysProgressTabsPanel value="payment">
+                  <SysText size="small">Payment content.</SysText>
+                </SysProgressTabsPanel>
+              </div>
+            </SysProgressTabs>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
             <SysTable>
