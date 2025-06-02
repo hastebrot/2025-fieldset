@@ -73,7 +73,7 @@ export const SysProgressTabsItem = (props: SysProgressTabsItemProps) => {
             <SysIcon name="percentage-50" variant="outlined" width={18} strokeWidth={2} />
           )}
           {props.status === "completed" && (
-            <SysIcon name="percentage-100" variant="outlined" width={18} strokeWidth={2} />
+            <SysIcon name="circle-check" variant="filled" width={18} strokeWidth={2} />
           )}
         </div>
       )}
