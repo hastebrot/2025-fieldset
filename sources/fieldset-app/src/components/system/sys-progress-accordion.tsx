@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 import { Disclosure, DisclosureGroup, DisclosurePanel, Header } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
-import { SysIcon } from "./sysIcon";
-import { SysIconButton } from "./sysIconButton";
-import { typography } from "./sysTokens";
+import { SysIcon } from "./sys-icon";
+import { SysIconButton } from "./sys-icon-button";
+import { typography } from "./sys-tokens";
 
 // https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/progress-accordion/progress-accordion.tsx
 // https://docs.medusajs.com/ui/components/progress-accordion

@@ -12,9 +12,9 @@ import {
   type Selection,
 } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
-import { SysIcon } from "./sysIcon";
-import { SysTheme } from "./sysTheme";
-import { typography } from "./sysTokens";
+import { SysIcon } from "./sys-icon";
+import { SysTheme } from "./sys-theme";
+import { typography } from "./sys-tokens";
 
 // https://docs.medusajs.com/ui/components/dropdown-menu
 // https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/dropdown-menu/dropdown-menu.tsx

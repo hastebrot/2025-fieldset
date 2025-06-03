@@ -1,6 +1,6 @@
 import { classNames } from "../../helpers/clsx";
-import { SysIcon } from "./sysIcon";
-import { typography } from "./sysTokens";
+import { SysIcon } from "./sys-icon";
+import { typography } from "./sys-tokens";
 
 export type SysAlertProps = {
   children?: React.ReactNode;

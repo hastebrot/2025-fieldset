@@ -1,52 +1,52 @@
 import { Fragment, useState } from "react";
 import { type RouteObject } from "react-router";
-import { SysAlert } from "./components/system/sysAlert";
-import { SysBadge } from "./components/system/sysBadge";
-import { SysButton } from "./components/system/sysButton";
-import { SysCheckbox, SysCheckboxGroup } from "./components/system/sysCheckboxField";
+import { SysAlert } from "./components/system/sys-alert";
+import { SysBadge } from "./components/system/sys-badge";
+import { SysButton } from "./components/system/sys-button";
+import { SysCheckbox, SysCheckboxGroup } from "./components/system/sys-checkbox-field";
 import {
   SysCommandBar,
   SysCommandBarButton,
   SysCommandBarSeparator,
   SysCommandBarText,
-} from "./components/system/sysCommandBar";
+} from "./components/system/sys-command-bar";
 import {
   SysDrawerModal,
   SysDrawerModalBody,
   SysDrawerModalFooter,
   SysDrawerModalHeader,
   SysDrawerModalTrigger,
-} from "./components/system/sysDrawerModal";
+} from "./components/system/sys-drawer-modal";
 import {
   SysMenu,
   SysMenuItem,
   SysMenuPopover,
   SysMenuSeparator,
   SysMenuTrigger,
-} from "./components/system/sysDropdownMenu";
+} from "./components/system/sys-dropdown-menu";
 import {
   SysFocusModal,
   SysFocusModalBody,
   SysFocusModalHeader,
   SysFocusModalTrigger,
-} from "./components/system/sysFocusModal";
-import { SysIcon } from "./components/system/sysIcon";
-import { SysIconButton } from "./components/system/sysIconButton";
-import { SysInlineTip } from "./components/system/sysInlineTip";
+} from "./components/system/sys-focus-modal";
+import { SysIcon } from "./components/system/sys-icon";
+import { SysIconButton } from "./components/system/sys-icon-button";
+import { SysInlineTip } from "./components/system/sys-inline-tip";
 import {
   SysProgressAccordion,
   SysProgressAccordionHeader,
   SysProgressAccordionItem,
   SysProgressAccordionPanel,
-} from "./components/system/sysProgressAccordion";
+} from "./components/system/sys-progress-accordion";
 import {
   SysProgressTabs,
   SysProgressTabsItem,
   SysProgressTabsList,
   SysProgressTabsPanel,
-} from "./components/system/sysProgressTabs";
-import { SysRadio, SysRadioGroup } from "./components/system/sysRadioField";
-import { SysStatusBadge } from "./components/system/sysStatusBadge";
+} from "./components/system/sys-progress-tabs";
+import { SysRadio, SysRadioGroup } from "./components/system/sys-radio-field";
+import { SysStatusBadge } from "./components/system/sys-status-badge";
 import {
   SysTable,
   SysTableBody,
@@ -56,11 +56,11 @@ import {
   SysTablePager,
   SysTableRow,
   SysTableSorting,
-} from "./components/system/sysTable";
-import { SysText } from "./components/system/sysText";
-import { SysTextInput } from "./components/system/sysTextField";
-import { SysTheme } from "./components/system/sysTheme";
-import { SysViewport } from "./components/system/sysViewport";
+} from "./components/system/sys-table";
+import { SysText } from "./components/system/sys-text";
+import { SysTextInput } from "./components/system/sys-text-field";
+import { SysTheme } from "./components/system/sys-theme";
+import { SysViewport } from "./components/system/sys-viewport";
 import { useDocumentTitle, usePrefersColorScheme } from "./helpers/react";
 
 export const routes: RouteObject[] = [

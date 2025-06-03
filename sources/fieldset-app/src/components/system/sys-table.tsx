@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
-import { SysButton } from "./sysButton";
-import { SysIcon } from "./sysIcon";
-import { typography } from "./sysTokens";
+import { SysButton } from "./sys-button";
+import { SysIcon } from "./sys-icon";
+import { typography } from "./sys-tokens";
 
 export type SysTableProps = {
   children?: React.ReactNode;

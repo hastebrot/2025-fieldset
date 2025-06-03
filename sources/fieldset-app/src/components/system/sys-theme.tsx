@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { classNames } from "../../helpers/clsx";
-import { colors, effects, typography } from "./sysTokens";
+import { colors, effects, typography } from "./sys-tokens";
 
 export type SysThemeValue = {
   variant: "dark" | "light";
