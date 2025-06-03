@@ -1,7 +1,7 @@
 import { Button, Separator } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
-import { SysKeyboard } from "./sysKeyboard";
-import { typography } from "./sysTokens";
+import { SysKeyboard } from "./sys-keyboard";
+import { typography } from "./sys-tokens";
 
 // https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/command-bar/command-bar.tsx
 // https://docs.medusajs.com/ui/components/command-bar

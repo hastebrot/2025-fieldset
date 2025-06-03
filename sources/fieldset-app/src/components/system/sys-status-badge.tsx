@@ -1,5 +1,5 @@
 import { classNames } from "../../helpers/clsx";
-import { typography } from "./sysTokens";
+import { typography } from "./sys-tokens";
 
 export type SysStatusBadgeProps = {
   children: React.ReactNode;

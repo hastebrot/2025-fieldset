@@ -6,10 +6,10 @@ import {
   type DialogRenderProps,
 } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
-import { SysIcon } from "./sysIcon";
-import { SysIconButton } from "./sysIconButton";
-import { SysKeyboard } from "./sysKeyboard";
-import { SysTheme } from "./sysTheme";
+import { SysIcon } from "./sys-icon";
+import { SysIconButton } from "./sys-icon-button";
+import { SysKeyboard } from "./sys-keyboard";
+import { SysTheme } from "./sys-theme";
 
 // https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/focus-modal/focus-modal.tsx
 // https://docs.medusajs.com/ui/components/focus-modal

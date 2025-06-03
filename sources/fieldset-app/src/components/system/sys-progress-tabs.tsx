@@ -1,7 +1,7 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
-import { SysIcon } from "./sysIcon";
-import { typography } from "./sysTokens";
+import { SysIcon } from "./sys-icon";
+import { typography } from "./sys-tokens";
 
 // https://github.com/medusajs/medusa/blob/v2.8.3/packages/design-system/ui/src/components/progress-tabs/progress-tabs.tsx
 // https://docs.medusajs.com/ui/components/progress-tabs

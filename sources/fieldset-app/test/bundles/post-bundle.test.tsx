@@ -8,10 +8,10 @@ import { beforeEach, expect, describe as suite, test } from "vitest";
 import { z } from "zod/v4";
 import { throwError } from "../../src/helpers/error";
 import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
-import { registerGlobals } from "../registerGlobals";
-import { registerMatchers } from "../registerMatchers";
+import { registerGlobals } from "../register-globals";
+import { registerMatchers } from "../register-matchers";
 
-type inferSchema<T extends { [key: string]: z.ZodType }> = {
+type inferSchemaMap<T extends { [key: string]: z.ZodType }> = {
   [key in keyof T]: z.infer<T[key]>;
 };
 
@@ -67,7 +67,7 @@ const Post = {
   },
 
   get migration() {
-    type Post = inferSchema<typeof Post.schema>;
+    type Post = inferSchemaMap<typeof Post.schema>;
     return {
       async createPosts(db: Kysely<Post>) {
         return await db.schema
@@ -81,7 +81,7 @@ const Post = {
   },
 
   get client() {
-    type Post = inferSchema<typeof Post.schema>;
+    type Post = inferSchemaMap<typeof Post.schema>;
     type WritePost = {
       Params: { post: Post["post"] };
     };
@@ -125,7 +125,7 @@ const Post = {
   },
 
   get admin() {
-    type Post = inferSchema<typeof Post.schema>;
+    type Post = inferSchemaMap<typeof Post.schema>;
     type PostListTableProps = { posts: Post["post"][] };
     type PostFormProps = { post: Post["post"] };
     return {
@@ -252,7 +252,7 @@ export const autoCreateTable = <T extends any = any>(name: string, schema: z.Zod
   };
 };
 
-const { db, deleteDatabaseFile } = await setupDatabase<inferSchema<typeof Post.schema>>();
+const { db, deleteDatabaseFile } = await setupDatabase<inferSchemaMap<typeof Post.schema>>();
 beforeEach(deleteDatabaseFile);
 registerGlobals();
 registerMatchers();
