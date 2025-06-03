@@ -276,56 +276,6 @@ export const IndexScreen = () => {
             </div>
           </div>
           <div className="p-[16px] flex flex-col gap-2">
-            <SysProgressTabs defaultValue="general">
-              <SysProgressTabsList>
-                <SysProgressTabsItem value="general" status="completed">
-                  General
-                </SysProgressTabsItem>
-                <SysProgressTabsItem value="shipping" status="in-progress">
-                  Shipping
-                </SysProgressTabsItem>
-                <SysProgressTabsItem value="payment" status="not-started">
-                  Payment
-                </SysProgressTabsItem>
-              </SysProgressTabsList>
-              <div className="mt-2 px-4">
-                <SysProgressTabsPanel value="general">
-                  <SysText size="small">General content.</SysText>
-                </SysProgressTabsPanel>
-                <SysProgressTabsPanel value="shipping">
-                  <SysText size="small">Shipping content.</SysText>
-                </SysProgressTabsPanel>
-                <SysProgressTabsPanel value="payment">
-                  <SysText size="small">Payment content.</SysText>
-                </SysProgressTabsPanel>
-              </div>
-            </SysProgressTabs>
-            <SysProgressAccordion defaultValue={["general"]}>
-              <SysProgressAccordionItem value="general">
-                <SysProgressAccordionHeader status="completed">General</SysProgressAccordionHeader>
-                <SysProgressAccordionPanel>
-                  <SysText size="small">General content.</SysText>
-                </SysProgressAccordionPanel>
-              </SysProgressAccordionItem>
-              <SysProgressAccordionItem value="shipping">
-                <SysProgressAccordionHeader status="in-progress">
-                  Shipping
-                </SysProgressAccordionHeader>
-                <SysProgressAccordionPanel>
-                  <SysText size="small">Shipping content.</SysText>
-                </SysProgressAccordionPanel>
-              </SysProgressAccordionItem>
-              <SysProgressAccordionItem value="payment">
-                <SysProgressAccordionHeader status="not-started">
-                  Payment
-                </SysProgressAccordionHeader>
-                <SysProgressAccordionPanel>
-                  <SysText size="small">Payment content.</SysText>
-                </SysProgressAccordionPanel>
-              </SysProgressAccordionItem>
-            </SysProgressAccordion>
-          </div>
-          <div className="p-[16px] flex flex-col gap-2">
             <SysTable>
               <SysTableHead>
                 <SysTableRow>
@@ -402,6 +352,52 @@ export const IndexScreen = () => {
               <SysCommandBarSeparator />
               <SysCommandBarButton keyboard="e">Edit</SysCommandBarButton>
             </SysCommandBar>
+          </div>
+          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
+            <div className="flex flex-col gap-2">
+              <SysTextInput placeholder="Sales Channel Name" />
+              <SysTextInput placeholder="Sales Channel Name" isDisabled />
+              <SysTextInput placeholder="Sales Channel Name" isInvalid />
+            </div>
+            <div className="flex flex-col gap-2">
+              <SysTextInput type="password" defaultValue="supersecret" />
+              <SysTextInput type="password" defaultValue="supersecret" isDisabled />
+              <SysTextInput type="password" defaultValue="supersecret" isInvalid />
+            </div>
+          </div>
+          <div className="p-[16px] grid auto-cols-fr grid-flow-col">
+            <div className="flex flex-col gap-2">
+              <SysCheckbox label="Check" />
+              <SysCheckbox label="Check" defaultSelected />
+              <SysCheckbox label="Check" isIndeterminate />
+            </div>
+            <div className="flex flex-col gap-2">
+              <SysCheckbox label="Check" isDisabled />
+              <SysCheckbox label="Check" isDisabled defaultSelected />
+              <SysCheckbox label="Check" isDisabled isIndeterminate />
+            </div>
+          </div>
+          <div className="p-[16px] grid auto-cols-fr grid-flow-col">
+            <div className="flex flex-col gap-2">
+              <SysCheckboxGroup label="Check group" defaultValue={["1"]}>
+                <SysCheckbox value="1" label="Check" />
+                <SysCheckbox value="2" label="Check" />
+                <SysCheckbox value="3" label="Check" isDisabled />
+              </SysCheckboxGroup>
+              <SysCheckboxGroup label="Check group" defaultValue={["1"]}>
+                <SysCheckbox value="1" label="Check" isDisabled />
+              </SysCheckboxGroup>
+            </div>
+            <div className="flex flex-col gap-2">
+              <SysRadioGroup label="Radio group" defaultValue="1">
+                <SysRadio value="1" label="Radio" />
+                <SysRadio value="2" label="Radio" />
+                <SysRadio value="3" label="Radio" isDisabled />
+              </SysRadioGroup>
+              <SysRadioGroup label="Radio group" defaultValue="1">
+                <SysRadio value="1" label="Radio" isDisabled />
+              </SysRadioGroup>
+            </div>
           </div>
           <div className="p-[16px] grid grid-cols-2 items-start gap-2">
             <SysInlineTip label="Tip" variant="info">
@@ -483,51 +479,55 @@ export const IndexScreen = () => {
               </SysBadge>
             </div>
           </div>
-          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
-            <div className="flex flex-col gap-2">
-              <SysTextInput placeholder="Sales Channel Name" />
-              <SysTextInput placeholder="Sales Channel Name" isDisabled />
-              <SysTextInput placeholder="Sales Channel Name" isInvalid />
-            </div>
-            <div className="flex flex-col gap-2">
-              <SysTextInput type="password" defaultValue="supersecret" />
-              <SysTextInput type="password" defaultValue="supersecret" isDisabled />
-              <SysTextInput type="password" defaultValue="supersecret" isInvalid />
-            </div>
-          </div>
-          <div className="p-[16px] grid auto-cols-fr grid-flow-col">
-            <div className="flex flex-col gap-2">
-              <SysCheckbox label="Check" />
-              <SysCheckbox label="Check" defaultSelected />
-              <SysCheckbox label="Check" isIndeterminate />
-            </div>
-            <div className="flex flex-col gap-2">
-              <SysCheckbox label="Check" isDisabled />
-              <SysCheckbox label="Check" isDisabled defaultSelected />
-              <SysCheckbox label="Check" isDisabled isIndeterminate />
-            </div>
-          </div>
-          <div className="p-[16px] grid auto-cols-fr grid-flow-col">
-            <div className="flex flex-col gap-2">
-              <SysCheckboxGroup label="Check group" defaultValue={["1"]}>
-                <SysCheckbox value="1" label="Check" />
-                <SysCheckbox value="2" label="Check" />
-                <SysCheckbox value="3" label="Check" isDisabled />
-              </SysCheckboxGroup>
-              <SysCheckboxGroup label="Check group" defaultValue={["1"]}>
-                <SysCheckbox value="1" label="Check" isDisabled />
-              </SysCheckboxGroup>
-            </div>
-            <div className="flex flex-col gap-2">
-              <SysRadioGroup label="Radio group" defaultValue="1">
-                <SysRadio value="1" label="Radio" />
-                <SysRadio value="2" label="Radio" />
-                <SysRadio value="3" label="Radio" isDisabled />
-              </SysRadioGroup>
-              <SysRadioGroup label="Radio group" defaultValue="1">
-                <SysRadio value="1" label="Radio" isDisabled />
-              </SysRadioGroup>
-            </div>
+          <div className="p-[16px] flex flex-col gap-2">
+            <SysProgressTabs defaultValue="general">
+              <SysProgressTabsList>
+                <SysProgressTabsItem value="general" status="completed">
+                  General
+                </SysProgressTabsItem>
+                <SysProgressTabsItem value="shipping" status="in-progress">
+                  Shipping
+                </SysProgressTabsItem>
+                <SysProgressTabsItem value="payment" status="not-started">
+                  Payment
+                </SysProgressTabsItem>
+              </SysProgressTabsList>
+              <div className="mt-2 px-4">
+                <SysProgressTabsPanel value="general">
+                  <SysText size="small">General content.</SysText>
+                </SysProgressTabsPanel>
+                <SysProgressTabsPanel value="shipping">
+                  <SysText size="small">Shipping content.</SysText>
+                </SysProgressTabsPanel>
+                <SysProgressTabsPanel value="payment">
+                  <SysText size="small">Payment content.</SysText>
+                </SysProgressTabsPanel>
+              </div>
+            </SysProgressTabs>
+            <SysProgressAccordion defaultValue={["general"]}>
+              <SysProgressAccordionItem value="general">
+                <SysProgressAccordionHeader status="completed">General</SysProgressAccordionHeader>
+                <SysProgressAccordionPanel>
+                  <SysText size="small">General content.</SysText>
+                </SysProgressAccordionPanel>
+              </SysProgressAccordionItem>
+              <SysProgressAccordionItem value="shipping">
+                <SysProgressAccordionHeader status="in-progress">
+                  Shipping
+                </SysProgressAccordionHeader>
+                <SysProgressAccordionPanel>
+                  <SysText size="small">Shipping content.</SysText>
+                </SysProgressAccordionPanel>
+              </SysProgressAccordionItem>
+              <SysProgressAccordionItem value="payment">
+                <SysProgressAccordionHeader status="not-started">
+                  Payment
+                </SysProgressAccordionHeader>
+                <SysProgressAccordionPanel>
+                  <SysText size="small">Payment content.</SysText>
+                </SysProgressAccordionPanel>
+              </SysProgressAccordionItem>
+            </SysProgressAccordion>
           </div>
         </div>
       </SysViewport>

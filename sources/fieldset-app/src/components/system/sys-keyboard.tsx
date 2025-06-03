@@ -13,7 +13,7 @@ export const SysKeyboard = (props: SysKeyboardProps) => (
       props.isCommand && [
         "!bg-(--contrast-bg-subtle) !text-(--contrast-fg-secondary) !border-(--contrast-border-base)",
       ],
-      "inline-flex h-5 w-fit min-w-[20px] items-center justify-between",
+      "inline-flex h-5 w-fit min-w-[20px] items-center justify-center",
       "rounded-md border px-1",
     )}
     style={{
