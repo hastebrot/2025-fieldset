@@ -1,4 +1,4 @@
-## feat: Fieldset config.
+## feat: Fieldset builder.
 
 | original estimate | estimate | actual effort | remaining effort |
 | --- | --- | --- | --- |
