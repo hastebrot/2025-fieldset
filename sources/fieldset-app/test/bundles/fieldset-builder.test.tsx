@@ -1,8 +1,8 @@
 import { expect, describe as suite, test } from "vitest";
 import { z } from "zod/v4";
-import { buildFieldset, Fieldset } from "./fieldset";
+import { buildFieldset, Fieldset } from "./fieldset-builder";
 
-suite("fieldset bundle", () => {
+suite("fieldset builder", () => {
   test("schema", () => {
     // const json = (value: any) => JSON.stringify(value, null, 2);
     const jsonSchema = z.toJSONSchema(Fieldset);

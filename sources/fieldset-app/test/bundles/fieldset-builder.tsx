@@ -11,6 +11,9 @@ export const Fieldset = z.strictObject({
   },
 });
 
+// TODO(hastebrot): Type alias 'Field' circularly references itself.
+export type Field = z.infer<typeof Field>;
+
 export const Field = z.discriminatedUnion("type", [
   // simple fields.
 

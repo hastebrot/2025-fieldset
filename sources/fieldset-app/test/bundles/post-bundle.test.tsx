@@ -1,6 +1,6 @@
 import { cleanup, render, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { ColumnDataType, Compilable, Kysely } from "kysely";
+import { type ColumnDataType, type Compilable, Kysely } from "kysely";
 import { action, observable } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
