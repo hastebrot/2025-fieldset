@@ -252,34 +252,32 @@ const ListFieldFields = z.lazy(() =>
   ]),
 );
 
-const GroupField = z.strictObject({
+const groupField = {
   type: z.literal("group"),
   name: z.string().optional(),
   label: z.string().optional(),
+  isVirtual: z.boolean().optional(),
+};
+
+const GroupField = z.strictObject({
+  ...groupField,
   get fields() {
     return z.array(z.union([GroupField2, GroupFieldFields]));
   },
-  isVirtual: z.boolean().optional(),
 });
 
 const GroupField2 = z.strictObject({
-  type: z.literal("group"),
-  name: z.string().optional(),
-  label: z.string().optional(),
+  ...groupField,
   get fields() {
     return z.array(z.union([GroupField3, GroupFieldFields]));
   },
-  isVirtual: z.boolean().optional(),
 });
 
 const GroupField3 = z.strictObject({
-  type: z.literal("group"),
-  name: z.string().optional(),
-  label: z.string().optional(),
+  ...groupField,
   get fields() {
     return z.array(z.union([GroupFieldFields]));
   },
-  isVirtual: z.boolean().optional(),
 });
 
 buildFieldset({
