@@ -21,6 +21,7 @@ export const Field = z.discriminatedUnion("type", [
     placeholder: z.string().optional(),
     defaultValue: z.string().optional(),
     isRequired: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -30,6 +31,7 @@ export const Field = z.discriminatedUnion("type", [
     placeholder: z.string().optional(),
     defaultValue: z.string().optional(),
     isRequired: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -39,6 +41,7 @@ export const Field = z.discriminatedUnion("type", [
     placeholder: z.string().optional(),
     defaultValue: z.number().optional(),
     isRequired: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -48,6 +51,7 @@ export const Field = z.discriminatedUnion("type", [
     placeholder: z.string().optional(),
     defaultValue: z.string().optional(),
     isRequired: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -63,6 +67,7 @@ export const Field = z.discriminatedUnion("type", [
     ),
     defaultValue: z.string().optional(),
     isRequired: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -78,6 +83,7 @@ export const Field = z.discriminatedUnion("type", [
     ),
     defaultValue: z.string().optional(),
     isRequired: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -94,6 +100,7 @@ export const Field = z.discriminatedUnion("type", [
     defaultValue: z.string().optional(),
     isRequired: z.boolean().optional(),
     allowsMultiple: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -109,6 +116,7 @@ export const Field = z.discriminatedUnion("type", [
     ),
     defaultValue: z.string().optional(),
     isRequired: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -118,6 +126,7 @@ export const Field = z.discriminatedUnion("type", [
     slug: z.string(),
     isRequired: z.boolean().optional(),
     allowsMultiple: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -126,6 +135,8 @@ export const Field = z.discriminatedUnion("type", [
     label: z.string().optional(),
     slug: z.string(),
     isRequired: z.boolean().optional(),
+    isTabular: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -136,6 +147,7 @@ export const Field = z.discriminatedUnion("type", [
     isRequired: z.boolean().optional(),
     allowsMultiple: z.boolean().optional(),
     acceptedFileTypes: z.array(z.string()).optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -145,6 +157,7 @@ export const Field = z.discriminatedUnion("type", [
     slug: z.string(),
     isRequired: z.boolean().optional(),
     acceptedFileTypes: z.array(z.string()).optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   // composed fields.
@@ -156,7 +169,7 @@ export const Field = z.discriminatedUnion("type", [
     get fields() {
       return z.array(Field);
     },
-    isNested: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -167,6 +180,7 @@ export const Field = z.discriminatedUnion("type", [
       return z.array(Field);
     },
     isCollapsible: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -176,7 +190,7 @@ export const Field = z.discriminatedUnion("type", [
     get fields() {
       return z.array(Field);
     },
-    isNested: z.boolean().optional(),
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -186,6 +200,7 @@ export const Field = z.discriminatedUnion("type", [
     get fields() {
       return z.array(Field);
     },
+    isVirtual: z.boolean().optional(),
   }),
 
   z.strictObject({
@@ -200,5 +215,28 @@ export const Field = z.discriminatedUnion("type", [
         },
       }),
     ),
+    isVirtual: z.boolean().optional(),
+  }),
+
+  z.strictObject({
+    type: z.literal("richtext"),
+    name: z.string(),
+    label: z.string().optional(),
+    defaultValue: z.string().optional(),
+    editor: z
+      .object({
+        features: z
+          .array(
+            z.strictObject({
+              name: z.string(),
+              get fields() {
+                return z.array(Field).optional();
+              },
+            }),
+          )
+          .optional(),
+      })
+      .optional(),
+    isVirtual: z.boolean().optional(),
   }),
 ]);

@@ -47,8 +47,8 @@ suite("fieldset bundle", () => {
           ],
         },
         {
-          type: "fields",
-          name: "fields",
+          type: "list",
+          name: "list",
           fields: [],
         },
       ],
@@ -64,8 +64,8 @@ suite("fieldset bundle", () => {
           name: "radio",
         },
         {
-          type: "fields",
-          name: "fields",
+          type: "list",
+          name: "list",
         },
       ],
     });
