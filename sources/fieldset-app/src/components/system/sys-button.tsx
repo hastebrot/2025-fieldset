@@ -4,6 +4,7 @@ import { typography } from "./sys-tokens";
 
 export type SysButtonProps = {
   children?: React.ReactNode;
+  slot?: string;
   variant?: "filled" | "outlined" | "ghost" | "danger";
   size?: "base" | "small" | "large" | "xlarge";
   isDisabled?: boolean;
@@ -13,6 +14,7 @@ export type SysButtonProps = {
 export const SysButton = (props: SysButtonProps) => {
   return (
     <Button
+      slot={props.slot}
       className={classNames(
         "relative inline-flex w-fit items-center justify-center",
         "overflow-hidden rounded-md outline-none",

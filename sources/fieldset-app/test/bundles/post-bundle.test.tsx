@@ -1,6 +1,6 @@
 import { cleanup, render, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { ColumnDataType, Compilable, Kysely } from "kysely";
+import { type ColumnDataType, type Compilable, Kysely } from "kysely";
 import { action, observable } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
@@ -11,42 +11,24 @@ import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
 import { registerGlobals } from "../register-globals";
 import { registerMatchers } from "../register-matchers";
 
-type inferSchemaMap<T extends { [key: string]: z.ZodType }> = {
-  [key in keyof T]: z.infer<T[key]>;
-};
-
-type SchemaMeta = {
-  [key: string]: unknown;
-  migration?: {
-    primaryKey?: boolean;
-    autoIncrement?: boolean;
-  };
-};
-
-const meta = <T extends z.ZodType>(schema: T, meta?: SchemaMeta) => {
-  return meta !== undefined ? schema.meta(meta) : schema;
-};
-
-const toJsonSchema = <T extends z.ZodType>(schema: T) => {
-  return z.toJSONSchema(schema) as z.core.JSONSchema.ObjectSchema;
-};
-
 const Post = {
-  schema: {
-    post: z
-      .strictObject({
-        id: meta(z.number().optional(), {
-          migration: {
-            primaryKey: true,
-            autoIncrement: true,
-          },
+  get schema() {
+    return {
+      post: z
+        .strictObject({
+          id: meta(z.number().optional(), {
+            migration: {
+              primaryKey: true,
+              autoIncrement: true,
+            },
+          }),
+          title: z.string(),
+          body: z.string(),
+        })
+        .meta({
+          title: "post",
         }),
-        title: z.string(),
-        body: z.string(),
-      })
-      .meta({
-        title: "post",
-      }),
+    };
   },
 
   get jsonSchema() {
@@ -188,6 +170,26 @@ const Post = {
   },
 };
 
+type inferSchemaMap<T extends { [key: string]: z.ZodType }> = {
+  [key in keyof T]: z.infer<T[key]>;
+};
+
+type SchemaMeta = {
+  [key: string]: unknown;
+  migration?: {
+    primaryKey?: boolean;
+    autoIncrement?: boolean;
+  };
+};
+
+const meta = <T extends z.ZodType>(schema: T, meta?: SchemaMeta) => {
+  return meta !== undefined ? schema.meta(meta) : schema;
+};
+
+const toJsonSchema = <T extends z.ZodType>(schema: T) => {
+  return z.toJSONSchema(schema) as z.core.JSONSchema.ObjectSchema;
+};
+
 export const debugSql = <T extends Compilable>(it: T): T => (console.debug(it.compile().sql), it);
 
 export const setupDatabase = async <T extends any = any>() => {
@@ -308,6 +310,23 @@ suite("post bundle", () => {
     });
     {
       cleanup();
+      const posts = await Post.client.readPosts(db, { limit: 2 });
+      const screen = render(<Post.admin.PostListTable posts={posts.posts} />);
+      const postTable = screen.getByRole("table");
+      await waitFor(() => postTable);
+      expect(screen.getAllByRole("row")).toHaveLength(3);
+      expect(screen.getByRole("columnheader", { name: "post[id]" })).toHaveTextContent("id");
+      expect(screen.getByRole("columnheader", { name: "post[title]" })).toHaveTextContent("title");
+      expect(screen.getByRole("columnheader", { name: "post[body]" })).toHaveTextContent("body");
+      expect(screen.getByRole("cell", { name: "post[0][id]" })).toHaveTextContent("1");
+      expect(screen.getByRole("cell", { name: "post[0][title]" })).toHaveTextContent("title");
+      expect(screen.getByRole("cell", { name: "post[0][body]" })).toHaveTextContent("body");
+      expect(screen.getByRole("cell", { name: "post[1][id]" })).toHaveTextContent("2");
+      expect(screen.getByRole("cell", { name: "post[1][title]" })).toHaveTextContent("title");
+      expect(screen.getByRole("cell", { name: "post[1][body]" })).toHaveTextContent("body");
+    }
+    {
+      cleanup();
       const post = await Post.client.readPost(db, { postId: 1 });
       const screen = render(<Post.admin.PostForm post={post.post} />);
       const user = userEvent.setup({ document: global.document });
@@ -325,23 +344,6 @@ suite("post bundle", () => {
       await user.clear(postBody);
       await user.type(postBody, "new body");
       expect(postBody).toHaveValue("new body");
-    }
-    {
-      cleanup();
-      const posts = await Post.client.readPosts(db, { limit: 2 });
-      const screen = render(<Post.admin.PostListTable posts={posts.posts} />);
-      const postTable = screen.getByRole("table");
-      await waitFor(() => postTable);
-      expect(screen.getAllByRole("row")).toHaveLength(3);
-      expect(screen.getByRole("columnheader", { name: "post[id]" })).toHaveTextContent("id");
-      expect(screen.getByRole("columnheader", { name: "post[title]" })).toHaveTextContent("title");
-      expect(screen.getByRole("columnheader", { name: "post[body]" })).toHaveTextContent("body");
-      expect(screen.getByRole("cell", { name: "post[0][id]" })).toHaveTextContent("1");
-      expect(screen.getByRole("cell", { name: "post[0][title]" })).toHaveTextContent("title");
-      expect(screen.getByRole("cell", { name: "post[0][body]" })).toHaveTextContent("body");
-      expect(screen.getByRole("cell", { name: "post[1][id]" })).toHaveTextContent("2");
-      expect(screen.getByRole("cell", { name: "post[1][title]" })).toHaveTextContent("title");
-      expect(screen.getByRole("cell", { name: "post[1][body]" })).toHaveTextContent("body");
     }
   });
 });

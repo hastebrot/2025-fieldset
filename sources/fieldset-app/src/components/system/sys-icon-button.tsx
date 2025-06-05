@@ -3,11 +3,11 @@ import { classNames } from "../../helpers/clsx";
 
 export type SysIconButtonProps = {
   children?: React.ReactNode;
+  slot?: string;
   variant?: "outlined" | "ghost";
   size?: "base" | "xsmall" | "small" | "large" | "xlarge";
   isDisabled?: boolean;
   onPress?: () => void;
-  slot?: string;
 };
 
 export const SysIconButton = (props: SysIconButtonProps) => {
