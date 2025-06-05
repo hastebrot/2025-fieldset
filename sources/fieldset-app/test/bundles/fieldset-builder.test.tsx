@@ -3,6 +3,29 @@ import { z } from "zod/v4";
 import { buildFieldset, Fieldset } from "./fieldset-builder";
 
 suite("fieldset builder", () => {
+  test("build fieldset", () => {
+    buildFieldset({
+      slug: "slug",
+      fields: [
+        { type: "text", name: "name" },
+        {
+          type: "tabs",
+          fields: [
+            {
+              type: "group",
+              fields: [
+                {
+                  type: "text",
+                  name: "name",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+  });
+
   test("schema", () => {
     // const json = (value: any) => JSON.stringify(value, null, 2);
     const jsonSchema = z.toJSONSchema(Fieldset);
