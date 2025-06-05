@@ -11,6 +11,11 @@ export const Fieldset = z.strictObject({
   },
 });
 
+buildFieldset({
+  slug: "slug",
+  fields: [{ type: "group", fields: [{ type: "group", name: "name" }] }],
+});
+
 export const Field = z.lazy(() =>
   z.discriminatedUnion("type", [
     // simple fields.
@@ -252,9 +257,48 @@ const GroupField = z.strictObject({
   name: z.string().optional(),
   label: z.string().optional(),
   get fields() {
-    return z.array(GroupFieldFields);
+    return z.array(z.union([GroupField2, GroupFieldFields]));
   },
   isVirtual: z.boolean().optional(),
+});
+
+const GroupField2 = z.strictObject({
+  type: z.literal("group"),
+  name: z.string().optional(),
+  label: z.string().optional(),
+  get fields() {
+    return z.array(z.union([GroupField3, GroupFieldFields]));
+  },
+  isVirtual: z.boolean().optional(),
+});
+
+const GroupField3 = z.strictObject({
+  type: z.literal("group"),
+  name: z.string().optional(),
+  label: z.string().optional(),
+  get fields() {
+    return z.array(z.union([GroupFieldFields]));
+  },
+  isVirtual: z.boolean().optional(),
+});
+
+buildFieldset({
+  slug: "slug",
+  fields: [
+    {
+      type: "group",
+      fields: [
+        {
+          type: "group",
+          fields: [
+            {
+              type: "group",
+            },
+          ],
+        },
+      ],
+    },
+  ],
 });
 
 const GroupFieldFields = z.lazy(() =>
@@ -275,6 +319,7 @@ const GroupFieldFields = z.lazy(() =>
 
     // composed fields.
     ListField,
+    // GroupField,
     ColumnsField,
     BlocksField,
     RichtextField,
