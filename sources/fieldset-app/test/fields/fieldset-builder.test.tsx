@@ -13,7 +13,7 @@ suite("fieldset builder", () => {
       },
     });
     const json = (value: any) => JSON.stringify(value, null, 2);
-    expect(json(jsonSchema).split("\n").length).toBe(26_126);
+    expect(json(jsonSchema).split("\n").length).toBe(26_775);
     expect(jsonSchema).toMatchObject({
       type: "object",
       properties: {
