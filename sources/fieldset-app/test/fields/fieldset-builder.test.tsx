@@ -4,9 +4,16 @@ import { buildFieldset, Fieldset } from "../../src/fields/baseField";
 
 suite("fieldset builder", () => {
   test("schema", () => {
+    const jsonSchema = z.toJSONSchema(Fieldset, {
+      cycles: "ref",
+      io: "output",
+      override(ctx) {
+        // no-op.
+        ctx.zodSchema._zod.id, ctx.jsonSchema.type;
+      },
+    });
     const json = (value: any) => JSON.stringify(value, null, 2);
-    const jsonSchema = z.toJSONSchema(Fieldset);
-    expect(json(jsonSchema).length).toBe(1_656_663);
+    expect(json(jsonSchema).split("\n").length).toBe(26_126);
     expect(jsonSchema).toMatchObject({
       type: "object",
       properties: {
@@ -88,6 +95,10 @@ suite("fieldset builder", () => {
               fields: [
                 {
                   type: "text",
+                  name: "name",
+                },
+                {
+                  type: "number",
                   name: "name",
                 },
               ],
