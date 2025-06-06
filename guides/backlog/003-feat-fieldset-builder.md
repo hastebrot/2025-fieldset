@@ -23,6 +23,10 @@
 **dependencies:**
 
 **references:**
+- meanwhile the payload cms types:
+- 240 loc for payload config, https://github.com/payloadcms/payload/blob/v3.41.0/packages/payload/src/types/index.ts
+- 640 loc for collections config, https://github.com/payloadcms/payload/blob/v3.41.0/packages/payload/src/collections/config/types.ts
+- 1880 loc for fields config, https://github.com/payloadcms/payload/blob/v3.41.0/packages/payload/src/fields/config/types.ts
 
 **artifacts:**
 
