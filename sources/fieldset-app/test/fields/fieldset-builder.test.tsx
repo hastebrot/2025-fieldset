@@ -1,12 +1,19 @@
 import { expect, describe as suite, test } from "vitest";
 import { z } from "zod/v4";
-import { buildFieldset, Fieldset } from "../../src/fields/baseField";
+import { buildFieldset, Fieldset } from "../../src/fields/base-field";
 
 suite("fieldset builder", () => {
   test("schema", () => {
+    const jsonSchema = z.toJSONSchema(Fieldset, {
+      cycles: "ref",
+      io: "output",
+      override(ctx) {
+        // no-op.
+        ctx.zodSchema._zod.id, ctx.jsonSchema.type;
+      },
+    });
     const json = (value: any) => JSON.stringify(value, null, 2);
-    const jsonSchema = z.toJSONSchema(Fieldset);
-    expect(json(jsonSchema).length).toBe(1_656_663);
+    expect(json(jsonSchema).split("\n").length).toBe(26_775);
     expect(jsonSchema).toMatchObject({
       type: "object",
       properties: {
@@ -88,6 +95,10 @@ suite("fieldset builder", () => {
               fields: [
                 {
                   type: "text",
+                  name: "name",
+                },
+                {
+                  type: "number",
                   name: "name",
                 },
               ],
