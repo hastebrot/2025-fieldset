@@ -1,20 +1,20 @@
 import { z } from "zod/v4";
-import { CheckboxField } from "../checkboxField";
-import { DateField } from "../dateField";
-import { FileField } from "../fileField";
-import { FileMultiField } from "../fileMultiField";
-import { NumberField } from "../numberField";
-import { RadioField } from "../radioField";
-import { ReferenceField } from "../referenceField";
-import { ReferenceMultiField } from "../referenceMultiField";
-import { SelectField } from "../selectField";
-import { SelectMultiField } from "../selectMultiField";
-import { TextField } from "../textField";
-import { TextareaField } from "../textareaField";
-import { BlocksField } from "./blocksField";
-import { ColumnsField } from "./columnsField";
-import { ListField } from "./listField";
-import { RichtextField } from "./richtextField";
+import { CheckboxField } from "../checkbox-field";
+import { DateField } from "../date-field";
+import { FileField } from "../file-field";
+import { FileMultiField } from "../file-multi-field";
+import { NumberField } from "../number-field";
+import { RadioField } from "../radio-field";
+import { ReferenceField } from "../reference-field";
+import { ReferenceMultiField } from "../reference-multi-field";
+import { SelectField } from "../select-field";
+import { SelectMultiField } from "../select-multi-field";
+import { TextField } from "../text-field";
+import { TextareaField } from "../textarea-field";
+import { BlocksField } from "./blocks-field";
+import { ColumnsField } from "./columns-field";
+import { ListField } from "./list-field";
+import { RichtextField } from "./richtext-field";
 
 const groupField = {
   type: z.literal("group"),

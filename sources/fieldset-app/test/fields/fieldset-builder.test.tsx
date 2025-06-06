@@ -1,6 +1,6 @@
 import { expect, describe as suite, test } from "vitest";
 import { z } from "zod/v4";
-import { buildFieldset, Fieldset } from "../../src/fields/baseField";
+import { buildFieldset, Fieldset } from "../../src/fields/base-field";
 
 suite("fieldset builder", () => {
   test("schema", () => {
