@@ -1,4 +1,6 @@
+import { parseDate } from "@internationalized/date";
 import { useState } from "react";
+import { SysCalendar } from "../../components/system/sys-calendar";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysIconButton } from "../../components/system/sys-icon-button";
 import { SysTextInput } from "../../components/system/sys-text-field";
@@ -41,6 +43,9 @@ export const Week24Screen = () => {
               <SysTextInput type="password" defaultValue="supersecret" isDisabled />
               <SysTextInput type="password" defaultValue="supersecret" isInvalid />
             </div>
+          </div>
+          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
+            <SysCalendar defaultValue={parseDate("2020-02-03")} firstDayOfWeek="mon" />
           </div>
         </div>
       </SysViewport>
