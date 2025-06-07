@@ -1,6 +1,7 @@
 import { getLocalTimeZone, parseDate, startOfMonth, today } from "@internationalized/date";
 import { useState } from "react";
 import { SysCalendar } from "../../components/system/sys-calendar";
+import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysIconButton } from "../../components/system/sys-icon-button";
@@ -33,16 +34,34 @@ export const Week24Screen = () => {
               />
             </SysIconButton>
           </div>
-          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
-            <div className="flex flex-col gap-2">
+          <div className="p-[16px] flex flex-row gap-2">
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysTextInput placeholder="Placeholder" />
               <SysTextInput defaultValue="Text" />
               <SysTextInput defaultValue="Text" isDisabled />
-              <SysTextInput defaultValue="Text" isInvalid />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysTextInput type="password" placeholder="Placeholder" />
               <SysTextInput type="password" defaultValue="supersecret" />
               <SysTextInput type="password" defaultValue="supersecret" isDisabled />
-              <SysTextInput type="password" defaultValue="supersecret" isInvalid />
+            </div>
+          </div>
+          <div className="p-[16px] flex flex-row gap-2">
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysCurrencyInput code="USD" symbol="$" placeholder="Placeholder" />
+              <SysCurrencyInput code="USD" symbol="$" defaultValue={12345} />
+              <SysCurrencyInput code="USD" symbol="$" defaultValue={12345} isDisabled />
+            </div>
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysCurrencyInput locale="de-DE" code="EUR" symbol="€" placeholder="Placeholder" />
+              <SysCurrencyInput locale="de-DE" code="EUR" symbol="€" defaultValue={12345} />
+              <SysCurrencyInput
+                locale="de-DE"
+                code="EUR"
+                symbol="€"
+                defaultValue={12345}
+                isDisabled
+              />
             </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">
@@ -52,7 +71,7 @@ export const Week24Screen = () => {
               firstDayOfWeek="sun"
             />
             <SysCalendar
-              locale="de-CH"
+              locale="de-DE"
               defaultValue={startOfMonth(today(getLocalTimeZone()))}
               firstDayOfWeek="mon"
               showOutsideMonth
@@ -70,18 +89,20 @@ export const Week24Screen = () => {
                   <SysCalendar />
                 </SysDatePickerPopover>
               </SysDatePicker>
+              <SysDatePicker isDisabled locale="en-US" defaultValue={parseDate("2000-02-20")} />
             </div>
             <div className="flex flex-col gap-2 w-[250px]">
-              <SysDatePicker locale="de-CH">
+              <SysDatePicker locale="de-DE">
                 <SysDatePickerPopover>
                   <SysCalendar />
                 </SysDatePickerPopover>
               </SysDatePicker>
-              <SysDatePicker locale="de-CH" defaultValue={parseDate("2000-02-20")}>
+              <SysDatePicker locale="de-DE" defaultValue={parseDate("2000-02-20")}>
                 <SysDatePickerPopover>
                   <SysCalendar />
                 </SysDatePickerPopover>
               </SysDatePicker>
+              <SysDatePicker isDisabled locale="de-DE" defaultValue={parseDate("2000-02-20")} />
             </div>
           </div>
         </div>

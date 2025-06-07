@@ -28,6 +28,7 @@ export type SysDatePickerProps = {
   minValue?: DateValue;
   maxValue?: DateValue;
   locale?: string;
+  isDisabled?: boolean;
 };
 
 export const SysDatePicker = (props: SysDatePickerProps) => {
@@ -41,6 +42,8 @@ export const SysDatePicker = (props: SysDatePickerProps) => {
           "data-[focus-visible]:shadow-(--borders-interactive-with-active)",
           "data-[open]:shadow-(--borders-interactive-with-active)",
           "aria-[invalid=true]:!shadow-(--borders-error) invalid:!shadow-(--borders-error)",
+          "data-[disabled]:text-(--fg-disabled) data-[disabled]:!bg-(--bg-disabled)",
+          "data-[disabled]:cursor-not-allowed",
         )}
         style={{
           ...typography[".txt-compact-small"],
@@ -50,10 +53,14 @@ export const SysDatePicker = (props: SysDatePickerProps) => {
         onChange={props.onChange}
         minValue={props.minValue}
         maxValue={props.maxValue}
+        isDisabled={props.isDisabled}
       >
         {(renderProps) => (
           <Fragment>
-            <SysDatePickerInput showClearButton={renderProps.state.value !== null} />
+            <SysDatePickerInput
+              showClearButton={renderProps.state.value !== null}
+              isDisabled={props.isDisabled}
+            />
             {props.children}
           </Fragment>
         )}
@@ -64,11 +71,12 @@ export const SysDatePicker = (props: SysDatePickerProps) => {
 
 export type SysDatePickerInputProps = {
   showClearButton?: boolean;
+  isDisabled?: boolean;
 };
 
 export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
   return (
-    <Group className="flex items-center gap-2">
+    <Group className="flex items-center gap-2" isDisabled={props.isDisabled}>
       <SysDatePickerButton>
         <SysIcon name="calendar-week" variant="outlined" width={18} strokeWidth={2} />
       </SysDatePickerButton>
@@ -82,6 +90,8 @@ export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
               "data-[placeholder]:uppercase",
               "data-[placeholder]:text-(--fg-muted)",
               "data-[readonly]:text-(--fg-muted)",
+              "data-[disabled]:!bg-(--bg-disabled)",
+              "data-[disabled]:!text-(--fg-disabled)",
               // prevent the segment being focused when the user clicks outside of
               // the component, https://github.com/adobe/react-spectrum/issues/3164
               "select-none",
@@ -94,7 +104,7 @@ export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
         )}
       </DateInput>
       {props.showClearButton && (
-        <SysDatePickerClearButton>
+        <SysDatePickerClearButton isDisabled={props.isDisabled}>
           <SysIcon name="x" variant="outlined" width={18} strokeWidth={2} />
         </SysDatePickerClearButton>
       )}
@@ -104,6 +114,7 @@ export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
 
 export type SysDatePickerButtonProps = {
   children?: React.ReactNode;
+  isDisabled?: boolean;
 };
 
 export const SysDatePickerButton = (props: SysDatePickerButtonProps) => {
@@ -118,10 +129,14 @@ export const SysDatePickerButton = (props: SysDatePickerButtonProps) => {
           "data-[hovered]:bg-(--button-transparent-hover)",
           "data-[focus-visible]:bg-(--bg-interactive)",
           "data-[focus-visible]:text-(--fg-on-color)",
+          "data-[disabled]:bg-(--bg-disabled)",
+          "data-[disabled]:text-(--fg-disabled)",
+          "data-[disabled]:cursor-not-allowed",
         ],
       )}
       type="button"
       aria-label="Open calendar"
+      isDisabled={props.isDisabled}
     >
       {props.children}
     </Button>
@@ -130,6 +145,7 @@ export const SysDatePickerButton = (props: SysDatePickerButtonProps) => {
 
 export type SysDatePickerClearButtonProps = {
   children?: React.ReactNode;
+  isDisabled?: boolean;
 };
 
 export const SysDatePickerClearButton = (props: SysDatePickerClearButtonProps) => {
@@ -146,10 +162,14 @@ export const SysDatePickerClearButton = (props: SysDatePickerClearButtonProps) =
         "data-[hovered]:bg-(--button-transparent-hover)",
         "data-[focus-visible]:bg-(--bg-interactive)",
         "data-[focus-visible]:text-(--fg-on-color)",
+        "data-[disabled]:bg-(--bg-disabled)",
+        "data-[disabled]:text-(--fg-disabled)",
+        "data-[disabled]:cursor-not-allowed",
       )}
       type="button"
       aria-label="Clear"
       onPress={() => state?.setValue(null)}
+      isDisabled={props.isDisabled}
     >
       {props.children}
     </Button>

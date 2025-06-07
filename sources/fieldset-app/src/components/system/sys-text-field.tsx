@@ -1,5 +1,7 @@
-import { Input } from "react-aria-components";
+import { useState } from "react";
+import { Button, Group, Input } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
+import { SysIcon } from "./sys-icon";
 import { typography } from "./sys-tokens";
 
 // https://docs.medusajs.com/ui/components/input
@@ -18,8 +20,13 @@ export type SysTextInputProps = {
 };
 
 export const SysTextInput = (props: SysTextInputProps) => {
+  const [inputType, setInputType] = useState(props.type ?? "text");
+  const onShowPasswordButtonPress = () => {
+    setInputType(inputType === "password" ? "text" : "password");
+  };
+
   return (
-    <div className="relative">
+    <Group className="relative">
       <Input
         className={classNames(
           "w-full appearance-none rounded-md outline-none",
@@ -36,15 +43,16 @@ export const SysTextInput = (props: SysTextInputProps) => {
           ],
           [props.size === undefined && "h-8 px-2 py-1.5"],
           [props.size === "base" && "h-8 px-2 py-1.5"],
-          [props.size === "small" && "h-y px-2 py-1"],
-          props.type === "password" && "!font-[Inter,_sans-serif]",
+          [props.size === "small" && "h-7 px-2 py-1"],
+          props.type === "password" && "pr-10", // px-8 and px-2.
+          inputType === "password" && "!font-[Inter,_sans-serif]",
         )}
         style={{
           ...(props.size === undefined && typography[".txt-compact-small"]),
           ...(props.size === "base" && typography[".txt-compact-small"]),
           ...(props.size === "small" && typography[".txt-compact-small"]),
         }}
-        type={props.type ?? "text"}
+        type={inputType}
         placeholder={props.placeholder}
         defaultValue={props.defaultValue}
         value={props.value}
@@ -52,6 +60,37 @@ export const SysTextInput = (props: SysTextInputProps) => {
         disabled={props.isDisabled}
         aria-invalid={props.isInvalid}
       />
-    </div>
+      {props.type === "password" && (
+        <div
+          className={classNames(
+            "absolute right-0 bottom-0 h-full flex items-center justify-center",
+            "border-l border-(--border-base)",
+            [props.size === undefined && "h-8 w-8"],
+            [props.size === "base" && "h-8 w-8"],
+            [props.size === "small" && "h-8 w-7"],
+          )}
+        >
+          <Button
+            className={classNames(
+              "flex items-center justify-center",
+              "cursor-pointer h-fit w-fit rounded-sm outline-none",
+              "text-(--fg-muted)",
+              "data-[hovered]:text-(--fg-base)",
+              "data-[pressed]:text-(--fg-base)",
+              "data-[focus-visible]:text-(--fg-base)",
+              "data-[focus-visible]:shadow-(--borders-interactive-with-focus)",
+              "data-[disabled]:text-(--fg-disabled)",
+              "data-[disabled]:cursor-not-allowed",
+            )}
+            type="button"
+            onPress={onShowPasswordButtonPress}
+            isDisabled={props.isDisabled}
+          >
+            {inputType === "password" && <SysIcon name="eye" variant="outlined" width={16} />}
+            {inputType === "text" && <SysIcon name="eye-off" variant="outlined" width={16} />}
+          </Button>
+        </div>
+      )}
+    </Group>
   );
 };
