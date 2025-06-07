@@ -88,6 +88,7 @@ export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
             )}
             segment={segment}
           >
+            {/* TODO(hastebrot): segments are focused when user clicks twice outside. */}
             <span>{segment.text}</span>
           </DateSegment>
         )}
