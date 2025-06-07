@@ -8,6 +8,7 @@ export type SysIconButtonProps = {
   size?: "base" | "xsmall" | "small" | "large" | "xlarge";
   isDisabled?: boolean;
   onPress?: () => void;
+  isCalendarButton?: boolean;
 };
 
 export const SysIconButton = (props: SysIconButtonProps) => {
@@ -41,6 +42,7 @@ export const SysIconButton = (props: SysIconButtonProps) => {
           props.size === "large" && "h-10 w-10 p-2.5",
           props.size === "xlarge" && "h-12 w-12 p-3.5",
         ],
+        props.isCalendarButton && "!rounded-[4px]",
       )}
       isDisabled={props.isDisabled}
       onPress={props.onPress}
