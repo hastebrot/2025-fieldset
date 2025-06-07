@@ -34,6 +34,8 @@ export const SysPopover = (props: SysPopoverProps) => {
       isOpen={props.isOpen}
       onOpenChange={props.onOpenChange}
       isNonModal={props.isNonModal}
+      // TODO(hastebrot): it should not flip anymore while the popover is open.
+      shouldFlip={true}
     >
       <div {...focusWithinProps}>{props.children}</div>
     </Popover>
