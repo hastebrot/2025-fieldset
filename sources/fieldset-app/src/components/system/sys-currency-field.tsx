@@ -1,4 +1,4 @@
-import { Group, I18nProvider, Input, NumberField } from "react-aria-components";
+import { Group, I18nProvider, Input, Label, NumberField } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { typography } from "./sys-tokens";
 
@@ -12,11 +12,11 @@ export type SysCurrencyInputProps = {
   value?: number;
   onValueChange?: (value: number) => void;
   size?: "base" | "small";
+  symbol?: string;
+  code?: string;
   isDisabled?: boolean;
   isInvalid?: boolean;
   locale?: string;
-  symbol?: string;
-  code?: string;
   fixedDecimalLength?: number;
 };
 
@@ -26,9 +26,9 @@ export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
       <NumberField
         className={classNames(
           "group w-full appearance-none rounded-md outline-none overflow-hidden",
-          "caret-(--fg-base) bg-(--bg-field) data-[hovered]:bg-(--bg-field-hover)",
+          "bg-(--bg-field) has-data-[hovered]:bg-(--bg-field-hover)",
           "shadow-(--borders-base) placeholder-(--fg-muted) text-(--fg-base)",
-          "data-[focus-within]:!shadow-(--borders-interactive-with-active)",
+          "has-data-[focused]:!shadow-(--borders-interactive-with-active)",
           "data-[disabled]:text-(--fg-disabled) data-[disabled]:!bg-(--bg-disabled)",
           "data-[disabled]:placeholder-(--fg-disabled) data-[disabled]:cursor-not-allowed",
         )}
@@ -44,12 +44,12 @@ export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
           maximumFractionDigits: props.fixedDecimalLength ?? 2,
         }}
       >
-        <Group className="relative flex flex-row items-center gap-2">
-          <div
+        <Group className="relative flex flex-row items-center gap-2 cursor-text">
+          <Label
             role="presentation"
             className={classNames(
               "shrink-0 flex items-center justify-center w-fit min-w-[32px]",
-              "border-r border-(--border-base)",
+              "border-r border-(--border-base) cursor-text",
               [props.size === undefined && "h-8 px-2 py-1.5"],
               [props.size === "base" && "h-8 px-2 py-1.5"],
               [props.size === "small" && "h-y px-2 py-1"],
@@ -63,14 +63,14 @@ export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
             >
               {props.code}
             </span>
-          </div>
+          </Label>
           <Input
             className={classNames(
-              "flex-1 text-right outline-none h-full w-full",
-              "bg-transparent group-data-[disabled]:cursor-not-allowed",
-              [props.size === undefined && "h-8 px-2 py-1.5"],
-              [props.size === "base" && "h-8 px-2 py-1.5"],
-              [props.size === "small" && "h-y px-2 py-1"],
+              "flex-1 text-right h-full w-full outline-none appearance-none",
+              "bg-transparent caret-(--fg-base) group-data-[disabled]:cursor-not-allowed",
+              [props.size === undefined && "h-8 py-1.5"],
+              [props.size === "base" && "h-8 py-1.5"],
+              [props.size === "small" && "h-y py-1"],
             )}
             style={{
               ...(props.size === undefined && typography[".txt-compact-small"]),
@@ -79,11 +79,11 @@ export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
             }}
             placeholder={props.placeholder}
           />
-          <div
+          <Label
             role="presentation"
             className={classNames(
               "shrink-0 flex items-center justify-center w-fit min-w-[32px]",
-              "border-l border-(--border-base)",
+              "border-l border-(--border-base) cursor-text",
               [props.size === undefined && "h-8 px-2 py-1.5"],
               [props.size === "base" && "h-8 px-2 py-1.5"],
               [props.size === "small" && "h-y px-2 py-1"],
@@ -97,7 +97,7 @@ export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
             >
               {props.symbol}
             </span>
-          </div>
+          </Label>
         </Group>
       </NumberField>
     </I18nProvider>
