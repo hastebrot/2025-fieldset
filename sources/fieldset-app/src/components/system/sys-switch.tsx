@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useLabel } from "react-aria";
 import { Switch } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { SysLabel } from "./sys-label";
@@ -18,12 +18,12 @@ export type SysSwitchProps = {
 
 export const SysSwitch = ({ ...props }: SysSwitchProps) => {
   props.size = props.size ?? "base";
-  const id = useId();
-  const labelId = useId();
+  const { labelProps, fieldProps } = useLabel({ label: "sys-switch" });
 
   return (
     <div className="flex items-center gap-3">
       <Switch
+        {...fieldProps}
         className={classNames(
           "group relative shrink-0 inline-flex items-center",
           "rounded-full outline-none cursor-pointer",
@@ -38,7 +38,6 @@ export const SysSwitch = ({ ...props }: SysSwitchProps) => {
             props.size === "small" && "h-[16px] w-[28px]",
           ],
         )}
-        id={id}
         defaultSelected={props.defaultSelected}
         isSelected={props.isSelected}
         onChange={props.onChange}
@@ -63,7 +62,7 @@ export const SysSwitch = ({ ...props }: SysSwitchProps) => {
           )}
         ></div>
       </Switch>
-      <label id={labelId} htmlFor={id}>
+      <label {...labelProps}>
         <SysLabel size={props.size}>{props.children}</SysLabel>
       </label>
     </div>
