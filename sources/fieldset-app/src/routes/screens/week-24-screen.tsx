@@ -1,4 +1,4 @@
-import { parseDate } from "@internationalized/date";
+import { getLocalTimeZone, parseDate, startOfMonth, today } from "@internationalized/date";
 import { useState } from "react";
 import { SysCalendar } from "../../components/system/sys-calendar";
 import { SysIcon } from "../../components/system/sys-icon";
@@ -44,8 +44,16 @@ export const Week24Screen = () => {
               <SysTextInput type="password" defaultValue="supersecret" isInvalid />
             </div>
           </div>
-          <div className="p-[16px] grid grid-cols-2 items-start gap-2">
-            <SysCalendar defaultValue={parseDate("2020-02-03")} firstDayOfWeek="mon" />
+          <div className="p-[16px] flex flex-row gap-2">
+            <SysCalendar
+              defaultValue={parseDate("2000-02-01")}
+              firstDayOfWeek="sun"
+              hideOutsideMonth
+            />
+            <SysCalendar
+              defaultValue={startOfMonth(today(getLocalTimeZone()))}
+              firstDayOfWeek="mon"
+            />
           </div>
         </div>
       </SysViewport>
