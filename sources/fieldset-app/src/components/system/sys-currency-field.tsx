@@ -32,6 +32,11 @@ export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
           "data-[disabled]:text-(--fg-disabled) data-[disabled]:!bg-(--bg-disabled)",
           "data-[disabled]:placeholder-(--fg-disabled) data-[disabled]:cursor-not-allowed",
         )}
+        style={{
+          ...(props.size === undefined && typography[".txt-compact-small"]),
+          ...(props.size === "base" && typography[".txt-compact-small"]),
+          ...(props.size === "small" && typography[".txt-compact-small"]),
+        }}
         defaultValue={props.defaultValue}
         value={props.value}
         onChange={props.onValueChange}
