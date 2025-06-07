@@ -34,9 +34,9 @@ export const Week24Screen = () => {
           </div>
           <div className="p-[16px] grid grid-cols-2 items-start gap-2">
             <div className="flex flex-col gap-2">
-              <SysTextInput placeholder="Placeholder" />
-              <SysTextInput placeholder="Placeholder" isDisabled />
-              <SysTextInput placeholder="Placeholder" isInvalid />
+              <SysTextInput defaultValue="Text" />
+              <SysTextInput defaultValue="Text" isDisabled />
+              <SysTextInput defaultValue="Text" isInvalid />
             </div>
             <div className="flex flex-col gap-2">
               <SysTextInput type="password" defaultValue="supersecret" />
