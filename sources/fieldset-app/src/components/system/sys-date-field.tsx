@@ -1,57 +1,58 @@
-import { Input } from "react-aria-components";
-import { classNames } from "../../helpers/clsx";
-import { typography } from "./sys-tokens";
+import {
+  Button,
+  DateInput,
+  DatePicker,
+  DateSegment,
+  Dialog,
+  Group,
+  I18nProvider,
+  Popover,
+  type DateValue,
+} from "react-aria-components";
+import { SysCalendar } from "./sys-calendar";
+import { SysTheme } from "./sys-theme";
 
 // https://docs.medusajs.com/ui/components/date-picker
 // https://github.com/medusajs/medusa/blob/v2.8.4/packages/design-system/ui/src/components/date-picker/date-picker.tsx
 // https://react-spectrum.adobe.com/react-aria/DatePicker.html
 
 export type SysDatePickerProps = {
-  placeholder?: string;
-  defaultValue?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-  type?: "text" | "password";
-  size?: "base" | "small";
-  isDisabled?: boolean;
-  isInvalid?: boolean;
+  defaultValue?: DateValue;
+  value?: DateValue;
+  onChange?: (value: DateValue | null) => void;
+  minValue?: DateValue;
+  maxValue?: DateValue;
+  locale?: string;
 };
 
 export const SysDatePicker = (props: SysDatePickerProps) => {
   return (
-    <div className="relative">
-      <Input
-        className={classNames(
-          "w-full appearance-none rounded-md outline-none",
-          "caret-(--fg-base) bg-(--bg-field) data-[hovered]:bg-(--bg-field-hover)",
-          "shadow-(--borders-base) placeholder-(--fg-muted) text-(--fg-base)",
-          "focus-visible:shadow-(--borders-interactive-with-active)",
-          "data-[disabled]:text-(--fg-disabled) data-[disabled]:!bg-(--bg-disabled)",
-          "data-[disabled]:placeholder-(--fg-disabled) data-[disabled]:cursor-not-allowed",
-          "aria-[invalid=true]:!shadow-(--borders-error) invalid:!shadow-(--borders-error)",
-          [
-            "[&::--webkit-search-cancel-button]:hidden",
-            "[&::-webkit-search-cancel-button]:hidden",
-            "[&::-webkit-search-decoration]:hidden",
-          ],
-          [props.size === undefined && "h-8 px-2 py-1.5"],
-          [props.size === "base" && "h-8 px-2 py-1.5"],
-          [props.size === "small" && "h-y px-2 py-1"],
-          props.type === "password" && "!font-[Inter,_sans-serif]",
-        )}
-        style={{
-          ...(props.size === undefined && typography[".txt-compact-small"]),
-          ...(props.size === "base" && typography[".txt-compact-small"]),
-          ...(props.size === "small" && typography[".txt-compact-small"]),
-        }}
-        type={props.type ?? "text"}
-        placeholder={props.placeholder}
+    <I18nProvider locale={props.locale ?? "en-US"}>
+      <DatePicker
         defaultValue={props.defaultValue}
         value={props.value}
-        onChange={(event) => props.onValueChange && props.onValueChange(event.target.value)}
-        disabled={props.isDisabled}
-        aria-invalid={props.isInvalid}
-      />
-    </div>
+        onChange={props.onChange}
+        minValue={props.minValue}
+        maxValue={props.maxValue}
+      >
+        <SysDatePickerInput />
+        <Popover>
+          <Dialog className="z-10">
+            <SysTheme>
+              <SysCalendar />
+            </SysTheme>
+          </Dialog>
+        </Popover>
+      </DatePicker>
+    </I18nProvider>
+  );
+};
+
+export const SysDatePickerInput = () => {
+  return (
+    <Group>
+      <Button>▼</Button>
+      <DateInput>{(segment) => <DateSegment segment={segment} />}</DateInput>
+    </Group>
   );
 };
