@@ -25,7 +25,7 @@ export const SysTextInput = (props: SysTextInputProps) => {
           "w-full appearance-none rounded-md outline-none",
           "caret-(--fg-base) bg-(--bg-field) data-[hovered]:bg-(--bg-field-hover)",
           "shadow-(--borders-base) placeholder-(--fg-muted) text-(--fg-base)",
-          "focus-visible:shadow-(--borders-interactive-with-active)",
+          "data-[focused]:!shadow-(--borders-interactive-with-active)",
           "data-[disabled]:text-(--fg-disabled) data-[disabled]:!bg-(--bg-disabled)",
           "data-[disabled]:placeholder-(--fg-disabled) data-[disabled]:cursor-not-allowed",
           "aria-[invalid=true]:!shadow-(--borders-error) invalid:!shadow-(--borders-error)",

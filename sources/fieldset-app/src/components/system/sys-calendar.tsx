@@ -27,7 +27,7 @@ export type SysCalendarProps = {
   locale?: string;
   firstDayOfWeek?: "sat" | "sun" | "mon" | "tue" | "wed" | "thu" | "fri";
   weekdayStyle?: "short" | "narrow" | "long";
-  hideOutsideMonth?: boolean;
+  showOutsideMonth?: boolean;
 };
 
 export const SysCalendar = (props: SysCalendarProps) => {
@@ -46,7 +46,7 @@ export const SysCalendar = (props: SysCalendarProps) => {
         <SysCalendarHeader />
         <SysCalendarGrid
           weekdayStyle={props.weekdayStyle ?? "narrow"}
-          hideOutsideMonth={props.hideOutsideMonth}
+          showOutsideMonth={props.showOutsideMonth}
         />
       </Calendar>
     </I18nProvider>
@@ -77,7 +77,7 @@ export const SysCalendarHeader = () => {
 
 export type SysCalendarGridProps = {
   weekdayStyle?: "short" | "narrow" | "long";
-  hideOutsideMonth?: boolean;
+  showOutsideMonth?: boolean;
 };
 
 export const SysCalendarGrid = (props: SysCalendarGridProps) => {
@@ -114,7 +114,7 @@ export const SysCalendarGrid = (props: SysCalendarGridProps) => {
                     "group-data-[disabled]:!bg-(--bg-base)",
                     "group-data-[disabled]:!cursor-default",
                   ],
-                  props.hideOutsideMonth && "group-data-[outside-month]:hidden",
+                  !props.showOutsideMonth && "group-data-[outside-month]:hidden",
                   isDateToday(renderProps.date) &&
                     "!bg-(--bg-highlight-hover) !text-(--fg-interactive)",
                 )}
