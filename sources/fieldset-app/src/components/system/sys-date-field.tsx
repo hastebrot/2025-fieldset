@@ -8,11 +8,11 @@ import {
   Dialog,
   Group,
   I18nProvider,
-  Popover,
   type DateValue,
 } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { SysIcon } from "./sys-icon";
+import { SysPopover } from "./sys-popover";
 import { SysTheme } from "./sys-theme";
 import { typography } from "./sys-tokens";
 
@@ -162,17 +162,17 @@ export type SysDatePickerPopoverProps = {
 
 export const SysDatePickerPopover = (props: SysDatePickerPopoverProps) => {
   return (
-    <Popover className="z-50">
+    <SysPopover isNonModal shouldCloseOnBlur>
       <SysTheme>
         <Dialog
           className={classNames(
-            "p-3 rounded-lg overflow-hidden",
+            "z-50 p-3 rounded-lg overflow-hidden",
             "bg-(--bg-base) text-(--fg-base) shadow-(--elevation-flyout)",
           )}
         >
           {props.children}
         </Dialog>
       </SysTheme>
-    </Popover>
+    </SysPopover>
   );
 };
