@@ -5,6 +5,7 @@ import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysIconButton } from "../../components/system/sys-icon-button";
+import { SysSwitch } from "../../components/system/sys-switch";
 import { SysTextInput } from "../../components/system/sys-text-field";
 import { SysTheme } from "../../components/system/sys-theme";
 import { SysViewport } from "../../components/system/sys-viewport";
@@ -33,6 +34,28 @@ export const Week24Screen = () => {
                 strokeWidth={2}
               />
             </SysIconButton>
+          </div>
+          <div className="p-[16px] flex gap-10">
+            <div className="flex flex-col gap-2">
+              <SysSwitch>Label</SysSwitch>
+              <SysSwitch defaultSelected>Label</SysSwitch>
+              <SysSwitch isDisabled>Label</SysSwitch>
+              <SysSwitch isDisabled defaultSelected>
+                Label
+              </SysSwitch>
+            </div>
+            <div className="flex flex-col gap-2">
+              <SysSwitch size="small">Label</SysSwitch>
+              <SysSwitch size="small" defaultSelected>
+                Label
+              </SysSwitch>
+              <SysSwitch size="small" isDisabled>
+                Label
+              </SysSwitch>
+              <SysSwitch size="small" isDisabled defaultSelected>
+                Label
+              </SysSwitch>
+            </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">
             <div className="flex flex-col gap-2 w-[250px]">
