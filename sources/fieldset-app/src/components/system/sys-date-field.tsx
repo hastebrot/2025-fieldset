@@ -2,11 +2,11 @@ import { Input } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { typography } from "./sys-tokens";
 
-// https://docs.medusajs.com/ui/components/input
-// https://github.com/medusajs/medusa/blob/v2.8.4/packages/design-system/ui/src/components/input/input.tsx
-// https://react-spectrum.adobe.com/react-aria/TextField.html
+// https://docs.medusajs.com/ui/components/date-picker
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/design-system/ui/src/components/date-picker/date-picker.tsx
+// https://react-spectrum.adobe.com/react-aria/DatePicker.html
 
-export type SysTextInputProps = {
+export type SysDatePickerProps = {
   placeholder?: string;
   defaultValue?: string;
   value?: string;
@@ -17,7 +17,7 @@ export type SysTextInputProps = {
   isInvalid?: boolean;
 };
 
-export const SysTextInput = (props: SysTextInputProps) => {
+export const SysDatePicker = (props: SysDatePickerProps) => {
   return (
     <div className="relative">
       <Input
