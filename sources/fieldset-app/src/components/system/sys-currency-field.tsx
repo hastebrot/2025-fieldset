@@ -1,4 +1,4 @@
-import { Group, Input } from "react-aria-components";
+import { Group, I18nProvider, Input, NumberField } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { typography } from "./sys-tokens";
 
@@ -8,47 +8,98 @@ import { typography } from "./sys-tokens";
 
 export type SysCurrencyInputProps = {
   placeholder?: string;
-  defaultValue?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
+  defaultValue?: number;
+  value?: number;
+  onValueChange?: (value: number) => void;
   size?: "base" | "small";
   isDisabled?: boolean;
   isInvalid?: boolean;
+  locale?: string;
+  symbol?: string;
+  code?: string;
+  fixedDecimalLength?: number;
 };
 
 export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
   return (
-    <Group className="relative">
-      <Input
+    <I18nProvider locale={props.locale ?? "en-US"}>
+      <NumberField
         className={classNames(
-          "w-full appearance-none rounded-md outline-none",
+          "group w-full appearance-none rounded-md outline-none overflow-hidden",
           "caret-(--fg-base) bg-(--bg-field) data-[hovered]:bg-(--bg-field-hover)",
           "shadow-(--borders-base) placeholder-(--fg-muted) text-(--fg-base)",
-          "data-[focused]:!shadow-(--borders-interactive-with-active)",
+          "data-[focus-within]:!shadow-(--borders-interactive-with-active)",
           "data-[disabled]:text-(--fg-disabled) data-[disabled]:!bg-(--bg-disabled)",
           "data-[disabled]:placeholder-(--fg-disabled) data-[disabled]:cursor-not-allowed",
-          "aria-[invalid=true]:!shadow-(--borders-error) invalid:!shadow-(--borders-error)",
-          [
-            "[&::--webkit-search-cancel-button]:hidden",
-            "[&::-webkit-search-cancel-button]:hidden",
-            "[&::-webkit-search-decoration]:hidden",
-          ],
-          [props.size === undefined && "h-8 px-2 py-1.5"],
-          [props.size === "base" && "h-8 px-2 py-1.5"],
-          [props.size === "small" && "h-y px-2 py-1"],
         )}
-        style={{
-          ...(props.size === undefined && typography[".txt-compact-small"]),
-          ...(props.size === "base" && typography[".txt-compact-small"]),
-          ...(props.size === "small" && typography[".txt-compact-small"]),
-        }}
-        placeholder={props.placeholder}
         defaultValue={props.defaultValue}
         value={props.value}
-        onChange={(event) => props.onValueChange && props.onValueChange(event.target.value)}
-        disabled={props.isDisabled}
-        aria-invalid={props.isInvalid}
-      />
-    </Group>
+        onChange={props.onValueChange}
+        isDisabled={props.isDisabled}
+        isInvalid={props.isInvalid}
+        formatOptions={{
+          localeMatcher: "best fit",
+          style: "decimal",
+          minimumFractionDigits: props.fixedDecimalLength ?? 2,
+          maximumFractionDigits: props.fixedDecimalLength ?? 2,
+        }}
+      >
+        <Group className="relative flex flex-row items-center gap-2">
+          <div
+            role="presentation"
+            className={classNames(
+              "shrink-0 flex items-center justify-center w-fit min-w-[32px]",
+              "border-r border-(--border-base)",
+              [props.size === undefined && "h-8 px-2 py-1.5"],
+              [props.size === "base" && "h-8 px-2 py-1.5"],
+              [props.size === "small" && "h-y px-2 py-1"],
+            )}
+          >
+            <span
+              className={classNames(
+                "text-(--fg-muted) pointer-events-none select-none",
+                "data-[disabled]:text-(--fg-disabled)",
+              )}
+            >
+              {props.code}
+            </span>
+          </div>
+          <Input
+            className={classNames(
+              "flex-1 text-right outline-none h-full w-full",
+              "bg-transparent group-data-[disabled]:cursor-not-allowed",
+              [props.size === undefined && "h-8 px-2 py-1.5"],
+              [props.size === "base" && "h-8 px-2 py-1.5"],
+              [props.size === "small" && "h-y px-2 py-1"],
+            )}
+            style={{
+              ...(props.size === undefined && typography[".txt-compact-small"]),
+              ...(props.size === "base" && typography[".txt-compact-small"]),
+              ...(props.size === "small" && typography[".txt-compact-small"]),
+            }}
+            placeholder={props.placeholder}
+          />
+          <div
+            role="presentation"
+            className={classNames(
+              "shrink-0 flex items-center justify-center w-fit min-w-[32px]",
+              "border-l border-(--border-base)",
+              [props.size === undefined && "h-8 px-2 py-1.5"],
+              [props.size === "base" && "h-8 px-2 py-1.5"],
+              [props.size === "small" && "h-y px-2 py-1"],
+            )}
+          >
+            <span
+              className={classNames(
+                "text-(--fg-muted) pointer-events-none select-none",
+                "group-data-[disabled]:text-(--fg-disabled)",
+              )}
+            >
+              {props.symbol}
+            </span>
+          </div>
+        </Group>
+      </NumberField>
+    </I18nProvider>
   );
 };

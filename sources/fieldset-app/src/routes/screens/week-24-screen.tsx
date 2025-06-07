@@ -48,9 +48,20 @@ export const Week24Screen = () => {
           </div>
           <div className="p-[16px] flex flex-row gap-2">
             <div className="flex flex-col gap-2 w-[250px]">
-              <SysCurrencyInput placeholder="Placeholder" />
-              <SysCurrencyInput defaultValue="Text" />
-              <SysCurrencyInput defaultValue="Text" isDisabled />
+              <SysCurrencyInput code="USD" symbol="$" placeholder="Placeholder" />
+              <SysCurrencyInput code="USD" symbol="$" defaultValue={12345} />
+              <SysCurrencyInput code="USD" symbol="$" defaultValue={12345} isDisabled />
+            </div>
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysCurrencyInput locale="de-DE" code="EUR" symbol="€" placeholder="Placeholder" />
+              <SysCurrencyInput locale="de-DE" code="EUR" symbol="€" defaultValue={12345} />
+              <SysCurrencyInput
+                locale="de-DE"
+                code="EUR"
+                symbol="€"
+                defaultValue={12345}
+                isDisabled
+              />
             </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">
@@ -60,7 +71,7 @@ export const Week24Screen = () => {
               firstDayOfWeek="sun"
             />
             <SysCalendar
-              locale="de-CH"
+              locale="de-DE"
               defaultValue={startOfMonth(today(getLocalTimeZone()))}
               firstDayOfWeek="mon"
               showOutsideMonth
@@ -78,18 +89,20 @@ export const Week24Screen = () => {
                   <SysCalendar />
                 </SysDatePickerPopover>
               </SysDatePicker>
+              <SysDatePicker isDisabled locale="en-US" defaultValue={parseDate("2000-02-20")} />
             </div>
             <div className="flex flex-col gap-2 w-[250px]">
-              <SysDatePicker locale="de-CH">
+              <SysDatePicker locale="de-DE">
                 <SysDatePickerPopover>
                   <SysCalendar />
                 </SysDatePickerPopover>
               </SysDatePicker>
-              <SysDatePicker locale="de-CH" defaultValue={parseDate("2000-02-20")}>
+              <SysDatePicker locale="de-DE" defaultValue={parseDate("2000-02-20")}>
                 <SysDatePickerPopover>
                   <SysCalendar />
                 </SysDatePickerPopover>
               </SysDatePicker>
+              <SysDatePicker isDisabled locale="de-DE" defaultValue={parseDate("2000-02-20")} />
             </div>
           </div>
         </div>
