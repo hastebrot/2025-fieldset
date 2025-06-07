@@ -2,22 +2,21 @@ import { Group, Input } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { typography } from "./sys-tokens";
 
-// https://docs.medusajs.com/ui/components/input
-// https://github.com/medusajs/medusa/blob/v2.8.4/packages/design-system/ui/src/components/input/input.tsx
-// https://react-spectrum.adobe.com/react-aria/TextField.html
+// https://docs.medusajs.com/ui/components/currency-input
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/design-system/ui/src/components/currency-input/currency-input.tsx
+// https://react-spectrum.adobe.com/react-aria/NumberField.html
 
-export type SysTextInputProps = {
+export type SysCurrencyInputProps = {
   placeholder?: string;
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
-  type?: "text" | "password";
   size?: "base" | "small";
   isDisabled?: boolean;
   isInvalid?: boolean;
 };
 
-export const SysTextInput = (props: SysTextInputProps) => {
+export const SysCurrencyInput = (props: SysCurrencyInputProps) => {
   return (
     <Group className="relative">
       <Input
@@ -37,14 +36,12 @@ export const SysTextInput = (props: SysTextInputProps) => {
           [props.size === undefined && "h-8 px-2 py-1.5"],
           [props.size === "base" && "h-8 px-2 py-1.5"],
           [props.size === "small" && "h-y px-2 py-1"],
-          props.type === "password" && "!font-[Inter,_sans-serif]",
         )}
         style={{
           ...(props.size === undefined && typography[".txt-compact-small"]),
           ...(props.size === "base" && typography[".txt-compact-small"]),
           ...(props.size === "small" && typography[".txt-compact-small"]),
         }}
-        type={props.type ?? "text"}
         placeholder={props.placeholder}
         defaultValue={props.defaultValue}
         value={props.value}
