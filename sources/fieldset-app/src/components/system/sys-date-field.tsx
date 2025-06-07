@@ -136,6 +136,7 @@ export const SysDatePickerClearButton = (props: SysDatePickerClearButtonProps) =
 
   return (
     <Button
+      // use slot=null to prevent button being used to trigger calendar popover.
       slot={null}
       className={classNames(
         "flex items-center justify-center size-8",
