@@ -1,4 +1,15 @@
-import { Button, ListBox, ListBoxItem, Select, SelectValue } from "react-aria-components";
+import { Fragment } from "react";
+import {
+  Button,
+  Header,
+  ListBox,
+  ListBoxItem,
+  ListBoxSection,
+  Select,
+  SelectValue,
+  Separator,
+  Text,
+} from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { SysIcon } from "./sys-icon";
 import { SysPopover } from "./sys-popover";
@@ -64,7 +75,14 @@ export const SysSelect = ({ ...props }: SysSelectProps) => {
             "data-[placeholder]:text-(--fg-muted)",
             "group-data-[disabled]:!text-(--fg-disabled)",
           )}
-        />
+        >
+          {(renderProps) => (
+            <Fragment>
+              {renderProps.isPlaceholder && renderProps.defaultChildren}
+              {!renderProps.isPlaceholder && <span>{renderProps.selectedText}</span>}
+            </Fragment>
+          )}
+        </SelectValue>
         <div
           className={classNames(
             "flex items-center justify-center",
@@ -93,11 +111,11 @@ export const SysSelectList = (props: SysSelectListProps) => {
       <div
         className={classNames(
           "relative bg-(--bg-component) text-(--fg-base) shadow-(--elevation-flyout)",
-          "min-w-(--trigger-width) max-h-[200px]",
+          "min-w-(--trigger-width) _max-h-[200px]",
           "overflow-hidden rounded-lg",
         )}
       >
-        <ListBox className="outline-none w-full p-1" shouldFocusOnHover>
+        <ListBox className="outline-none w-full p-1" selectionMode="single">
           {props.children}
         </ListBox>
       </div>
@@ -108,6 +126,7 @@ export const SysSelectList = (props: SysSelectListProps) => {
 export type SysSelectItemProps = {
   value: string;
   label: string;
+  isDisabled?: boolean;
 };
 
 export const SysSelectItem = (props: SysSelectItemProps) => {
@@ -115,7 +134,7 @@ export const SysSelectItem = (props: SysSelectItemProps) => {
     <ListBoxItem
       id={props.value}
       className={classNames(
-        "grid grid-cols-[15px_1fr] items-center gap-x-2 px-2 py-1.5",
+        "group grid grid-cols-[15px_1fr] items-center gap-x-2 px-2 py-1.5",
         "rounded-[4px] cursor-pointer outline-none",
         "bg-(--bg-component)",
         "data-[hovered]:bg-(--bg-component-hover)",
@@ -126,9 +145,49 @@ export const SysSelectItem = (props: SysSelectItemProps) => {
       style={{
         ...typography[".txt-compact-small"],
       }}
+      textValue={props.label}
+      isDisabled={props.isDisabled}
     >
-      <span></span>
-      <div className="flex-1 truncate">{props.label}</div>
+      <div className="invisible group-data-[selected]:visible">
+        <div className="size-[15px] flex items-center justify-center">
+          <SysIcon name="check" variant="outlined" width={11} strokeWidth={2.5} />
+        </div>
+      </div>
+      <Text slot="label" className="flex-1 truncate">
+        {props.label}
+      </Text>
     </ListBoxItem>
+  );
+};
+
+export type SysSelectSectionProps = {
+  children?: React.ReactNode;
+  label?: string;
+};
+
+export const SysSelectSection = (props: SysSelectSectionProps) => {
+  return (
+    <ListBoxSection>
+      {props.label && (
+        <Header
+          className="text-(--fg-muted) px-2 py-1.5"
+          style={{ ...typography[".txt-compact-xsmall-plus"] }}
+        >
+          {props.label}
+        </Header>
+      )}
+      {props.children}
+    </ListBoxSection>
+  );
+};
+
+export const SysSelectSeparator = () => {
+  return (
+    <Separator
+      className={classNames(
+        "bg-(--border-component) -mx-1 my-1 h-0.5",
+        "border-t border-t-(--border-menu-top) border-b border-b-(--border-menu-bot)",
+      )}
+    />
   );
 };

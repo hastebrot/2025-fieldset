@@ -12,7 +12,12 @@ import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysIconButton } from "../../components/system/sys-icon-button";
-import { SysSelect, SysSelectItem } from "../../components/system/sys-select-field";
+import {
+  SysSelect,
+  SysSelectItem,
+  SysSelectSection,
+  SysSelectSeparator,
+} from "../../components/system/sys-select-field";
 import { SysSwitch } from "../../components/system/sys-switch";
 import { SysTextInput } from "../../components/system/sys-text-field";
 import { SysTheme } from "../../components/system/sys-theme";
@@ -98,10 +103,34 @@ export const Week24Screen = () => {
                 <SysSelectItem value="option-1" label="Option 1" />
                 <SysSelectItem value="option-2" label="Option 2" />
               </SysSelect>
-              <SysSelect isDisabled defaultValue="option-1" placeholder="Placeholder">
-                <SysSelectItem value="option-1" label="Option 1" />
-                <SysSelectItem value="option-2" label="Option 2" />
+              <SysSelect isDisabled defaultValue="option-1" placeholder="Placeholder" />
+            </div>
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysSelect placeholder="Placeholder">
+                <SysSelectItem value="no-option" label="No option" />
+                <SysSelectSeparator />
+                <SysSelectSection label="Section A">
+                  <SysSelectItem value="option-1" label="Option 1" />
+                  <SysSelectItem value="option-2" label="Option 2" />
+                </SysSelectSection>
+                <SysSelectSection label="Section B">
+                  <SysSelectItem value="option-3" label="Option 3" />
+                  <SysSelectItem value="option-4" label="Option 4" />
+                </SysSelectSection>
               </SysSelect>
+              <SysSelect defaultValue="option-1" placeholder="Placeholder">
+                <SysSelectItem value="no-option" label="No option" />
+                <SysSelectSeparator />
+                <SysSelectSection label="Section A">
+                  <SysSelectItem value="option-1" label="Option 1" />
+                  <SysSelectItem value="option-2" label="Option 2" />
+                </SysSelectSection>
+                <SysSelectSection label="Section B">
+                  <SysSelectItem value="option-3" label="Option 3" />
+                  <SysSelectItem value="option-4" label="Option 4" />
+                </SysSelectSection>
+              </SysSelect>
+              <SysSelect isDisabled defaultValue="option-1" placeholder="Placeholder" />
             </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">
