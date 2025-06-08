@@ -1,4 +1,10 @@
-import { getLocalTimeZone, parseDate, startOfMonth, today } from "@internationalized/date";
+import {
+  getLocalTimeZone,
+  parseDate,
+  parseDateTime,
+  startOfMonth,
+  today,
+} from "@internationalized/date";
 import { useState } from "react";
 import { SysButtonGroup, SysButtonGroupItem } from "../../components/system/sys-button-group";
 import { SysCalendar } from "../../components/system/sys-calendar";
@@ -6,6 +12,12 @@ import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysIconButton } from "../../components/system/sys-icon-button";
+import {
+  SysSelect,
+  SysSelectItem,
+  SysSelectSection,
+  SysSelectSeparator,
+} from "../../components/system/sys-select-field";
 import { SysSwitch } from "../../components/system/sys-switch";
 import { SysTextInput } from "../../components/system/sys-text-field";
 import { SysTheme } from "../../components/system/sys-theme";
@@ -83,6 +95,46 @@ export const Week24Screen = () => {
           </div>
           <div className="p-[16px] flex flex-row gap-2">
             <div className="flex flex-col gap-2 w-[250px]">
+              <SysSelect placeholder="Placeholder">
+                <SysSelectItem value="option-1" label="Option 1" />
+                <SysSelectItem value="option-2" label="Option 2" />
+              </SysSelect>
+              <SysSelect defaultValue="option-1" placeholder="Placeholder">
+                <SysSelectItem value="option-1" label="Option 1" />
+                <SysSelectItem value="option-2" label="Option 2" />
+              </SysSelect>
+              <SysSelect isDisabled defaultValue="option-1" placeholder="Placeholder" />
+            </div>
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysSelect placeholder="Placeholder">
+                <SysSelectItem value="no-option" label="No option" />
+                <SysSelectSeparator />
+                <SysSelectSection label="Section A">
+                  <SysSelectItem value="option-1" label="Option 1" />
+                  <SysSelectItem value="option-2" label="Option 2" />
+                </SysSelectSection>
+                <SysSelectSection label="Section B">
+                  <SysSelectItem value="option-3" label="Option 3" />
+                  <SysSelectItem value="option-4" label="Option 4" />
+                </SysSelectSection>
+              </SysSelect>
+              <SysSelect defaultValue="option-1" placeholder="Placeholder">
+                <SysSelectItem value="no-option" label="No option" />
+                <SysSelectSeparator />
+                <SysSelectSection label="Section A">
+                  <SysSelectItem value="option-1" label="Option 1" />
+                  <SysSelectItem value="option-2" label="Option 2" />
+                </SysSelectSection>
+                <SysSelectSection label="Section B">
+                  <SysSelectItem value="option-3" label="Option 3" />
+                  <SysSelectItem value="option-4" label="Option 4" />
+                </SysSelectSection>
+              </SysSelect>
+              <SysSelect isDisabled defaultValue="option-1" placeholder="Placeholder" />
+            </div>
+          </div>
+          <div className="p-[16px] flex flex-row gap-2">
+            <div className="flex flex-col gap-2 w-[250px]">
               <SysTextInput placeholder="Placeholder" />
               <SysTextInput defaultValue="Text" />
               <SysTextInput defaultValue="Text" isDisabled />
@@ -150,6 +202,42 @@ export const Week24Screen = () => {
                 </SysDatePickerPopover>
               </SysDatePicker>
               <SysDatePicker isDisabled locale="de-DE" defaultValue={parseDate("2000-02-20")} />
+            </div>
+          </div>
+          <div className="p-[16px] flex flex-row gap-2">
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysDatePicker locale="en-US" granularity="minute">
+                <SysDatePickerPopover>
+                  <SysCalendar />
+                </SysDatePickerPopover>
+              </SysDatePicker>
+              <SysDatePicker locale="en-US" defaultValue={parseDateTime("2023-02-01T20:30:45")}>
+                <SysDatePickerPopover>
+                  <SysCalendar />
+                </SysDatePickerPopover>
+              </SysDatePicker>
+              <SysDatePicker
+                isDisabled
+                locale="en-US"
+                defaultValue={parseDateTime("2023-02-01T20:30:45")}
+              />
+            </div>
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysDatePicker locale="de-DE" granularity="minute">
+                <SysDatePickerPopover>
+                  <SysCalendar />
+                </SysDatePickerPopover>
+              </SysDatePicker>
+              <SysDatePicker locale="de-DE" defaultValue={parseDateTime("2023-02-01T20:30:45")}>
+                <SysDatePickerPopover>
+                  <SysCalendar />
+                </SysDatePickerPopover>
+              </SysDatePicker>
+              <SysDatePicker
+                isDisabled
+                locale="de-DE"
+                defaultValue={parseDateTime("2023-02-01T20:30:45")}
+              />
             </div>
           </div>
         </div>
