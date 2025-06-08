@@ -30,12 +30,16 @@ export const SysTextInput = (props: SysTextInputProps) => {
       <Input
         className={classNames(
           "w-full appearance-none rounded-md outline-none",
-          "caret-(--fg-base) bg-(--bg-field) data-[hovered]:bg-(--bg-field-hover)",
-          "shadow-(--borders-base) placeholder-(--fg-muted) text-(--fg-base)",
+          "bg-(--bg-field) shadow-(--borders-base)",
+          "placeholder-(--fg-muted) text-(--fg-base) caret-(--fg-base)",
           "data-[focused]:!shadow-(--borders-interactive-with-active)",
-          "data-[disabled]:text-(--fg-disabled) data-[disabled]:!bg-(--bg-disabled)",
-          "data-[disabled]:placeholder-(--fg-disabled) data-[disabled]:cursor-not-allowed",
-          "aria-[invalid=true]:!shadow-(--borders-error) invalid:!shadow-(--borders-error)",
+          "data-[hovered]:bg-(--bg-field-hover)",
+          "data-[disabled]:text-(--fg-disabled)",
+          "data-[disabled]:!bg-(--bg-disabled)",
+          "data-[disabled]:placeholder-(--fg-disabled)",
+          "data-[disabled]:cursor-not-allowed",
+          "aria-[invalid=true]:!shadow-(--borders-error)",
+          "invalid:!shadow-(--borders-error)",
           [
             "[&::--webkit-search-cancel-button]:hidden",
             "[&::-webkit-search-cancel-button]:hidden",
