@@ -1,5 +1,7 @@
 // admin components, https://github.com/medusajs/medusa/tree/v2.8.4/packages/admin/dashboard/src/components
 // admin routes, https://github.com/medusajs/medusa/tree/v2.8.4/packages/admin/dashboard/src/routes
+// https://react-spectrum.adobe.com/react-aria/ComboBox.html
+// https://react-spectrum.adobe.com/react-aria/TagGroup.html
 
 import { classNames } from "../../helpers/clsx";
 import { SysButton } from "./sys-button";
