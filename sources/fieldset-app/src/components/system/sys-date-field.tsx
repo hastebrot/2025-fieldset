@@ -27,6 +27,7 @@ export type SysDatePickerProps = {
   onChange?: (value: DateValue | null) => void;
   minValue?: DateValue;
   maxValue?: DateValue;
+  granularity?: "day" | "hour" | "minute" | "second";
   locale?: string;
   isDisabled?: boolean;
 };
@@ -53,6 +54,7 @@ export const SysDatePicker = (props: SysDatePickerProps) => {
         onChange={props.onChange}
         minValue={props.minValue}
         maxValue={props.maxValue}
+        granularity={props.granularity}
         isDisabled={props.isDisabled}
       >
         {(renderProps) => (
@@ -81,6 +83,7 @@ export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
         <SysIcon name="calendar-week" variant="outlined" width={18} strokeWidth={2} />
       </SysDatePickerButton>
       <DateInput className="flex-1 flex items-center py-1.5">
+        {/* FIXME(hastebrot): segments are focused when user clicks twice outside. */}
         {(segment) => (
           <DateSegment
             className={classNames(
@@ -100,8 +103,9 @@ export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
             )}
             segment={segment}
           >
-            {/* TODO(hastebrot): segments are focused when user clicks twice outside. */}
-            <span>{segment.text}</span>
+            <span className={classNames(segment.type === "literal" && "whitespace-pre")}>
+              {segment.text}
+            </span>
           </DateSegment>
         )}
       </DateInput>
