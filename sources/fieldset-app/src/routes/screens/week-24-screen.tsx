@@ -1,5 +1,6 @@
 import { getLocalTimeZone, parseDate, startOfMonth, today } from "@internationalized/date";
 import { useState } from "react";
+import { SysButtonGroup, SysButtonGroupItem } from "../../components/system/sys-button-group";
 import { SysCalendar } from "../../components/system/sys-calendar";
 import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
@@ -55,6 +56,29 @@ export const Week24Screen = () => {
               <SysSwitch size="small" isDisabled defaultSelected>
                 Label
               </SysSwitch>
+            </div>
+            <div className="flex flex-col gap-2 items-start">
+              <SysButtonGroup>
+                <SysButtonGroupItem>Label</SysButtonGroupItem>
+                <SysButtonGroupItem iconSlot={<SysIcon name="x" variant="outlined" width={16} />} />
+              </SysButtonGroup>
+              <SysButtonGroup>
+                <SysButtonGroupItem>Label</SysButtonGroupItem>
+                <SysButtonGroupItem>Label</SysButtonGroupItem>
+                <SysButtonGroupItem
+                  iconSlot={<SysIcon name="edit" variant="outlined" width={16} />}
+                />
+                <SysButtonGroupItem iconSlot={<SysIcon name="x" variant="outlined" width={16} />} />
+              </SysButtonGroup>
+              <SysButtonGroup>
+                <SysButtonGroupItem isDisabled>Label</SysButtonGroupItem>
+                <SysButtonGroupItem isDisabled>Label</SysButtonGroupItem>
+                <SysButtonGroupItem isDisabled>Label</SysButtonGroupItem>
+                <SysButtonGroupItem
+                  isDisabled
+                  iconSlot={<SysIcon name="x" variant="outlined" width={16} />}
+                />
+              </SysButtonGroup>
             </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">
