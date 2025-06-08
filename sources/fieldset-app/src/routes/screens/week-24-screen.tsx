@@ -90,7 +90,15 @@ export const Week24Screen = () => {
           </div>
           <div className="p-[16px] flex flex-row gap-2">
             <div className="flex flex-col gap-2 w-[250px]">
-              <SysSelect defaultValue="option-1">
+              <SysSelect placeholder="Placeholder">
+                <SysSelectItem value="option-1" label="Option 1" />
+                <SysSelectItem value="option-2" label="Option 2" />
+              </SysSelect>
+              <SysSelect defaultValue="option-1" placeholder="Placeholder">
+                <SysSelectItem value="option-1" label="Option 1" />
+                <SysSelectItem value="option-2" label="Option 2" />
+              </SysSelect>
+              <SysSelect isDisabled defaultValue="option-1" placeholder="Placeholder">
                 <SysSelectItem value="option-1" label="Option 1" />
                 <SysSelectItem value="option-2" label="Option 2" />
               </SysSelect>
