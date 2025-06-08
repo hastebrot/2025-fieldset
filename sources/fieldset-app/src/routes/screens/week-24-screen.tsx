@@ -6,6 +6,7 @@ import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysIconButton } from "../../components/system/sys-icon-button";
+import { SysSelect, SysSelectItem } from "../../components/system/sys-select-field";
 import { SysSwitch } from "../../components/system/sys-switch";
 import { SysTextInput } from "../../components/system/sys-text-field";
 import { SysTheme } from "../../components/system/sys-theme";
@@ -79,6 +80,14 @@ export const Week24Screen = () => {
                   iconSlot={<SysIcon name="x" variant="outlined" width={16} />}
                 />
               </SysButtonGroup>
+            </div>
+          </div>
+          <div className="p-[16px] flex flex-row gap-2">
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysSelect defaultValue="option-1">
+                <SysSelectItem value="option-1" label="Option 1" />
+                <SysSelectItem value="option-2" label="Option 2" />
+              </SysSelect>
             </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">

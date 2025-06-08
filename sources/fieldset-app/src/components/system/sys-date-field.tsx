@@ -80,11 +80,13 @@ export const SysDatePickerInput = (props: SysDatePickerInputProps) => {
       <SysDatePickerButton>
         <SysIcon name="calendar-week" variant="outlined" width={18} strokeWidth={2} />
       </SysDatePickerButton>
-      <DateInput className="flex-1 flex items-center tabular-nums py-1.5">
+      <DateInput className="flex-1 flex items-center py-1.5">
         {(segment) => (
           <DateSegment
             className={classNames(
               "outline-none",
+              "not-data-[placeholder]:tabular-nums",
+              "not-data-[placeholder]:tracking-tight",
               "data-[focused]:!bg-(--bg-interactive)",
               "data-[focused]:!text-(--fg-on-color)",
               "data-[placeholder]:uppercase",
