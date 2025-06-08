@@ -75,25 +75,41 @@ export const SysMultiSelectField = (props: SysMultiSelectFieldProps) => {
             <div className="flex flex-col gap-y-1.5 px-1.5">
               <div
                 className={classNames(
-                  "flex items-center justify-between gap-2 px-2 py-0.5 pr-0.5 rounded-md",
+                  "flex items-center justify-between gap-2 px-2 py-0.5 _pr-0.5 rounded-md",
                   "bg-(--bg-field-component) shadow-(--borders-base)",
                 )}
+                style={{
+                  ...typography[".txt-compact-small"],
+                }}
               >
                 <span>Product 1</span>
-                <SysIconButton size="small" variant="ghost">
-                  <SysIcon name="x" variant="outlined" width={15} strokeWidth={2} />
-                </SysIconButton>
+                <div className="flex items-center gap-0.5">
+                  <SysIconButton size="small" variant="ghost">
+                    <SysIcon name="edit" variant="outlined" width={15} strokeWidth={2} />
+                  </SysIconButton>
+                  <SysIconButton size="small" variant="ghost">
+                    <SysIcon name="x" variant="outlined" width={15} strokeWidth={2} />
+                  </SysIconButton>
+                </div>
               </div>
               <div
                 className={classNames(
-                  "flex items-center justify-between gap-2 px-2 py-0.5 pr-0.5 rounded-md",
+                  "flex items-center justify-between gap-2 px-2 py-0.5 _pr-0.5 rounded-md",
                   "bg-(--bg-field-component) shadow-(--borders-base)",
                 )}
+                style={{
+                  ...typography[".txt-compact-small"],
+                }}
               >
                 <span>Product 2</span>
-                <SysIconButton size="small" variant="ghost">
-                  <SysIcon name="x" variant="outlined" width={15} strokeWidth={2} />
-                </SysIconButton>
+                <div className="flex items-center gap-0.5">
+                  <SysIconButton size="small" variant="ghost">
+                    <SysIcon name="edit" variant="outlined" width={15} strokeWidth={2} />
+                  </SysIconButton>
+                  <SysIconButton size="small" variant="ghost">
+                    <SysIcon name="x" variant="outlined" width={15} strokeWidth={2} />
+                  </SysIconButton>
+                </div>
               </div>
             </div>
           </div>
