@@ -1,6 +1,8 @@
-import { Button, ListBox, ListBoxItem, Popover, Select, SelectValue } from "react-aria-components";
+import { Button, ListBox, ListBoxItem, Select, SelectValue } from "react-aria-components";
 import { classNames } from "../../helpers/clsx";
 import { SysIcon } from "./sys-icon";
+import { SysPopover } from "./sys-popover";
+import { SysTheme } from "./sys-theme";
 import { typography } from "./sys-tokens";
 
 // https://docs.medusajs.com/ui/components/select
@@ -35,7 +37,7 @@ export const SysSelect = ({ ...props }: SysSelectProps) => {
         className={classNames(
           "group flex items-center justify-between w-full",
           "bg-(--bg-field) shadow-(--buttons-neutral)",
-          "rounded-md outline-none select-none",
+          "rounded-md outline-none select-none cursor-pointer",
           "data-[hovered]:bg-(--bg-field-hover)",
           "data-[focus-visible]:shadow-(--borders-interactive-with-active)",
           "group-data-[open]/select:!shadow-(--borders-interactive-with-active)",
@@ -45,6 +47,7 @@ export const SysSelect = ({ ...props }: SysSelectProps) => {
           "invalid:shadow-(--borders-error)",
           "data-[disabled]:!bg-(--bg-disabled)",
           "data-[disabled]:!text-(--fg-disabled)",
+          "data-[disabled]:cursor-default",
           [
             // wrap.
             props.size === "base" && "h-8 px-2 py-1.5",
@@ -75,10 +78,29 @@ export const SysSelect = ({ ...props }: SysSelectProps) => {
           <SysIcon name="caret-up-down" variant="filled" width={16} />
         </div>
       </Button>
-      <Popover>
-        <ListBox>{props.children}</ListBox>
-      </Popover>
+      <SysPopover isNonModal shouldCloseOnBlur>
+        <SysSelectList>{props.children}</SysSelectList>
+      </SysPopover>
     </Select>
+  );
+};
+
+export type SysSelectListProps = {
+  children?: React.ReactNode;
+};
+
+export const SysSelectList = (props: SysSelectListProps) => {
+  return (
+    <SysTheme className="bg-transparent">
+      <div
+        className={classNames(
+          "bg-(--bg-component) text-(--fg-base) shadow-(--elevation-flyout)",
+          "overflow-hidden rounded-lg p-1",
+        )}
+      >
+        <ListBox className={classNames("outline-none min-w-[220px]")}>{props.children}</ListBox>
+      </div>
+    </SysTheme>
   );
 };
 
