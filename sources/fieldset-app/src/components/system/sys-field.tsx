@@ -39,7 +39,32 @@ export const SysFieldComponent = (props: SysFieldComponentProps) => {
       className={classNames(
         props.className,
         "flex items-center gap-x-2 px-2 rounded-md outline-none",
-        "bg-(--bg-field-component) shadow-(--borders-base)",
+        "text-(--fg-base) bg-(--bg-field-component) shadow-(--borders-base)",
+      )}
+      style={{
+        ...typography[".txt-compact-small"],
+      }}
+    >
+      {props.children}
+    </Component>
+  );
+};
+
+export type SysFieldReadonlyProps = {
+  children?: React.ReactNode;
+  className?: string;
+  as?: React.ElementType;
+};
+
+export const SysFieldReadonly = (props: SysFieldReadonlyProps) => {
+  const Component = props.as ?? "div";
+
+  return (
+    <Component
+      className={classNames(
+        props.className,
+        "flex items-center gap-x-2 px-2 rounded-md outline-none",
+        "text-(--fg-base) bg-(--bg-component) border border-(--border-base)",
       )}
       style={{
         ...typography[".txt-compact-small"],
