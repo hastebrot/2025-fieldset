@@ -12,7 +12,7 @@ import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysIconButton } from "../../components/system/sys-icon-button";
-import { SysMultiSelectField } from "../../components/system/sys-multi-select-field";
+import { SysMultiSelectList } from "../../components/system/sys-multi-select-list";
 import {
   SysSelect,
   SysSelectItem,
@@ -107,7 +107,7 @@ export const Week24Screen = () => {
           </div>
           <div className="p-[16px] flex flex-row gap-2">
             <div className="flex flex-col gap-2 w-[calc(500px+8px)]">
-              <SysMultiSelectField />
+              <SysMultiSelectList />
             </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">

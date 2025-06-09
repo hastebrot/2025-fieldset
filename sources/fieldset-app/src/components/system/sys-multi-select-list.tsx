@@ -11,11 +11,11 @@ import { SysSelect, SysSelectItem } from "./sys-select-field";
 import { SysSeparator } from "./sys-separator";
 import { SysText } from "./sys-text";
 
-export type SysMultiSelectFieldProps = {
+export type SysMultiSelectListProps = {
   children?: React.ReactNode;
 };
 
-export const SysMultiSelectField = (props: SysMultiSelectFieldProps) => {
+export const SysMultiSelectList = (props: SysMultiSelectListProps) => {
   return (
     <div className="flex flex-col gap-y-3">
       {props.children}
