@@ -29,7 +29,7 @@ export const SysPopover = (props: SysPopoverProps) => {
 
   return (
     <Popover
-      offset={8}
+      offset={6}
       defaultOpen={props.defaultOpen}
       isOpen={props.isOpen}
       onOpenChange={props.onOpenChange}

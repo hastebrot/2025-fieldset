@@ -29,6 +29,7 @@ export type SysSelectProps = {
   placeholder?: string;
   isInvalid?: boolean;
   isDisabled?: boolean;
+  isFieldComponent?: boolean;
 };
 
 export const SysSelect = ({ ...props }: SysSelectProps) => {
@@ -63,6 +64,10 @@ export const SysSelect = ({ ...props }: SysSelectProps) => {
             // wrap.
             props.size === "base" && "h-8 px-2 py-1.5",
             props.size === "small" && "h-7 px-2 py-1",
+          ],
+          props.isFieldComponent && [
+            "!bg-(--bg-field-component)",
+            "data-[hovered]:!bg-(--bg-field-component-hover)",
           ],
         )}
         style={{

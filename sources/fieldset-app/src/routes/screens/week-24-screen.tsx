@@ -8,6 +8,10 @@ import {
 import { useState } from "react";
 import { SysButtonGroup, SysButtonGroupItem } from "../../components/system/sys-button-group";
 import { SysCalendar } from "../../components/system/sys-calendar";
+import {
+  SysConditionBlock,
+  SysSearchConditionBlock,
+} from "../../components/system/sys-condition-block";
 import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
@@ -18,6 +22,7 @@ import {
   SysSelectSection,
   SysSelectSeparator,
 } from "../../components/system/sys-select-field";
+import { SysSeparator } from "../../components/system/sys-separator";
 import { SysSwitch } from "../../components/system/sys-switch";
 import { SysTextInput } from "../../components/system/sys-text-field";
 import { SysTheme } from "../../components/system/sys-theme";
@@ -91,6 +96,24 @@ export const Week24Screen = () => {
                   iconSlot={<SysIcon name="x" variant="outlined" width={16} />}
                 />
               </SysButtonGroup>
+            </div>
+          </div>
+          <div className="p-[16px] flex flex-row gap-2">
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysSeparator variant="solid" />
+              <SysSeparator variant="solid" />
+            </div>
+            <div className="flex flex-col gap-2 w-[250px]">
+              <SysSeparator variant="dashed" />
+              <SysSeparator variant="dashed" />
+            </div>
+          </div>
+          <div className="p-[16px] flex flex-row gap-2">
+            <div className="flex flex-col gap-2 w-[calc(500px+8px)]">
+              <SysConditionBlock />
+              <SysConditionBlock isAttributeReadonly isOperatorReadonly />
+              <SysConditionBlock isAttributeReadonly isOperatorHidden />
+              <SysSearchConditionBlock />
             </div>
           </div>
           <div className="p-[16px] flex flex-row gap-2">
