@@ -33,7 +33,7 @@ export const SysConditionBlock = (props: SysConditionBlockProps) => {
                   </SysSelect>
                 )}
                 {props.isAttributeReadonly && (
-                  <SysFieldReadonly className="py-1.5">Unselectable attribute</SysFieldReadonly>
+                  <SysFieldReadonly className="py-1.5">Read-only attribute</SysFieldReadonly>
                 )}
               </div>
               <div className={classNames(props.isOperatorHidden && "hidden")}>
@@ -43,7 +43,7 @@ export const SysConditionBlock = (props: SysConditionBlockProps) => {
                   </SysSelect>
                 )}
                 {props.isOperatorReadonly && (
-                  <SysFieldReadonly className="py-1.5">Unselectable operator</SysFieldReadonly>
+                  <SysFieldReadonly className="py-1.5">Read-only operator</SysFieldReadonly>
                 )}
               </div>
               <SysSelect isFieldComponent placeholder="Select values">
