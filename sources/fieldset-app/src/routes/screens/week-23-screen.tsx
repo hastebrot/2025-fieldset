@@ -58,7 +58,7 @@ import {
 } from "../../components/system/sys-table";
 import { SysText } from "../../components/system/sys-text";
 import { SysTextInput } from "../../components/system/sys-text-field";
-import { Story, StoryLayout } from "../layouts/storyLayout";
+import { Story, StoryLayout } from "../layouts/story-layout";
 
 export const Week23Screen = () => {
   return (

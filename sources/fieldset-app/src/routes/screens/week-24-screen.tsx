@@ -23,7 +23,7 @@ import {
 import { SysSeparator } from "../../components/system/sys-separator";
 import { SysSwitch } from "../../components/system/sys-switch";
 import { SysTextInput } from "../../components/system/sys-text-field";
-import { Story, StoryLayout } from "../layouts/storyLayout";
+import { Story, StoryLayout } from "../layouts/story-layout";
 
 export const Week24Screen = () => {
   return (
