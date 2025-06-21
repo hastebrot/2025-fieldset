@@ -17,6 +17,7 @@ export type SysTextInputProps = {
   size?: "base" | "small";
   isDisabled?: boolean;
   isInvalid?: boolean;
+  isFieldComponent?: boolean;
 };
 
 export const SysTextInput = (props: SysTextInputProps) => {
@@ -50,6 +51,10 @@ export const SysTextInput = (props: SysTextInputProps) => {
           [props.size === "small" && "h-7 px-2 py-1"],
           props.type === "password" && "pr-10", // px-8 and px-2.
           inputType === "password" && "!font-[Inter,_sans-serif]",
+          props.isFieldComponent && [
+            "!bg-(--bg-field-component)",
+            "data-[hovered]:!bg-(--bg-field-component-hover)",
+          ],
         )}
         style={{
           ...(props.size === undefined && typography[".txt-compact-small"]),
