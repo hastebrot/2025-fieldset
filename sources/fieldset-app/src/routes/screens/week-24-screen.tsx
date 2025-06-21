@@ -8,12 +8,16 @@ import {
 import { SysButtonGroup, SysButtonGroupItem } from "../../components/system/sys-button-group";
 import { SysCalendar } from "../../components/system/sys-calendar";
 import {
+  SysBlockAttributeFilter,
+  SysBlockAttributeSearchFilter,
+  SysBlockAttributeValueList,
   SysConditionBlock,
-  SysSearchConditionBlock,
+  SysConditionSplitBlock,
 } from "../../components/system/sys-condition-block";
 import { SysCurrencyInput } from "../../components/system/sys-currency-field";
 import { SysDatePicker, SysDatePickerPopover } from "../../components/system/sys-date-field";
 import { SysIcon } from "../../components/system/sys-icon";
+import { SysBlockAttributeFields, SysItemBlock } from "../../components/system/sys-item-block";
 import {
   SysSelect,
   SysSelectItem,
@@ -83,10 +87,30 @@ export const Week24Screen = () => {
       </Story>
       <Story className="p-[16px] flex flex-row gap-2">
         <div className="flex flex-col gap-2 w-[calc(500px+8px)]">
-          <SysConditionBlock />
-          <SysConditionBlock isAttributeReadonly isOperatorReadonly />
-          <SysConditionBlock isAttributeReadonly isOperatorHidden />
-          <SysSearchConditionBlock />
+          <SysItemBlock>
+            <SysBlockAttributeFields />
+          </SysItemBlock>
+        </div>
+      </Story>
+      <Story className="p-[16px] flex flex-row gap-2">
+        <div className="flex flex-col gap-2 w-[calc(500px+8px)]">
+          <SysConditionBlock>
+            <SysBlockAttributeFilter />
+          </SysConditionBlock>
+          <SysConditionBlock>
+            <SysBlockAttributeFilter isAttributeReadonly isOperatorReadonly />
+          </SysConditionBlock>
+          <SysConditionBlock>
+            <SysBlockAttributeFilter isAttributeReadonly isOperatorHidden />
+          </SysConditionBlock>
+        </div>
+      </Story>
+      <Story className="p-[16px] flex flex-row gap-2">
+        <div className="flex flex-col gap-2 w-[calc(500px+8px)]">
+          <SysConditionSplitBlock
+            filterSlot={<SysBlockAttributeSearchFilter />}
+            listSlot={<SysBlockAttributeValueList />}
+          />
         </div>
       </Story>
       <Story className="p-[16px] flex flex-row gap-2">
