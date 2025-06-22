@@ -16,8 +16,11 @@ export function registerMatchers() {
 
   function patchMatcher(matcher: any) {
     return function (...args: any[]) {
+      // @ts-ignore
       this.utils.EXPECTED_COLOR = chalk.green;
+      // @ts-ignore
       this.utils.RECEIVED_COLOR = chalk.red;
+      // @ts-ignore
       return matcher.apply(this, args);
     };
   }
