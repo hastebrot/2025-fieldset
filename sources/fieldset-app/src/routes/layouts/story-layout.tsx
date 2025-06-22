@@ -41,6 +41,9 @@ export const StoryLayout = (props: StoryLayoutProps) => {
             <SysButton variant="outlined" onPress={() => navigate("/week-24")}>
               week 24
             </SysButton>
+            <SysButton variant="outlined" onPress={() => navigate("/week-25")}>
+              week 25
+            </SysButton>
           </Story>
           {props.children}
         </div>
