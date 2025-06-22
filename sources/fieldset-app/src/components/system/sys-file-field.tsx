@@ -89,7 +89,6 @@ export const SysFileUploadArea = (props: SysFileUploadAreaProps) => {
         "data-[focused]:border-(--border-interactive)",
         "data-[focused]:shadow-(--borders-focus)",
         "data-[focused]:border-solid",
-        "data-[disabled]",
         props.isError && "!border-(--border-error)",
       )}
       onDrop={props.onFileDrop}
