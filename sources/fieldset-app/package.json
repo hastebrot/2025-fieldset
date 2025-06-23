@@ -9,7 +9,7 @@
     "build": "bun x --bun vite build",
     "test": "bun test",
     "bench": "SKIP_BENCH=false bun test",
-    "fmt": "bun x --bun prettier --check --end-of-line=auto . !package.json",
+    "fmt": "bun x --bun prettier --check --plugin @prettier/plugin-oxc --end-of-line=auto . !package.json",
     "loc": "bun x --bun cloc --vcs=git --hide-rate"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@fontsource/inter": "^5.2.6",
     "@fontsource/roboto-mono": "^5.2.6",
     "@internationalized/date": "^3.8.2",
+    "@prettier/plugin-oxc": "^0.0.2",
     "@tabler/icons-sprite": "^3.34.0",
     "@tailwindcss/vite": "^4.1.10",
     "@testing-library/jest-dom": "^6.6.3",
@@ -39,7 +40,7 @@
     "kysely-plugin-serialize": "^0.8.2",
     "mobx": "^6.13.7",
     "mobx-react-lite": "^4.1.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.0",
     "react-aria-components": "^1.10.1",
     "react-error-boundary": "^6.0.0",
     "react-router": "^7.6.2",
