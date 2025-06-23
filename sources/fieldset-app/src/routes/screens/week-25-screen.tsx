@@ -1,4 +1,7 @@
+import { SysBreadcrumb, SysBreadcrumbs, SysLink } from "../../components/system/sys-breadcrumbs";
 import { SysFilePreview, SysFileUploadArea } from "../../components/system/sys-file-field";
+import { SysIcon } from "../../components/system/sys-icon";
+import { SysLinkButton } from "../../components/system/sys-link-button";
 import { SysSearchModal } from "../../components/system/sys-search-modal";
 import { SysTabs, SysTabsItem, SysTabsList, SysTabsPanel } from "../../components/system/sys-tabs";
 import { SysText } from "../../components/system/sys-text";
@@ -7,6 +10,45 @@ import { Story, StoryLayout } from "../layouts/story-layout";
 export const Week25Screen = () => {
   return (
     <StoryLayout>
+      <Story className="p-[16px] flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <SysBreadcrumbs>
+            <SysBreadcrumb>
+              <SysLink>Breadcrumb</SysLink>
+            </SysBreadcrumb>
+            <SysBreadcrumb>
+              <SysLink>Breadcrumb</SysLink>
+            </SysBreadcrumb>
+            <SysBreadcrumb>
+              <span>Breadcrumb</span>
+            </SysBreadcrumb>
+          </SysBreadcrumbs>
+        </div>
+      </Story>
+      <Story className="p-[16px] flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <SysLinkButton variant="base">
+            Label
+            <SysIcon name="caret-right" variant="filled" height={13} strokeWidth={2} />
+          </SysLinkButton>
+          <SysLinkButton variant="interactive">
+            Label
+            <SysIcon name="caret-right" variant="filled" height={13} strokeWidth={2} />
+          </SysLinkButton>
+          <SysLinkButton variant="subtle">
+            Label
+            <SysIcon name="caret-right" variant="filled" height={13} strokeWidth={2} />
+          </SysLinkButton>
+          <SysLinkButton variant="muted">
+            Label
+            <SysIcon name="caret-right" variant="filled" height={13} strokeWidth={2} />
+          </SysLinkButton>
+          <SysLinkButton variant="base" isDisabled>
+            Label
+            <SysIcon name="caret-right" variant="filled" height={13} strokeWidth={2} />
+          </SysLinkButton>
+        </div>
+      </Story>
       <Story className="p-[16px] flex flex-col gap-2">
         <SysTabs defaultValue="general">
           <SysTabsList>
