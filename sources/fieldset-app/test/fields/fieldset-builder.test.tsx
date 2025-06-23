@@ -9,7 +9,7 @@ suite("fieldset builder", () => {
       io: "output",
       override(ctx) {
         // no-op.
-        ctx.zodSchema._zod.id, ctx.jsonSchema.type;
+        (ctx.zodSchema._zod.id, ctx.jsonSchema.type);
       },
     });
     const json = (value: any) => JSON.stringify(value, null, 2);
