@@ -9,6 +9,7 @@ export type SysBadgeProps = {
   color?: "gray" | "red" | "orange" | "green" | "blue" | "purple";
   size?: "base" | "2xsmall" | "xsmall" | "small";
   rounded?: "base" | "full";
+  noPadding?: boolean;
 };
 
 export const SysBadge = ({ ...props }: SysBadgeProps) => {
@@ -50,6 +51,7 @@ export const SysBadge = ({ ...props }: SysBadgeProps) => {
           props.rounded === "base" && "rounded-md",
           props.rounded === "full" && "rounded-full",
         ],
+        props.noPadding && "!p-0",
       )}
       style={{
         ...(props.size === "base" && typography[".txt-compact-small-plus"]),

@@ -1,4 +1,5 @@
 import { SysBreadcrumb, SysBreadcrumbs, SysLink } from "../../components/system/sys-breadcrumbs";
+import { SysChipInput } from "../../components/system/sys-combobox";
 import { SysFilePreview, SysFileUploadArea } from "../../components/system/sys-file-field";
 import { SysIcon } from "../../components/system/sys-icon";
 import { SysLinkButton } from "../../components/system/sys-link-button";
@@ -74,6 +75,12 @@ export const Week25Screen = () => {
             </SysTabsPanel>
           </div>
         </SysTabs>
+      </Story>
+      <Story className="p-[16px] flex flex-row gap-2">
+        <div className="flex flex-col gap-2 w-[calc(500px+8px)]">
+          <SysChipInput items={["Red", "Blue", "Black"]} showRemoveButton />
+          <SysChipInput items={["Red", "Blue", "Black"]} showRemoveButton variant="contrast" />
+        </div>
       </Story>
       <Story className="p-[16px] flex flex-row gap-2">
         <div className="flex flex-col gap-2 w-[calc(500px+8px)]">
