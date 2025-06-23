@@ -3,9 +3,15 @@ import { classNames } from "../../helpers/clsx";
 import { SysBadge } from "./sys-badge";
 import { SysIcon } from "./sys-icon";
 
-// https://github.com/medusajs/medusa/blob/v2.8.4/packages/admin/dashboard/src/components/inputs/chip-input/chip-input.tsx
-// https://github.com/medusajs/medusa/blob/v2.8.4/packages/admin/dashboard/src/routes/products/product-create/components/product-create-details-form/components/product-create-details-variant-section/product-create-details-variant-section.tsx
+// chip-input:
 // https://github.com/medusajs/medusa/blob/v2.8.4/www/apps/user-guide/app/products/create/page.mdx#1-details-step
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/admin/dashboard/src/routes/products/product-create/components/product-create-details-form/components/product-create-details-variant-section/product-create-details-variant-section.tsx
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/admin/dashboard/src/components/inputs/chip-input/chip-input.tsx
+// chip-group, combobox:
+// https://github.com/medusajs/medusa/blob/v2.8.4/www/apps/user-guide/app/products/create/page.mdx#2-organize-step
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/admin/dashboard/src/routes/products/product-create/components/product-create-organize-form/components/product-create-organize-section/product-create-details-organize-section.tsx
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/admin/dashboard/src/components/common/chip-group/chip-group.tsx
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/admin/dashboard/src/routes/products/common/components/category-combobox/category-combobox.tsx
 
 export type SysChipInputProps = {
   items?: string[];
