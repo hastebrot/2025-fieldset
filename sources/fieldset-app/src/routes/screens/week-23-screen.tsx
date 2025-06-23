@@ -447,6 +447,26 @@ export const Week23Screen = () => {
             Badge
           </SysBadge>
         </div>
+        <div className="flex items-center gap-2">
+          <SysBadge size="2xsmall" color="gray">
+            Badge
+          </SysBadge>
+          <SysBadge size="2xsmall" color="red">
+            Badge
+          </SysBadge>
+          <SysBadge size="2xsmall" color="orange">
+            Badge
+          </SysBadge>
+          <SysBadge size="2xsmall" color="green">
+            Badge
+          </SysBadge>
+          <SysBadge size="2xsmall" color="blue">
+            Badge
+          </SysBadge>
+          <SysBadge size="2xsmall" color="purple">
+            Badge
+          </SysBadge>
+        </div>
       </Story>
       <Story className="p-[16px] flex flex-col gap-2">
         <SysProgressTabs defaultValue="general">

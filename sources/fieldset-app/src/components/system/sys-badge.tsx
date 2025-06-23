@@ -1,21 +1,26 @@
 import { classNames } from "../../helpers/clsx";
 import { typography } from "./sys-tokens";
 
+// https://github.com/medusajs/medusa/blob/v2.8.4/packages/design-system/ui/src/components/badge/badge.tsx
+// https://docs.medusajs.com/ui/components/badge
+
 export type SysBadgeProps = {
   children: React.ReactNode;
   color?: "gray" | "red" | "orange" | "green" | "blue" | "purple";
-  size?: "base" | "xsmall" | "small";
+  size?: "base" | "2xsmall" | "xsmall" | "small";
   rounded?: "base" | "full";
+  noPadding?: boolean;
 };
 
-export const SysBadge = (props: SysBadgeProps) => {
+export const SysBadge = ({ ...props }: SysBadgeProps) => {
+  props.color = props.color ?? "gray";
+  props.size = props.size ?? "base";
+  props.rounded = props.rounded ?? "base";
+
   return (
     <span
       className={classNames(
         "inline-flex items-center gap-x-0.5 border box-border",
-        props.color === undefined && [
-          "[&_svg]:text-(--tag-neutral-icon) bg-(--tag-neutral-bg) text-(--tag-neutral-text) border-(--tag-neutral-border)",
-        ],
         props.color === "gray" && [
           "[&_svg]:text-(--tag-neutral-icon) bg-(--tag-neutral-bg) text-(--tag-neutral-text) border-(--tag-neutral-border)",
         ],
@@ -35,20 +40,22 @@ export const SysBadge = (props: SysBadgeProps) => {
           "[&_svg]:text-(--tag-purple-icon) bg-(--tag-purple-bg) text-(--tag-purple-text) border-(--tag-purple-border)",
         ],
         [
-          props.size === undefined && "py-[5px] h-8 px-2.5",
+          // wrap.
           props.size === "base" && "py-[5px] h-8 px-2.5",
+          props.size === "2xsmall" && "h-5 px-1",
           props.size === "xsmall" && "py-[1px] h-6 px-1.5",
           props.size === "small" && "py-[3px] h-7 px-2",
         ],
         [
-          props.rounded === undefined && "rounded-md",
+          // wrap.
           props.rounded === "base" && "rounded-md",
           props.rounded === "full" && "rounded-full",
         ],
+        props.noPadding && "!p-0",
       )}
       style={{
-        ...(props.size === undefined && typography[".txt-compact-small-plus"]),
         ...(props.size === "base" && typography[".txt-compact-small-plus"]),
+        ...(props.size === "2xsmall" && typography[".txt-compact-xsmall-plus"]),
         ...(props.size === "xsmall" && typography[".txt-compact-xsmall-plus"]),
         ...(props.size === "small" && typography[".txt-compact-xsmall-plus"]),
       }}

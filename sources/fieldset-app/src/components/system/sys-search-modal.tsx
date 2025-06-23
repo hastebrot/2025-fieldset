@@ -153,6 +153,8 @@ const CommandItem = (props: CommandItemProps) => {
       className={classNames(
         "flex items-center gap-x-3 p-2",
         "select-none outline-none rounded-md cursor-pointer",
+        "hover:bg-(--bg-base-hover)",
+        "focus-visible:bg-(--bg-base-hover)",
       )}
       style={{
         ...typography[".txt-compact-small"],

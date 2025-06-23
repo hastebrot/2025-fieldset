@@ -1,5 +1,8 @@
 # 2025 fieldset
 
+> [!NOTE]
+> This project is in a very early stage of development.
+
 ### Usage
 
 This project requires [Git](https://git-scm.com/) and [Bun](https://bun.sh/) to be installed.
@@ -9,8 +12,8 @@ This project requires [Git](https://git-scm.com/) and [Bun](https://bun.sh/) to 
 - `$ bun install`
 - `$ bun run dev --port 1234`
 - `$ bun run test --watch`
-- `$ bun run fmt --write`
 - `$ bun run bench --watch .bench`
+- `$ bun run fmt --write`
 
 ### References
 
